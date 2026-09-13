@@ -1,0 +1,8 @@
+.ipynb_checkpoints
+__pycache__/
+.DS_Store
+.deepeval/
+.eval_cache/
+.claude
+Lecture4.RAG/myenv
+Lecture4.RAG/.env.local
