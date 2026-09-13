@@ -1,0 +1,17 @@
+EXPERIMENT REPORT
+
+Total experiments: 8
+Average accuracy: 0.863
+Best experiment: exp_006 (GPT-2) - accuracy 0.945
+
+Experiments with accuracy above 0.9: 3
+exp_002: GPT-2 - accuracy 0.923
+exp_006: GPT-2 - accuracy 0.945
+exp_007: BERT-large - accuracy 0.912
+
+BERT experiments: 4
+exp_001: BERT-small - accuracy 0.847
+exp_003: BERT-large - accuracy 0.891
+exp_005: BERT-small - accuracy 0.852
+exp_007: BERT-large - accuracy 0.912
+Average BERT accuracy: 0.875
