@@ -1,61 +1,43 @@
 # Evaluation AI Course
 
-Учебный репозиторий курса по оценке AI-систем. Здесь лежат материалы лекций и мои домашние работы.
-
-## О чём курс
-
-Курс о том, как измерять качество AI-систем. Доказать, что он работает, и заметить, когда он сломался. Курс проходит этот путь снизу вверх: от классических метрик классификации до оценки многоходовых диалогов и мультимодальных ответов.
-
-Основные темы изучения:
-
-- как измерить качество там, где есть правильный ответ (классификация, регрессия) — и там, где его нет (свободный текст);
-- что делать, когда «правильных ответов» вообще не существует, а оценку нужно получить — LLM-as-a-Judge, метрики без эталона;
-- как оценивать RAG отдельно от модели: качество поиска и качество ответа — это разные вещи, ломаются они по-разному;
-- как оценивать агента, у которого важен не только ответ, но и путь к нему — какие инструменты он вызвал и в каком порядке;
-- как оценивать диалог целиком: помнит ли бот контекст, держится ли своей роли, довёл ли задачу до конца.
+Учебный репозиторий курса о том, как измерять качество AI-систем. Здесь материалы лекций и мои домашние работы.
 
 ## Программа
 
-| Лекция | Тема | Что осваиваем |
-|---|---|---|
-| [1. Python](Lecture1.Python) | Основы Python для работы с данными | типы и коллекции, циклы, функции, обработка ошибок, классы; ручной подсчёт метрик |
-| [2. ML/DL](Lecture2.ML_DL) | Классические метрики ML | accuracy, precision, recall, F1, матрица ошибок, калибровка; обучение на PyTorch, трекинг экспериментов в TensorBoard и Weights & Biases |
-| [3. LLM](Lecture3.LLM) | Оценка языковых моделей | метрики с эталоном (ROUGE, METEOR, BLEU, exact match), без эталона (разнообразие, читаемость, грамматика), эмбеддинговые метрики, LLM-as-a-Judge, бенчмарки |
-| [4. RAG](Lecture4.RAG) | Оценка RAG-систем | своя RAG-система на FastAPI + ChromaDB и её оценка четырьмя фреймворками: DeepEval, RAGAS, Opik, promptfoo |
-| [5. Agents](Lecture5.Agents) | Оценка агентов | AI-агент на LangChain с инструментами; метрики ToolCorrectness и TaskCompletion — правильность цепочки вызовов, а не только финального ответа |
-| [6. Multiturn & Multimodal](Lecture6.Multiturn_and_Miltimodal) | Многоходовые диалоги и мультимодальность | оценка беседы целиком (удержание контекста, соответствие роли, завершённость); метрики для изображений — CLIP Score, LPIPS |
+| Лекция | О чём |
+|---|---|
+| [1. Python](Lecture1.Python) | основы Python для работы с данными; метрики считаем руками, без библиотек |
+| [2. ML/DL](Lecture2.ML_DL) | accuracy, precision, recall, F1, MAE, RMSE, R²; матрица ошибок, переобучение, калибровка |
+| [3. LLM](Lecture3.LLM) | метрики с эталоном (ROUGE, BLEU, METEOR) и без него; LLM-as-a-Judge, бенчмарки |
+| [4. RAG](Lecture4.RAG) | своя RAG-система на FastAPI и ChromaDB, оценка через DeepEval, RAGAS, Opik, promptfoo |
+| [5. Agents](Lecture5.Agents) | агент на LangChain; ToolCorrectness и TaskCompletion — важен путь, а не только ответ |
+| [6. Multiturn & Multimodal](Lecture6.Multiturn_and_Miltimodal) | оценка диалога целиком; CLIP Score и LPIPS для картинок |
 
-## Инструменты, которые разбираем
-
-**Фреймворки оценки:** [DeepEval](https://github.com/confident-ai/deepeval) — метрики в стиле unit-тестов; [RAGAS](https://github.com/explodinggradients/ragas) — метрики специально под RAG; [Opik](https://github.com/comet-ml/opik) — трейсинг плюс оценка; [promptfoo](https://github.com/promptfoo/promptfoo) — прогон промптов по YAML-конфигу.
-
-**Трекинг экспериментов:** TensorBoard, Weights & Biases.
-
-**Наблюдаемость агентов:** LangSmith, Langfuse.
-
-**Стек:** Python, PyTorch, FastAPI, LangChain, ChromaDB, Docker.
+Сквозная мысль всего курса: одна общая цифра качества почти всегда врёт. Что бы ни измерялось — спам, удовлетворённость пассажира, ответ бота — ошибки надо разбирать по типам.
 
 ## Как устроен репозиторий
 
-Каждая лекция — самостоятельная папка со своим `requirements.txt` и своим README. Между лекциями кода не переиспользуется, поэтому окружение удобнее заводить отдельно под каждую:
+Каждая лекция — самостоятельная папка: материалы преподавателя, мои работы `homework*`, свой `requirements.txt` и README с заданием, решением и выводами.
+
+Между лекциями код не переиспользуется, окружение заводится отдельно под каждую:
 
 ```
-cd Lecture3.LLM && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+cd Lecture2.ML_DL && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ```
 
-Внутри папки лекции:
+## Инструменты
 
-- материалы преподавателя — конспекты `.ipynb` и примеры скриптов;
-- моя домашняя работа — `homework.ipynb` и, где удобно, `homework.py` с тем же кодом для запуска из терминала;
-- `README.md` с условием задания, разбором решения и результатом.
+Фреймворки оценки: DeepEval, RAGAS, Opik, promptfoo.
+Обучение и трекинг: PyTorch, Keras, scikit-learn, TensorBoard, Weights & Biases.
+Наблюдаемость агентов: LangSmith, Langfuse.
 
 ## Куда смотреть дальше
 
 Открытые проекты, по которым полезно сверяться с индустрией:
 
 - [OpenAI Evals](https://github.com/openai/evals) — фреймворк и реестр тестов для LLM;
-- [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) — де-факто стандарт для прогона академических бенчмарков;
-- [HELM](https://github.com/stanford-crfm/helm) — оценка моделей сразу по многим измерениям, не только по точности;
+- [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) — стандарт для прогона академических бенчмарков;
+- [HELM](https://github.com/stanford-crfm/helm) — оценка сразу по многим измерениям, не только по точности;
 - [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) — фреймворк оценок от UK AI Safety Institute;
 - [MTEB](https://github.com/embeddings-benchmark/mteb) — бенчмарк моделей эмбеддингов;
 - [Giskard](https://github.com/Giskard-AI/giskard) — поиск уязвимостей и нежелательного поведения;
