@@ -1,0 +1,46 @@
+{
+  "reference_free": {
+    "gpt-5.4-nano": {
+      "Perplexity (lower = better)": 152.0957457224528,
+      "Flesch readability (higher = easier)": 78.61284757621189,
+      "Coherence (higher = better)": 0.9571064114570618,
+      "Self-BLEU (lower = more diverse)": 0.024909663220331713,
+      "Distinct-1 (higher = more diverse)": 0.906,
+      "Distinct-2 (higher = more diverse)": 1.882
+    },
+    "gemini-3-flash-preview": {
+      "Perplexity (lower = better)": 125.90941222508748,
+      "Flesch readability (higher = easier)": 74.77585714285715,
+      "Coherence (higher = better)": 0.9615846276283264,
+      "Self-BLEU (lower = more diverse)": 0.02222947829028601,
+      "Distinct-1 (higher = more diverse)": 0.953,
+      "Distinct-2 (higher = more diverse)": 1.942
+    }
+  },
+  "reference_based": {
+    "gpt-5.4-nano": {
+      "ROUGE-1": 0.611111111111111,
+      "ROUGE-L": 0.611111111111111,
+      "METEOR": 0.4146002792270433,
+      "SacreBLEU": 0.11114117105115667,
+      "Exact Match": 0.3333333333333333
+    },
+    "gemini-3-flash-preview": {
+      "ROUGE-1": 0.6666666666666666,
+      "ROUGE-L": 0.6666666666666666,
+      "METEOR": 0.5427790896074122,
+      "SacreBLEU": 0.17882982819804297,
+      "Exact Match": 0.3333333333333333
+    }
+  },
+  "embedding_based": {
+    "gpt-5.4-nano": {
+      "BERTScore F1": 0.8500088751316071,
+      "Sentence-BERT similarity (LaBSE)": 0.8265445530414581
+    },
+    "gemini-3-flash-preview": {
+      "BERTScore F1": 0.9119891424973806,
+      "Sentence-BERT similarity (LaBSE)": 0.9389707346757253
+    }
+  }
+}
