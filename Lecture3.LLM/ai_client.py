@@ -1,11 +1,16 @@
 # ai_client.py
+import os
+
+from dotenv import load_dotenv
 from openai import OpenAI
 from google import genai
 from google.genai import types
 
-client = OpenAI(api_key="")
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"))
 
-client_google = genai.Client(api_key="")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+client_google = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 
 def google_chat(prompt: str) -> str:

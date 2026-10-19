@@ -18,7 +18,7 @@ from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from diversity import ngram_diversity_score
 import textstat
 import language_tool_python
-import textdescriptives as td
+# import textdescriptives as td  # пакет не используется в этом файле и конфликтует с numpy 2.x
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModel
 import torch
 from sklearn.metrics.pairwise import cosine_similarity

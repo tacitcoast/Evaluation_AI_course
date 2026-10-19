@@ -12,3 +12,5 @@ CLAUDE.md
 .venv/
 data/
 Lecture2.ML_DL/*.png
+.env
+.env.local
