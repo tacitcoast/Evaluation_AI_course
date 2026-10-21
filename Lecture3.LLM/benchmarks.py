@@ -4,6 +4,8 @@ import random
 from datasets import load_dataset
 from ai_client import openai_chat_v2
 
+DEFAULT_CHAT = openai_chat_v2
+
 
 random.seed(42)
 
@@ -21,15 +23,37 @@ def form_options(options: list):
     return option_str
 
 
+def extract_letter(output: str, last_letter: str = "J"):
+    """Ищет букву ответа в тексте модели, от самых надёжных форм к общим"""
+    if not output:
+        return None
+
+    span = f"A-{last_letter}"
+    patterns = [
+        rf"answer is\s*\(?([{span}])\)?",
+        rf"answer\s*[:\-]\s*\(?([{span}])\)?",
+        rf"\*\*\s*\(?([{span}])\)?\s*\*\*",
+        rf"\(([{span}])\)",
+    ]
+    for pattern in patterns:
+        found = re.findall(pattern, output, re.IGNORECASE)
+        if found:
+            return found[-1].upper()
+
+    standalone = re.findall(rf"(?<![A-Za-z])([{span}])(?![A-Za-z])", output)
+    if standalone:
+        return standalone[-1].upper()
+
+    return None
+
+
 def get_prediction(output: str):
     """Извлекает ответ из текста модели в формате 'The answer is (X)'"""
-    pattern = r"answer is\s*\(?([A-J])\)?"
-    match = re.search(pattern, output, re.IGNORECASE)
-    if match:
-        return match.group(1).upper()
-    else:
-        print("❌ Extraction failed, random guess")
-        return random.choice([chr(65 + i) for i in range(10)])
+    letter = extract_letter(output, "J")
+    if letter:
+        return letter
+    print("❌ Extraction failed, random guess")
+    return random.choice([chr(65 + i) for i in range(10)])
 
 
 def clean_response(text: str) -> str:
@@ -47,7 +71,8 @@ def clean_response(text: str) -> str:
 # =======================
 
 
-def run_mmlu_pro(category='computer science', num_samples=10):
+def run_mmlu_pro(category='computer science', num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print(f"\n=== MMLU-Pro: {category} ===")
     dataset = load_dataset("TIGER-Lab/MMLU-Pro")
 
@@ -70,7 +95,7 @@ def run_mmlu_pro(category='computer science', num_samples=10):
             '\n' + form_options(example['options']) + '\n'
         full_prompt = cot_prefix + question_block
 
-        model_output = openai_chat_v2(full_prompt)
+        model_output = chat(full_prompt)
         predicted = get_prediction(model_output)
         correct_answer = example['answer'].strip().upper()
 
@@ -82,6 +107,7 @@ def run_mmlu_pro(category='computer science', num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 MMLU-Pro Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 
 # =======================
@@ -89,9 +115,10 @@ def run_mmlu_pro(category='computer science', num_samples=10):
 # =======================
 
 
-def run_truthfulqa(num_samples=10):
+def run_truthfulqa(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== TruthfulQA ===")
-    dataset = load_dataset("truthful_qa", "multiple_choice",
+    dataset = load_dataset("truthfulqa/truthful_qa", "multiple_choice",
                            split="validation[:{}]".format(num_samples))
 
     correct = 0
@@ -99,17 +126,23 @@ def run_truthfulqa(num_samples=10):
     for i, example in enumerate(dataset):
         question = example["question"]
         choices = example["mc1_targets"]["choices"]
-        # строка правильного ответа
-        correct_choice = example["mc1_targets"]["labels"][0]
+        labels = example["mc1_targets"]["labels"]
+        correct_index = labels.index(1)
+        correct_choice = choices[correct_index]
 
         prompt = f"{question}\nChoices:\n"
         for j, choice in enumerate(choices):
             prompt += f"{chr(65 + j)}. {choice}\n"
-        prompt += "Answer:"
+        prompt += "Answer with one letter:"
 
-        model_output = openai_chat_v2(prompt)
-        matched = any(correct_choice.strip().lower() in model_output.lower()
-                      for correct_choice in example["mc1_targets"]["choices"])
+        model_output = chat(prompt)
+
+        letter_match = re.search(r"\b([A-Z])\b", model_output.strip())
+        if letter_match:
+            predicted_index = ord(letter_match.group(1)) - 65
+            matched = predicted_index == correct_index
+        else:
+            matched = correct_choice.strip().lower() in model_output.lower()
 
         result = "✅" if matched else "❌"
         print(f"{result} Q{i+1}: response={model_output[:60]}...")
@@ -119,16 +152,18 @@ def run_truthfulqa(num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 TruthfulQA Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 
 # =======================
 # 3. HellaSwag
 # =======================
 
-def run_hellaswag(num_samples=10):
+def run_hellaswag(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== HellaSwag ===")
     dataset = load_dataset(
-        "hellaswag", split="validation[:{}]".format(num_samples))
+        "Rowan/hellaswag", split="validation[:{}]".format(num_samples))
 
     correct = 0
 
@@ -142,7 +177,7 @@ def run_hellaswag(num_samples=10):
             prompt += f"{j}: {ending}\n"
         prompt += "Answer (provide number):"
 
-        response = openai_chat_v2(prompt)
+        response = chat(prompt)
         digits = ''.join(filter(str.isdigit, response))
         prediction = int(digits) if digits.isdigit() else -1
 
@@ -154,13 +189,15 @@ def run_hellaswag(num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 HellaSwag Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 # =======================
 # 4. BIG-Bench Hard
 # =======================
 
 
-def run_bigbench_hard(task_name="date_understanding", num_samples=10):
+def run_bigbench_hard(task_name="date_understanding", num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print(f"\n=== BIG-Bench Hard ({task_name}) ===")
 
     # Загрузка задачи и промптов
@@ -178,22 +215,35 @@ def run_bigbench_hard(task_name="date_understanding", num_samples=10):
 
     for i, ex in enumerate(dataset):
         question = ex['question']
-        choices = ex['choices']['text']
-        labels = ex['choices']['label']  # e.g., ['A','B','C','D']
         target = ex['target']
+        # часть задач BBH идёт без вариантов ответа: там ожидается Yes или No
+        has_choices = 'choices' in ex and ex['choices']
 
-        # Формируем prompt
         prompt = fewshot_prompt + "\nQ: " + question + "\n"
-        for lbl, txt in zip(labels, choices):
-            prompt += f"{lbl}. {txt}\n"
-        prompt += "\nA:"
 
-        response = openai_chat_v2(prompt)
-        predicted = None
-        for lbl in labels:
-            if lbl.lower() in response.lower():
-                predicted = clean_response(lbl)
-                break
+        if has_choices:
+            choices = ex['choices']['text']
+            labels = ex['choices']['label']  # e.g., ['A','B','C','D']
+            for lbl, txt in zip(labels, choices):
+                prompt += f"{lbl}. {txt}\n"
+            prompt += "\nA:"
+
+            response = chat(prompt)
+            predicted = None
+            for lbl in labels:
+                if lbl.lower() in response.lower():
+                    predicted = clean_response(lbl)
+                    break
+        else:
+            prompt += "\nA:"
+            response = chat(prompt)
+            head = response.strip().lower()[:30]
+            if "yes" in head:
+                predicted = "Yes"
+            elif "no" in head:
+                predicted = "No"
+            else:
+                predicted = None
 
         result = "✅" if predicted == target else "❌"
         print(f"{result} Q{i+1}: predicted={predicted}, correct={target}")
@@ -203,6 +253,7 @@ def run_bigbench_hard(task_name="date_understanding", num_samples=10):
     accuracy = correct / len(dataset)
     print(
         f"🎯 BIG-Bench Hard Accuracy: {correct}/{len(dataset)} = {accuracy:.2f}")
+    return {"correct": correct, "total": len(dataset), "accuracy": accuracy}
 
 
 # =======================
@@ -210,7 +261,8 @@ def run_bigbench_hard(task_name="date_understanding", num_samples=10):
 # =======================
 
 
-def run_mathqa(num_samples=10):
+def run_mathqa(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== MathQA (Calc-X version) ===")
     dataset = load_dataset("MU-NLPC/calc-math_qa",
                            split=f"train[:{num_samples}]")
@@ -228,8 +280,8 @@ def run_mathqa(num_samples=10):
             prompt += f"{lbl}. {txt}\n"
         prompt += "Answer (letter):"
 
-        response = openai_chat_v2(prompt)
-        pred = response.strip()[0].upper()
+        response = chat(prompt)
+        pred = extract_letter(response, "E") or ""
 
         result = "✅" if pred == answer.upper() else "❌"
         print(f"{result} Q{i+1}: predicted={pred}, correct={answer.upper()}")
@@ -239,15 +291,17 @@ def run_mathqa(num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 MathQA Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 
 # =======================
 # 6. BoolQ
 # =======================
 
-def run_boolq(num_samples=10):
+def run_boolq(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== BoolQ ===")
-    dataset = load_dataset("boolq", split=f"validation[:{num_samples}]")
+    dataset = load_dataset("google/boolq", split=f"validation[:{num_samples}]")
 
     correct = 0
 
@@ -258,7 +312,7 @@ def run_boolq(num_samples=10):
 
         prompt = f"Passage: {passage}\nQuestion: {question}\nAnswer (yes or no):"
 
-        response = openai_chat_v2(prompt)
+        response = chat(prompt)
         predicted = "yes" if "yes" in response.lower() else "no"
 
         result = "✅" if predicted == answer else "❌"
@@ -269,15 +323,17 @@ def run_boolq(num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 BoolQ Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 
 # =======================
 # 7. LAMBADA
 # =======================
 
-def run_lambada(num_samples=10):
+def run_lambada(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== LAMBADA ===")
-    dataset = load_dataset("lambada", "plain_text",
+    dataset = load_dataset("cimec/lambada", "plain_text",
                            split=f"validation[:{num_samples}]")
 
     correct = 0
@@ -289,7 +345,7 @@ def run_lambada(num_samples=10):
         expected = parts[1]
 
         prompt = f"Complete the sentence: {context.strip()}\nNext word:"
-        response = openai_chat_v2(prompt)
+        response = chat(prompt)
         prediction = clean_response(response.strip().split()[0])
 
         result = "✅" if expected.lower() == prediction.lower() else "❌"
@@ -300,13 +356,15 @@ def run_lambada(num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 LAMBADA Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 
 # =======================
 # 8. Winogrande
 # =======================
 
-def run_winogrande(num_samples=10):
+def run_winogrande(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== Winogrande (automated-research-group/winogrande) ===")
     dataset = load_dataset(
         "automated-research-group/winogrande", split=f"validation[:{num_samples}]"
@@ -318,7 +376,7 @@ def run_winogrande(num_samples=10):
         prompt = ex["request"]
         answer = ex["response"]
 
-        response = openai_chat_v2(prompt)
+        response = chat(prompt)
         pred = ''.join(filter(str.isdigit, response.strip()))
 
         result = "✅" if pred == answer else "❌"
@@ -329,13 +387,15 @@ def run_winogrande(num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 Winogrande Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 
 # =======================
 # 9. IFEval
 # =======================
 
-def run_ifeval(num_samples=10):
+def run_ifeval(num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print("\n=== IFEval (google/IFEval) ===")
     dataset = load_dataset("google/IFEval", split=f"train[:{num_samples}]")
 
@@ -343,19 +403,21 @@ def run_ifeval(num_samples=10):
         prompt = example["prompt"]
 
         full_prompt = f"{prompt.strip()}\nAnswer:"
-        response = openai_chat_v2(full_prompt)
+        response = chat(full_prompt)
 
         print(f"\n🔹 Q{i+1}: {prompt[:80]}...")
         print(f"🔸 Model: {response.strip()[:200]}")
 
     print(f"\n🎯 IFEval: completed {num_samples} generations.")
+    return {"correct": None, "total": num_samples, "accuracy": None}
 
 
 # =======================
 # 10. BBQ
 # =======================
 
-def run_bbq(category=None, num_samples=10):
+def run_bbq(category=None, num_samples=10, chat=None):
+    chat = chat or DEFAULT_CHAT
     print(f"\n=== BBQ ({category}) ===")
 
     dataset = load_dataset("Elfsong/BBQ", split=f"{category}[:{num_samples}]")
@@ -373,7 +435,7 @@ def run_bbq(category=None, num_samples=10):
             prompt += f"{idx}: {option}\n"
         prompt += "Answer with 0, 1 or 2:"
 
-        response = openai_chat_v2(prompt)
+        response = chat(prompt)
         pred = ''.join(filter(str.isdigit, response.strip()))
 
         result = "✅" if pred and int(pred) == correct_index else "❌"
@@ -384,6 +446,7 @@ def run_bbq(category=None, num_samples=10):
 
     accuracy = correct / num_samples
     print(f"🎯 BBQ Accuracy: {correct}/{num_samples} = {accuracy:.2f}")
+    return {"correct": correct, "total": num_samples, "accuracy": accuracy}
 
 # =======================
 # 🚀 Запуск всех бенчмарков

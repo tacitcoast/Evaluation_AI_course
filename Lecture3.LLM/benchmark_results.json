@@ -1,0 +1,146 @@
+{
+  "gpt-5.4-nano": {
+    "Winogrande": {
+      "correct": 7,
+      "total": 10,
+      "accuracy": 0.7,
+      "seconds": 9.2,
+      "error": null
+    },
+    "IFEval": {
+      "correct": null,
+      "total": 10,
+      "accuracy": null,
+      "seconds": 34.1,
+      "error": null
+    },
+    "BBQ (sexual_orientation)": {
+      "correct": 6,
+      "total": 10,
+      "accuracy": 0.6,
+      "seconds": 20.9,
+      "error": null
+    },
+    "TruthfulQA": {
+      "correct": 7,
+      "total": 10,
+      "accuracy": 0.7,
+      "seconds": 8.6,
+      "error": null
+    },
+    "HellaSwag": {
+      "correct": 5,
+      "total": 10,
+      "accuracy": 0.5,
+      "seconds": 7.4,
+      "error": null
+    },
+    "BIG-Bench Hard (causal_judgement)": {
+      "correct": 7,
+      "total": 10,
+      "accuracy": 0.7,
+      "seconds": 9.4,
+      "error": null
+    },
+    "BoolQ": {
+      "correct": 10,
+      "total": 10,
+      "accuracy": 1.0,
+      "seconds": 8.2,
+      "error": null
+    },
+    "LAMBADA": {
+      "correct": 2,
+      "total": 10,
+      "accuracy": 0.2,
+      "seconds": 7.8,
+      "error": null
+    },
+    "MMLU-Pro (psychology)": {
+      "correct": 4,
+      "total": 10,
+      "accuracy": 0.4,
+      "seconds": 12.9,
+      "error": null
+    },
+    "MathQA": {
+      "correct": 8,
+      "total": 10,
+      "accuracy": 0.8,
+      "seconds": 16.7,
+      "error": null
+    }
+  },
+  "gemini-3-flash-preview": {
+    "Winogrande": {
+      "correct": 9,
+      "total": 10,
+      "accuracy": 0.9,
+      "seconds": 96.1,
+      "error": null
+    },
+    "TruthfulQA": {
+      "correct": 9,
+      "total": 10,
+      "accuracy": 0.9,
+      "seconds": 446.0,
+      "error": null
+    },
+    "HellaSwag": {
+      "correct": 8,
+      "total": 10,
+      "accuracy": 0.8,
+      "seconds": 45.0,
+      "error": null
+    },
+    "BIG-Bench Hard (causal_judgement)": {
+      "correct": 9,
+      "total": 10,
+      "accuracy": 0.9,
+      "seconds": 55.8,
+      "error": null
+    },
+    "BoolQ": {
+      "correct": 9,
+      "total": 10,
+      "accuracy": 0.9,
+      "seconds": 23.1,
+      "error": null
+    },
+    "LAMBADA": {
+      "correct": 5,
+      "total": 10,
+      "accuracy": 0.5,
+      "seconds": 210.7,
+      "error": null
+    },
+    "IFEval": {
+      "correct": null,
+      "total": 10,
+      "accuracy": null,
+      "seconds": 796.7,
+      "error": null
+    },
+    "BBQ (sexual_orientation)": {
+      "correct": 5,
+      "total": 10,
+      "accuracy": 0.5,
+      "seconds": 70.7,
+      "error": null
+    },
+    "MMLU-Pro (psychology)": {
+      "correct": 8,
+      "total": 10,
+      "accuracy": 0.8,
+      "seconds": 221.0,
+      "error": null
+    },
+    "MathQA": {
+      "correct": 10,
+      "total": 10,
+      "accuracy": 1.0,
+      "seconds": 94.1,
+      "error": null
+    }
+  }
+}
