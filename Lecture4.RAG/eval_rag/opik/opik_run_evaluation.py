@@ -26,7 +26,7 @@ def evaluate_rag_with_opik(
     dataset_name: str,
     rag_connector: RAGConnector,
     metrics_list: List[str],
-    experiment_name: str = "v_1_RAG_Evaluation",
+    experiment_name: str = "v_2_RAG_Evaluation",
     project_name: str = "Test evaluation",
     model: Optional[Union[str, OpikProxyLLM]] = None,
     sleep_time: float = 0.1
@@ -48,7 +48,7 @@ def evaluate_rag_with_opik(
     rag_results = []
 
     for i, item in enumerate(source_items, 1):
-        question = item.get("input") or item.get("question", "")
+        question = item.get("query") or item.get("question", "")
         expected_output = item.get("expected_output", "")
 
         print(f"  [{i}/{len(source_items)}] {question[:60]}...")
@@ -111,8 +111,8 @@ if __name__ == "__main__":
         timeout=30
     )
 
-    dataset_name = "simple_test_dataset_v4"
-    experiment_name = "RAG_Evaluation_From_Dataset_v7"
+    dataset_name = "prompta_2026-10-21"
+    experiment_name = "RAG_Evaluation_From_Dataset_v1"
     project_name = "Test evaluation"
 
     metrics_to_use = [

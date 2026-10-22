@@ -10,7 +10,7 @@ Lecture4.RAG/.env.local
 CLAUDE.md
 *.zip
 .venv/
-data/
+Lecture2.ML_DL/data/
 Lecture2.ML_DL/*.png
 .env
 .env.local
