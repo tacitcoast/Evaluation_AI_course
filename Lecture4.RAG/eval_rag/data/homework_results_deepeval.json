@@ -1,0 +1,56 @@
+[
+  {
+    "question": "Сколько времени активен access_token?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about the duration of access_token activity without any irrelevant statements."
+      },
+      "FaithfulnessMetric": {
+        "score": null,
+        "reason": "RetryError: RetryError[<Future at 0x1106027a0 state=finished raised TimeoutError>]"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.1111111111111111,
+        "reason": "The score is 0.11 because while there are relevant statements such as 'access_token - краткосрочный токен, который активен 30 минут' and 'Время окончания действия токена - 30 минут.', the majority of the retrieval context is irrelevant, discussing topics like user management and registration that do not address the question about the duration of access_token."
+      }
+    }
+  },
+  {
+    "question": "Что произойдёт, если access_token истёк, но refresh_token есть в cookie?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.6666666666666666,
+        "reason": "The score is 0.67 because the mention of the access_token being recorded in the database does not directly address the user's question about the implications of an expired access_token when a refresh_token is available in the cookie."
+      },
+      "FaithfulnessMetric": {
+        "score": 0.5,
+        "reason": "The score is 0.50 because the actual output states that the access token is regenerated but fails to mention that it is not stored in the database, which contradicts the retrieval context."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.03225806451612903,
+        "reason": "The score is 0.03 because the retrieval context primarily contained irrelevant information, such as 'Для хранения токена была добавлена новая таблица tokens в микросервис авторизации', which does not address the question about access_token expiration. However, it did include a relevant statement: 'При истечении срока действия access_token, но при наличии refresh_token в cookie, access_token автоматически генерируется заново и записывается в БД.' This indicates that while there is some relevant information, the overwhelming majority of the context does not pertain to the input."
+      }
+    }
+  },
+  {
+    "question": "Куда записывается refresh_token при нажатии кнопки «Запомнить меня»?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about where the refresh_token is stored when the 'Remember Me' button is clicked, without any irrelevant statements."
+      },
+      "FaithfulnessMetric": {
+        "score": null,
+        "reason": "RetryError: RetryError[<Future at 0x110688ed0 state=finished raised TimeoutError>]"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.06896551724137931,
+        "reason": "The score is 0.07 because the majority of the retrieval context discusses unrelated topics such as user authorization and input validation, while only a couple of statements mention the refresh_token being stored in cookies. Specifically, the relevant statement is 'При нажатии на кнопку “Запомнить меня” в момент авторизации в системе, refresh token записывается в cookie.' which directly addresses the input question."
+      }
+    }
+  }
+]

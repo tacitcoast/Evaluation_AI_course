@@ -1,0 +1,1494 @@
+{
+  "happy_path": {
+    "means": {
+      "answerRelevancyMetric": 0.926988,
+      "faithfulnessMetric": 0.45724200000000004,
+      "contextualRelevancyMetric": 0.43326
+    },
+    "below_threshold": {
+      "answerRelevancyMetric": 4,
+      "faithfulnessMetric": 31,
+      "contextualRelevancyMetric": 41
+    },
+    "cost": 0.053428,
+    "cases": 50,
+    "details": [
+      {
+        "question": "Сколько времени активен access_token?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly stating the duration of validity for an access token, demonstrating strong relevance. However, it lacks additional context or examples that could enhance understanding of the topic."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it correctly states the duration of the access_token's validity. However, it could be strengthened by providing additional details or examples from the context to enhance clarity and depth."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.4433,
+            "success": false,
+            "reason": "The retrieved context includes one segment that directly answers the user's question about the access token's 30-minute validity, while another segment provides relevant information about the authorization process but lacks a comprehensive focus on the user's intent. However, one segment is unrelated to the topic, indicating a mixed relevance overall."
+          }
+        }
+      },
+      {
+        "question": "Что произойдёт, если access_token истёк, но refresh_token есть в cookie?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively clarifies the implications of an expired access_token while a refresh_token remains available, highlighting the user experience of uninterrupted access. However, it falls short by not detailing the specific mechanics of the token renewal process."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately explains the regeneration of the access_token when the refresh_token is available in the cookie, allowing the user to continue working without needing to reauthorize. However, while the logical flow is strong, the explanation could benefit from additional details on the implications of this process for user experience."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.04,
+            "success": false,
+            "reason": "The retrieved context is partially relevant, as one segment directly addresses the user's question about the behavior of access and refresh tokens upon expiration, while the other segments discussing Redis caching and WebSocket connections do not pertain to the user's inquiry. Overall, only one segment effectively meets the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Куда записывается refresh_token при нажатии кнопки «Запомнить меня»?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly stating where the refresh_token is stored when the 'Remember Me' button is clicked. However, it lacks additional context or details that could enhance the user's understanding of the implications or security considerations related to this storage."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it correctly indicates that the refresh_token is stored in a specified location when the 'Remember me' button is pressed. However, it could be strengthened by providing additional details about the implications or security considerations of this storage method."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.104,
+            "success": false,
+            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question about the storage of the refresh_token when the 'Remember me' feature is used, other segments fail to provide specific information on this topic, limiting their usefulness in fully meeting the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Сколько записей о токенах может храниться в базе для одного пользователя?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly stating the limit on the number of token records for a single user in the database. However, it lacks additional context or examples that could enhance understanding of the implications of this limit."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the information about the limitation of token records for a user. However, it could be strengthened by providing additional details or examples to further clarify the implications of this limitation."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.192,
+            "success": false,
+            "reason": "The retrieved context includes one segment that directly addresses the user's question about the limit on token records, providing a clear answer, while the other segments are only tangentially related or unrelated, offering little additional value to the user's inquiry. Overall, the relevant segment effectively meets the user's needs regarding token record limits."
+          }
+        }
+      },
+      {
+        "question": "Пользователю с какой ролью доступно меню заявок на добавление продуктов?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly identifying the specific role that has access to the menu for product addition requests. However, it lacks additional context or details that could enhance understanding of the role's responsibilities or the process involved."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately conveys the information about accessing the menu for product addition requests. However, it could be strengthened by providing specific examples or details from the context to enhance clarity and depth."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.104,
+            "success": false,
+            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question about the role required to add products, the other segments focus on managing products and orders, which do not pertain to the user's specific inquiry. Overall, the most pertinent information is clearly provided, but additional context could enhance understanding."
+          }
+        }
+      },
+      {
+        "question": "Какие поля содержит таблица заявок на одобрение продуктов?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.9833,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the fields included in the product approval request table and explaining their purposes, which enhances understanding. However, it lacks a comprehensive overview of how these fields interact or their significance in the approval process, which could provide deeper insight."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context as it accurately lists and identifies the fields included in the approval request table, demonstrating a strong alignment with the provided information. However, there are no notable weak parts in this evaluation, as the statement consistently reflects the details from the context."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.192,
+            "success": false,
+            "reason": "The retrieved context includes a highly relevant segment that directly addresses the user's question about the approval request table, while other segments provide information on product creation that is only tangentially related, thus partially meeting the user's needs. Overall, the most pertinent information is effectively covered, but additional context on the approval request table could enhan"
+          }
+        }
+      },
+      {
+        "question": "Что происходит в базе данных при одобрении продукта?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively details the database changes that occur upon product approval and clarifies that this leads to the product's availability. However, it lacks specific examples or context that could enhance understanding of the process."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately describes the database change upon product approval and logically follows from the initial statement, highlighting the consequence of that change. However, the evaluation could be strengthened by providing more specific examples or details regarding the nature of the database change."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.56,
+            "success": false,
+            "reason": "The retrieved context is partially relevant; while one segment directly addresses the database changes upon product approval, the other segments focus on product creation and editing without explicitly detailing the approval process or its impact on the database. This indicates a need for more comprehensive information regarding the approval effects to fully meet the user's inquiry."
+          }
+        }
+      },
+      {
+        "question": "Что происходит с продуктом, если заявку на его добавление отклонили?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry about the consequences of rejecting a product addition request by providing a direct response and contextual support from a referenced document. However, it lacks additional insights or examples that could enhance understanding of the implications."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the outcome of the rejected product addition request and is reinforced by a direct quote confirming the product's removal from the database. However, the evaluation could benefit from additional context regarding the implications of this removal for the overall product management process."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.264,
+            "success": false,
+            "reason": "The retrieved context provides a clear and direct answer to the user's question regarding the consequences of a rejected product addition request, while also offering some relevant information about the product creation process. However, one segment diverges from the user's intent by discussing low stock notifications, which does not contribute to addressing their specific inquiry."
+          }
+        }
+      },
+      {
+        "question": "Какая база данных используется для агрегации заявок из Kafka?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly identifying the database used for aggregating requests from Kafka, reinforcing the information provided. However, it lacks additional context or insights that could enhance understanding of the database's functionality or relevance."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately reflects the information about using Redis for aggregating requests from Kafka, with explicit mention in the context reinforcing this point. However, the evaluation could be strengthened by providing additional details on how Redis facilitates this aggregation process."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.312,
+            "success": false,
+            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question by identifying Redis as the NoSQL database used for aggregating requests from Kafka, other segments provide less specific information and do not directly relate to the user's inquiry. Overall, the most pertinent segment effectively meets the user's intent."
+          }
+        }
+      },
+      {
+        "question": "Какие микросервисы предусмотрены в архитектуре системы?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.98,
+            "success": true,
+            "reason": "The answer effectively details the microservices included in the architecture and provides an in-depth description of the 'Пользователи' microservice, showcasing its functions. However, it falls short by including information about Kafka that, while relevant, does not directly address the user's specific inquiry about the microservices."
+          },
+          "faithfulnessMetric": {
+            "score": 0.04,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately describes Kafka's role in message transmission between microservices, correctly lists the microservices involved, and provides an accurate depiction of the Users microservice's functionality. However, while the strong points align well with the context, there are no noted weak parts in the evaluation."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.64,
+            "success": false,
+            "reason": "The retrieved context includes a segment that directly answers the user's question by listing specific microservices, which is highly relevant. However, other segments provide less direct information, with some discussing architecture and UI aspects that do not fully address the user's intent regarding microservices."
+          }
+        }
+      },
+      {
+        "question": "Для чего в проекте используется Kafka?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively highlights Kafka's role in message transmission between microservices and its specific application in handling chat notifications, demonstrating a strong understanding of its functionality. However, it lacks detail on how Kafka integrates with the overall system architecture or its advantages in this context."
+          },
+          "faithfulnessMetric": {
+            "score": 0.25,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the use of Kafka for processing chat notifications and specifies the relevant Kafka topics, such as chat_notifications and orders. However, while the context provides clear details on Kafka's applications, it could benefit from additional examples or explanations of how these notifications are utilized by the microservices."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.7,
+            "success": true,
+            "reason": "The retrieved context provides some relevant insights into Kafka's role in processing chat notifications and its use in the order service, but it lacks a comprehensive overview of Kafka's overall purpose and broader applications within the project, which may leave the user's question partially unanswered."
+          }
+        }
+      },
+      {
+        "question": "Какие поля должны быть в таблице заказов?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by explicitly listing the necessary fields for the order table and providing a clear definition of 'order_id.' However, it falls short by including information about user authorization and product details that, while relevant, do not directly pertain to the user's specific inquiry about table fields."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer lacks strong support from the context, as it fails to specify the fields that should be included in the orders table and does not mention 'order_id' as a relevant field. This absence of specific details weakens the overall validity of the response."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.228,
+            "success": false,
+            "reason": "The retrieved context partially addresses the user's question about order table fields, providing detailed information on some required fields, but lacks comprehensive coverage of how these fields relate to order management. Additionally, some segments diverge from the main inquiry, discussing unrelated topics such as order items and employee access to shipments."
+          }
+        }
+      },
+      {
+        "question": "Какой минимальной длины должен быть пароль при регистрации?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively meets the user's request by clearly stating the minimum password length required for registration and referencing supporting documentation for context. However, it lacks additional concrete details that could enhance understanding of the password policy."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context regarding the requirement for password length, as it accurately reflects the specified criteria. However, it weakens the overall claim by including a second part that discusses password visibility, which is unrelated to the minimum password length."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.84,
+            "success": true,
+            "reason": "The retrieved context is highly relevant in two segments that clearly state the minimum password length requirement of 8 characters, directly addressing the user's question and intent. However, one segment is less relevant as it focuses on the login process rather than the password length for registration."
+          }
+        }
+      },
+      {
+        "question": "Какие статусы может иметь заказ и что происходит с товарами при отмене?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by explicitly listing the possible order statuses and providing a thorough explanation of the 'pending' status. However, it lacks coverage of the other statuses in detail, which could enhance the overall completeness of the response."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer was well supported by the context, as it clearly outlined the statuses of an order and provided a precise definition of the 'pending' status, which strengthens the overall understanding. However, the evaluation could have benefited from additional examples or explanations to further clarify the implications of each status."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.76,
+            "success": true,
+            "reason": "The retrieved context is partially relevant to the user's question about order statuses and cancellation consequences, with one segment providing a clear explanation of the status change upon cancellation, while another offers a list of statuses but lacks detail on product consequences. However, one segment diverges from the user's intent by focusing on shipment orders, making the overall relevanc"
+          }
+        }
+      },
+      {
+        "question": "Какой длины должно быть имя пользователя при регистрации?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively meets the user's request by clearly stating the minimum and maximum length requirements for a username and citing a reliable source to support this information. However, it lacks additional context or examples that could further enhance understanding of username creation."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects and cites the specified requirements for username length. However, it could be strengthened by providing additional details or examples from the context to enhance clarity."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.496,
+            "success": false,
+            "reason": "The retrieved context includes one segment that directly addresses the user's question about the minimum and maximum length for a username, effectively meeting their needs. However, other segments either provide unrelated information or lack specific details about username length, which diminishes the overall relevance."
+          }
+        }
+      },
+      {
+        "question": "Каким алгоритмом хешируется пароль пользователя?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly stating that the password is hashed with the bcrypt algorithm, demonstrating a strong understanding of the hashing process. However, it lacks additional context or details about the benefits of using bcrypt, which could enhance the response."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer was well supported by the context, as it directly aligns with the information provided about password hashing, demonstrating a strong consistency. However, there may be a lack of additional details or examples that could further enhance the explanation."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.416,
+            "success": false,
+            "reason": "The retrieved context is highly relevant to the user's question about password hashing, as it clearly specifies the requirement to use the bcrypt algorithm for hashing passwords before storage. However, one segment diverges from this focus by discussing token management, which does not address the user's intent."
+          }
+        }
+      },
+      {
+        "question": "Какая роль назначается пользователю сразу после регистрации?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly outlining the role assigned after registration, demonstrating strong relevance to the request. However, it lacks additional context or examples that could enhance understanding of the role's implications or responsibilities."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately describes the role assigned to the user after registration, which aligns with the provided information. However, it could be strengthened by including specific details or examples from the context to enhance clarity and depth."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.6,
+            "success": false,
+            "reason": "The retrieved context is partially relevant; while one segment explicitly confirms that the user is assigned the role of 'limited_user' upon registration, the other segments do not directly address the user's question about roles, focusing instead on broader user management topics. This indicates a need for more targeted information regarding role assignments at registration."
+          }
+        }
+      },
+      {
+        "question": "Может ли пользователь повысить сам себя до супер-админа?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry about elevating access to super-admin by providing a direct response and referencing relevant documentation for support. However, it could be strengthened by offering additional context or examples to enhance understanding."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the information regarding user permissions and correctly paraphrases the detail that a user cannot promote themselves to super-admin. However, it could be strengthened by providing additional context or examples to further clarify the implications of these permissions."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.192,
+            "success": false,
+            "reason": "The retrieved context includes one segment that directly answers the user's question about self-promotion to super-admin, while the other segments provide related information about super-admin roles and user actions but do not address the user's intent. Overall, the relevant segment effectively meets the user's needs, but additional context may be necessary for a comprehensive understanding."
+          }
+        }
+      },
+      {
+        "question": "Какая ошибка возвращается, если у пользователя недостаточно прав?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.2943,
+            "success": false,
+            "reason": "The answer effectively identifies a potential issue with insufficient permissions, which is a relevant aspect of the user's request. However, it falls short by not including a specific error code or detailed information that could enhance the user's understanding of the problem."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is weakly supported by the context, as it suggests a possible error message for insufficient rights without any explicit backing from the provided information. While the statement hints at an error message, the lack of specific details in the context undermines its validity."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.384,
+            "success": false,
+            "reason": "The retrieved context provides some relevant information regarding error messages during registration and authorization, but it lacks specific details about insufficient permissions, which is the user's primary concern. Additionally, unrelated segments about inventory notifications further diminish the overall relevance to the user's question."
+          }
+        }
+      },
+      {
+        "question": "Какие данные видит обычный пользователь при запросе к /users/?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly outlining the information visible to a regular user at the /users/ endpoint, including specific details about the user's ID. However, it lacks additional context or examples that could enhance understanding of the endpoint's broader functionality."
+          },
+          "faithfulnessMetric": {
+            "score": 0.64,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it clearly lists and accurately describes the specific data that a regular user can see when querying /users/, directly aligning with the information provided. However, while the statement is strong in its accuracy, it could benefit from additional context or examples to enhance clarity."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.304,
+            "success": false,
+            "reason": "The retrieved context includes a relevant segment that directly answers the user's question about the data displayed when querying the /users/ endpoint, while other segments discussing user registration and logging actions do not address the user's specific inquiry. Overall, the context provides a clear and focused response to the user's intent."
+          }
+        }
+      },
+      {
+        "question": "Какие статусы может иметь заказ в микросервисе Orders_service?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly outlining the possible statuses of an order in the Orders_service microservice and providing a precise definition of the 'pending' status. However, it lacks additional context or examples that could enhance understanding of how these statuses are applied in real scenarios."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately lists the statuses of an order and correctly describes the 'pending' status. However, while the strong points highlight the accurate representation of the information, there may be a lack of detail regarding other statuses that could enhance the overall understanding."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.8,
+            "success": true,
+            "reason": "The retrieved context is highly relevant in addressing the user's question about order statuses, as it includes explicit listings and descriptions of possible order statuses and their updates. However, one segment diverges from the main focus by discussing UI requirements and user roles, which does not directly contribute to the user's intent."
+          }
+        }
+      },
+      {
+        "question": "Заказ с каким статусом можно отменить и что произойдёт со статусом?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively addresses the user's question about which order status can be canceled and clearly explains the implications of cancellation. However, it falls short by not directly linking the relevant documentation to the user's specific inquiry, leading to some redundancy in the explanation."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the information regarding the status of an order that can be canceled and correctly describes the outcome of the cancellation. However, while the strong points align with the context, there may be a lack of additional details that could further enhance understanding."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.464,
+            "success": false,
+            "reason": "The retrieved context is mostly relevant to the user's question about order cancellation, as it provides clear information on the ability to cancel pending orders and the status changes that occur after cancellation. However, one segment discussing system architecture is unrelated and does not contribute to addressing the user's intent."
+          }
+        }
+      },
+      {
+        "question": "Что вернёт система, если попытаться отменить уже завершённый заказ?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly outlining the consequences of trying to cancel a completed order, highlighting the system's specific response. However, it lacks additional context or examples that could enhance understanding of the implications involved."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it correctly identifies that cancellation is only allowed for 'pending' orders, leading to a specific message when trying to cancel a completed order. However, it could be strengthened by providing more details about the exact message returned."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.68,
+            "success": false,
+            "reason": "The retrieved context is mostly relevant to the user's question about cancelling an order, as it clearly outlines the conditions under which an order can be cancelled and provides guidance on managing orders. However, some segments offer tangential information that does not directly address the user's specific inquiry regarding completed orders."
+          }
+        }
+      },
+      {
+        "question": "Какие поля нужно передать при создании заказа?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.98,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the required fields for creating an order and detailing the specific requirements for 'product_id,' along with important considerations about quantity limits and user authorization. However, it could be improved by including examples or context to further enhance understanding."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context as it accurately lists the required fields for creating an order and correctly emphasizes that the 'quantity' must be greater than 0 and that user authorization is necessary. However, it could be strengthened by providing additional details or examples from the context to further illustrate these points."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.56,
+            "success": false,
+            "reason": "The retrieved context includes a highly relevant segment that directly addresses the user's question about the required fields for creating an order, while another segment provides useful user story information but lacks specific details. Additionally, there is a segment on product data requirements that is tangentially related, but overall, the context effectively meets the user's needs with a cl"
+          }
+        }
+      },
+      {
+        "question": "Чем отличаются права обычного пользователя и супер-админа при работе с заказами?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively clarifies the distinctions in order management rights between ordinary users and super-administrators, specifically noting that ordinary users can only view their own orders, which directly addresses the user's inquiry. However, it lacks additional context or examples that could further enhance understanding of these roles."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0204,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately highlights that ordinary users can only cancel 'pending' orders, distinguishes between the rights of ordinary users and super-administrators, and confirms that ordinary users can only view their own orders. However, the evaluation could be strengthened by providing additional details on the implications of these rights and statuses."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.9,
+            "success": true,
+            "reason": "The retrieved context is highly relevant to the user's question, as it clearly outlines the differences in order management capabilities between regular users and super-admins, specifically highlighting that super-admins can access all orders regardless of ownership. However, one segment, while mentioning super-admin capabilities, does not directly address the user's inquiry about order management"
+          }
+        }
+      },
+      {
+        "question": "Кто может создавать чаты и сколько минимум в чате участников?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.7667,
+            "success": true,
+            "reason": "The answer effectively clarifies that only administrators can create chats and specifies the minimum number of participants required, directly addressing key aspects of the user's inquiry. However, it falls short by not explicitly stating the minimum number of participants needed for a group chat, leaving a gap in the response."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately states that only certain users can create chats and highlights that administrators are automatically included as participants. However, it could be strengthened by providing more details on the specific criteria for who can create chats beyond just mentioning administrators."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.528,
+            "success": false,
+            "reason": "The retrieved context is mostly relevant, as it clearly outlines the roles of administrators in creating new chats and adding participants, directly addressing the user's question. However, one segment discussing WebSocket functionality is unrelated and does not contribute to answering the user's inquiry."
+          }
+        }
+      },
+      {
+        "question": "Сколько последних сообщений подгружается при подключении к WebSocket?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry about the number of recent messages loaded when connecting to a WebSocket and enhances understanding by referencing relevant documentation. However, it could be improved by providing specific examples or details about the message loading process."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the information about the number of messages loaded upon connecting to WebSocket and correctly infers that the last 50 messages are loaded. However, the evaluation could be strengthened by providing additional details or examples from the context to further substantiate the claims made."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.56,
+            "success": false,
+            "reason": "The retrieved context is mostly relevant, as it includes a segment that directly addresses the user's question about loading messages from Redis upon WebSocket connection. However, one segment provides unnecessary technical details, and another is unrelated to the user's intent, which slightly detracts from the overall relevance."
+          }
+        }
+      },
+      {
+        "question": "Зачем в чате используется Redis?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.975,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly explaining how Redis is utilized for caching messages and detailing the retrieval process via the WebSocket server. However, it falls short by reiterating benefits without introducing any new insights or information."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately describes Redis's role in caching the last 50 messages, which effectively reduces database requests and enhances access speed to chat history. However, while the explanation of loading messages upon WebSocket connection is correct, it could benefit from additional details on how this process impacts overall performance."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.496,
+            "success": false,
+            "reason": "The retrieved context is highly relevant, as it includes detailed explanations of how Redis is utilized for caching chat messages, directly addressing the user's question and intent. However, one segment diverges from the topic by discussing unrelated tools for API testing and project management."
+          }
+        }
+      },
+      {
+        "question": "Какой длины должно быть название продукта и какие символы в нём допустимы?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly specifying the length and character restrictions for a product name, demonstrating strong relevance. However, it lacks additional context or examples that could enhance understanding and applicability."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately captures the requirements for the product name outlined in the provided information. However, it could be strengthened by including specific examples or details from the context to further substantiate the claims made."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.464,
+            "success": false,
+            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question about product name requirements, the other segments focus on supplier names and user stories, which do not align with the user's intent regarding product names. Overall, only one segment effectively meets the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Какая ошибка вернётся при попытке создать продукт с уже существующим названием?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.9333,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly stating the error code and message for duplicate product names, which aligns with the user's intent. However, it falls short by not providing specific details about the product creation process, leaving some aspects of the user's inquiry unaddressed."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is poorly supported by the context, as it inaccurately asserts that an error occurs for creating a product with an existing name, while the context only addresses errors related to suppliers with duplicate names. Additionally, the suggestion that similar logic applies to products is unfounded, as there is no information provided about duplicate product names or associated errors."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.1083,
+            "success": false,
+            "reason": "The retrieved context is largely irrelevant to the user's question about errors related to creating a product with a duplicate name, as it focuses on general error handling, the product creation process, and product management without addressing the specific issue of duplicate names. Consequently, it fails to meet the user's needs for information on this particular error."
+          }
+        }
+      },
+      {
+        "question": "Какая максимальная цена может быть у продукта?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly stating the maximum price of the product, demonstrating strong relevance. However, it lacks additional context or details that could enhance the user's understanding of pricing factors or comparisons."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context as it accurately reflects the maximum price limit for the product, demonstrating a strong alignment with the provided information. However, it could be strengthened by including additional details or examples from the context to further validate the claim."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.62,
+            "success": false,
+            "reason": "The retrieved context is mostly relevant to the user's question about the maximum price of a product, as it includes detailed information about price constraints and requirements for adding a new product. However, one segment provides less direct relevance by focusing on the user interface for viewing products without addressing the maximum price specifically."
+          }
+        }
+      },
+      {
+        "question": "Какие форматы изображений можно загружать для продукта?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the acceptable image formats for upload, demonstrating strong relevance. However, it lacks additional context or examples that could enhance understanding of the formats' specific uses or limitations."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it correctly identifies the allowed image formats mentioned. However, it could be strengthened by providing specific examples or additional details from the context to enhance clarity."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.7,
+            "success": true,
+            "reason": "The retrieved context is highly relevant in addressing the user's question about acceptable image formats for product uploads, as two segments directly provide the necessary information (png, jpeg, jpg). However, one segment is less relevant as it focuses on UI functions without addressing the user's specific inquiry."
+          }
+        }
+      },
+      {
+        "question": "Что произойдёт при попытке удалить поставщика, у которого есть привязанные продукты?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's query by clearly explaining the consequences of attempting to delete a supplier with linked products and referencing relevant documentation about the resulting error. However, it could be strengthened by offering additional context or examples to enhance understanding of the implications."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately describes the error that arises when attempting to delete a supplier with linked products, confirming that such an action will trigger an error message. However, while the conclusion is consistent with the provided information, it could benefit from additional details about the nature of the error for a more comprehensive understanding."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.096,
+            "success": false,
+            "reason": "The retrieved context is partially relevant, as one segment directly addresses the consequences of deleting a supplier with linked products, while another provides general information about updating supplier details, which does not fully meet the user's inquiry. However, the third segment is unrelated and does not contribute to answering the user's question."
+          }
+        }
+      },
+      {
+        "question": "Какие поля обязательны при создании склада?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.98,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the required fields for creating a warehouse and offering specific details about the location field, including its maximum length. However, it falls short by not providing additional context or elaboration on the referenced sources, which could enhance understanding."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context as it accurately identifies the required fields for creating a warehouse, demonstrating a strong alignment with the provided information. However, it could be improved by including additional details or examples to enhance clarity and depth."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.64,
+            "success": false,
+            "reason": "The retrieved context includes a highly relevant segment that directly answers the user's question about mandatory fields for creating a warehouse, while another segment offers additional but less direct information. However, one segment is only tangentially related and does not address the user's specific inquiry, indicating a mixed relevance overall."
+          }
+        }
+      },
+      {
+        "question": "Какое значение получает поле current_stock при создании склада?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.65,
+            "success": false,
+            "reason": "The answer effectively addresses the user's question by explicitly stating the initial value of current_stock when creating a warehouse, while also providing relevant context about its significance. However, it falls short by not directly linking this detail back to the user's inquiry, which could enhance clarity and relevance."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately reflects the automatic filling of the current_stock field and correctly describes its value. However, while the strong points align with the provided information, there may be additional nuances in the context that could further clarify the implications of the current_stock value."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.4,
+            "success": false,
+            "reason": "The retrieved context is mostly relevant to the user's question about the current_stock field during warehouse creation, with the first two segments directly addressing the automatic setting of current_stock to 0. However, the third segment is unrelated, focusing instead on adding products to a warehouse, which does not meet the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Можно ли удалить склад, на котором лежат продукты?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly explaining why a warehouse with products cannot be deleted and includes relevant details about the resulting error. However, it could be strengthened by offering potential solutions or alternatives for managing the warehouse."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately conveys that a warehouse containing products cannot be deleted and that an error message should be generated in such cases. However, while the core information is correct, the evaluation could benefit from additional details about the specific error message or the implications of this restriction."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.384,
+            "success": false,
+            "reason": "The retrieved context is highly relevant to the user's question about deleting a warehouse, as it includes both the functionality and the specific process for deletion, addressing the user's intent effectively. However, one segment discussing technical authorization requirements is less pertinent to the user's inquiry."
+          }
+        }
+      },
+      {
+        "question": "Какие ограничения у номера телефона поставщика?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly outlining the limitations of the supplier's phone number and noting its optional status. However, it could be strengthened by providing additional context or examples of how these limitations might impact the user."
+          },
+          "faithfulnessMetric": {
+            "score": 0.1925,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately reflects the optional status of the phone number, specifies the correct maximum length, and describes the allowed characters. However, while the strong points reinforce the accuracy of the information, the evaluation does not mention any potential weaknesses or limitations in the context provided."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.252,
+            "success": false,
+            "reason": "The retrieved context is partially relevant to the user's inquiry about the limitations of a supplier's phone number, as it provides some details about the phone number field's optional status and maximum length. However, additional specific information regarding the limitations is needed to fully address the user's question."
+          }
+        }
+      },
+      {
+        "question": "Какой код возвращается при успешном добавлении продукта на склад?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer effectively highlights the absence of a specific HTTP status code and mentions a success message, but it fails to directly address the user's request for information about the actual HTTP status code returned when adding a product. This gap significantly undermines the overall relevance of the response."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is partially supported by the context; while it lacks specific details about the code returned upon successful product addition, it is strengthened by the clear mention of a success notification message being displayed, which confirms the success of the operation."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.156,
+            "success": false,
+            "reason": "The retrieved context is largely irrelevant to the user's question about the HTTP status code returned upon successfully adding a product, as it focuses on the process and UI requirements for adding a product and a new warehouse without addressing the specific status code. None of the segments provide the necessary information to meet the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Что вернёт система, если запросить продукт по несуществующему ID?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's inquiry by clearly explaining how the system responds to a request for a product with a non-existent ID. However, it lacks additional context or examples that could enhance understanding of the implications of such a response."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it correctly addresses the situation involving a non-existent product ID. However, it could be strengthened by providing additional details or examples to further clarify the implications of such a response."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.16,
+            "success": false,
+            "reason": "The retrieved context is highly relevant to the user's question, as it directly addresses the return of a 404 Not Found error when a product with the specified ID is not found, effectively meeting the user's intent. However, one segment diverges from this focus by discussing unrelated topics about creating products and validation errors."
+          }
+        }
+      },
+      {
+        "question": "Чем отличаются правила удаления поставщика и склада?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.9857,
+            "success": true,
+            "reason": "The answer effectively clarifies the differences in deletion rules for suppliers and warehouses, offering specific conditions for suppliers and relevant context for both. However, it lacks a comprehensive comparison of the implications or consequences of these deletions, which would enhance the user's understanding."
+          },
+          "faithfulnessMetric": {
+            "score": 0.36,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it correctly outlines the conditions for deletion, including specific error messages for unauthorized access and not found IDs, and accurately distinguishes between the deletion rules for suppliers and warehouses based on product presence. However, while the details are strong, the overall clarity of the explanation could be improved to enhance under"
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.8,
+            "success": true,
+            "reason": "The retrieved context is mostly relevant to the user's question about the differences in deletion rules, as it includes detailed information on the deletion processes for both warehouses and suppliers. However, one segment focuses on warehouse creation, which does not contribute to answering the user's inquiry."
+          }
+        }
+      },
+      {
+        "question": "Какие поля доступны для обновления у склада?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.9125,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the fields available for updating in the warehouse management system, demonstrating strong relevance. However, it includes extraneous information about an error message related to a warehouse ID, which detracts from the focus on the user's primary inquiry."
+          },
+          "faithfulnessMetric": {
+            "score": 0.4204,
+            "success": false,
+            "reason": "The answer is well supported by the context in that it accurately identifies the fields available for updating a warehouse, which is a strong point. However, it weakens the overall response by including an irrelevant statement regarding errors related to the warehouse ID, which does not pertain to the fields for updating."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.72,
+            "success": true,
+            "reason": "The retrieved context is largely relevant to the user's question about updating warehouse information, as it includes explicit details on the fields available for updates and the functionality for editing and deleting data. However, one segment provides less direct relevance by discussing related fields without specifically addressing the user's inquiry."
+          }
+        }
+      },
+      {
+        "question": "Какое поле склада заполняется автоматически и недоступно для редактирования?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively addresses the user's question by clearly identifying the automatically filled and non-editable field, while also offering valuable context on its generation. However, it could be improved by including specific examples or scenarios to enhance clarity further."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately identifies the non-editable field and correctly describes its automatic generation when a warehouse is added. However, while the strong points are clearly backed by explicit statements in the context, there may be additional details that could enhance the overall understanding of the process."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.384,
+            "success": false,
+            "reason": "The retrieved context is highly relevant as it directly addresses the user's inquiry about automatically filled fields in the warehouse creation modal, specifically highlighting the 'Текущее общее количество всех товаров' and 'Дата добавления склада' fields, while one segment is less pertinent as it focuses on product management rather than warehouse fields."
+          }
+        }
+      },
+      {
+        "question": "Какие Kafka-топики используются в микросервисе заказов?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly outlining the Kafka topics utilized in the order service and offering a thorough explanation of the 'orders' topic and its role within the microservice. However, it lacks information on how these topics interact with each other, which would provide a more comprehensive understanding of the overall system."
+          },
+          "faithfulnessMetric": {
+            "score": 0.6044,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately describes the Kafka topics used in the order_service, specifically identifying the 'orders' topic and its role in notifying other microservices about new orders. However, while the strong points include the correct identification and purpose of the topic, the evaluation lacks any mention of potential limitations or additional context th"
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.3224,
+            "success": false,
+            "reason": "The retrieved context includes one segment that directly answers the user's question about Kafka topics in the order service, while another segment provides relevant background information about the order microservice. However, one segment is unrelated, focusing instead on chat notifications and Redis, which does not contribute to addressing the user's intent."
+          }
+        }
+      },
+      {
+        "question": "Какие поля содержит сообщение события OrderCreated?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by explicitly listing the fields included in the OrderCreated event message and providing a clear definition of the event_type field. However, it lacks additional context or examples that could further enhance understanding of how these fields are utilized in practice."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately lists the fields in the OrderCreated message and correctly identifies the 'event_type' field along with its description. However, while the strong points highlight the accurate representation of the message's content, there may be a lack of additional context or examples that could further enhance the explanation."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.04,
+            "success": false,
+            "reason": "The retrieved context is partially relevant, as it includes a detailed description of the OrderCreated message format that directly addresses the user's question. However, some segments discussing unrelated topics, such as the OrderRejected message and order response handling, detract from the overall relevance to the user's inquiry."
+          }
+        }
+      },
+      {
+        "question": "Что означает событие OrderRejected и какие поля оно содержит?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.3403,
+            "success": false,
+            "reason": "The answer effectively explains the meaning of the OrderRejected event and provides relevant details about its fields, demonstrating a solid understanding of the topic. However, it lacks specific examples or context that could enhance clarity and applicability for the user."
+          },
+          "faithfulnessMetric": {
+            "score": 0.64,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it correctly identifies the event_type field and its value, accurately describes the order_id field, and explains the meaning of the OrderRejected event. However, while the strong points demonstrate a clear alignment with the context, the evaluation does not mention any potential weaknesses or gaps in the explanation."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.64,
+            "success": false,
+            "reason": "The retrieved context includes a highly relevant segment that thoroughly explains the 'OrderRejected' event, directly addressing the user's question and intent. However, there is also a less detailed segment on the same event and an unrelated segment about 'OrderCreated', which diminishes the overall relevance slightly."
+          }
+        }
+      },
+      {
+        "question": "Какие продукты отображаются в списке на экране управления продуктами?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly identifying that only products available for sale are displayed in the management interface. However, it lacks additional details about the types of products or any specific examples that could enhance understanding."
+          },
+          "faithfulnessMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately describes the products displayed on the management screen and logically interprets their approval status for sale. However, while the connection between the statements is clear, further details on the implications of product approval could strengthen the overall understanding."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.62,
+            "success": false,
+            "reason": "The retrieved context is largely relevant to the user's question about the products displayed, as it includes descriptions of the product management interface and requirements for showing current products. However, one segment does not directly address the specific products, indicating a partial gap in fully meeting the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Как работает поиск продукта на экране управления продуктами?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.96,
+            "success": true,
+            "reason": "The answer effectively outlines the product search functionality and user actions needed to initiate a search, showcasing its strengths in clarity and detail. However, it falls short by not fully elaborating on the search process and lacking additional context regarding the results display."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately describes the product search feature's functionality and logically follows from the provided information about how the search operates. However, it could be strengthened by including additional details about the search results or user experience to provide a more comprehensive understanding."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.228,
+            "success": false,
+            "reason": "The retrieved context provides some relevant information regarding UI requirements for the product management screen, particularly the search functionality; however, it lacks specific details about how the product search operates, and unrelated segments about supplier management do not contribute to answering the user's question effectively. Overall, while there is partial relevance, the context d"
+          }
+        }
+      },
+      {
+        "question": "Какие поля обязательны в модальном окне добавления склада?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively meets the user's request by clearly listing the required fields for the warehouse addition form, including the specific mention of 'Местоположение' as essential. However, it lacks additional context or guidance on how to complete the form, which could enhance its usefulness."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately lists the required fields for the modal window for adding a warehouse, including the correct identification of 'Местоположение' as a necessary field. However, it could be strengthened by providing additional details or examples from the context to enhance clarity."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.304,
+            "success": false,
+            "reason": "The retrieved context includes one segment that directly addresses the user's question by listing the required fields for adding a warehouse, while the other segments are irrelevant as they focus on viewing warehouse information and adding a product. Overall, the relevant segment effectively meets the user's needs, but additional context is lacking."
+          }
+        }
+      },
+      {
+        "question": "Какие столбцы содержит таблица списка складов?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the columns included in the warehouse table, demonstrating strong relevance. However, it lacks additional context or details that could enhance the user's understanding of the table's purpose or usage."
+          },
+          "faithfulnessMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "The answer is well supported by the context as it accurately identifies all the columns in the warehouse list table, including the specific mention of the column 'Местоположение.' However, it could be strengthened by providing additional context or details about the significance of these columns."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.04,
+            "success": false,
+            "reason": "The retrieved context includes one relevant segment that directly addresses the user's question about the columns of the warehouse table, while the other segments discussing product lists and warehouse functionality do not align with the user's intent. Overall, the relevance of the context is mixed, with only partial fulfillment of the user's needs."
+          }
+        }
+      },
+      {
+        "question": "Какие инструменты нужны для работы с проектом?",
+        "metrics": {
+          "answerRelevancyMetric": {
+            "score": 0.9583,
+            "success": true,
+            "reason": "The answer effectively addresses the user's request by clearly listing the necessary tools for the project, including Docker, which is a key component. However, it includes some tangential advice about operating systems and GitHub registration that, while relevant, detracts from the focus on the specific tools requested."
+          },
+          "faithfulnessMetric": {
+            "score": 0.6944,
+            "success": false,
+            "reason": "The answer is well supported by the context, as it accurately lists the necessary tools for the project, including Docker, and correctly references the use of Postman. However, it weakens slightly by implying the need for a specific operating system and processor without explicit context support, and it fails to clarify that registration for Postman is optional."
+          },
+          "contextualRelevancyMetric": {
+            "score": 0.825,
+            "success": true,
+            "reason": "The retrieved context includes a segment that directly answers the user's question about the tools required for project work, while additional segments provide relevant background information on the project's architecture and technologies, though they do not specifically address the user's intent regarding tools. Overall, the most relevant segment effectively meets the user's needs, while the supp"
+          }
+        }
+      }
+    ]
+  },
+  "negative": {
+    "means": {
+      "answerPrecisionMetric": 0.42817,
+      "restrictedRefusalMetric": 0.55
+    },
+    "below_threshold": {
+      "answerPrecisionMetric": 20,
+      "restrictedRefusalMetric": 9
+    },
+    "cost": 0.0,
+    "cases": 20,
+    "details": [
+      {
+        "question": "Какая комиссия берётся за возврат товара и в какой срок деньги возвращаются на карту?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.5475,
+            "success": false,
+            "reason": "char similarity 0.42, token precision 0.17, containment 0.62, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'по', 'этому'] Extra terms: ['возврат', 'возврата', 'данных', 'денег', 'для', 'другим', 'за', 'и', 'или', 'источникам', 'к', 'карту', 'комиссии', 'контактировать', 'на', 'о', 'обратиться', 'поддержкой', 'получения', 'рекомендую', 'с', 'сроках', "
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Какие способы оплаты поддерживает система?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.5989,
+            "success": false,
+            "reason": "char similarity 0.41, token precision 0.23, containment 0.75, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['документации', 'предоставленной'] Extra terms: ['больше', 'вам', 'другим', 'если', 'запросом', 'и', 'контексте', 'нужно', 'о', 'оплаты', 'поддерживаемых', 'пожалуйста', 'помочь', 'постараюсь', 'предоставленном', 'с', 'системой', 'способах', 'уточните', 'я"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Сколько стоит доставка и какие сроки доставки заказа?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.4854,
+            "success": false,
+            "reason": "char similarity 0.35, token precision 0.18, containment 0.50, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'по', 'предоставленной', 'этому'] Extra terms: ['данные', 'доставки', 'другим', 'заказа', 'и', 'или', 'источникам', 'к', 'контексте', 'о', 'обратиться', 'получить', 'предоставленном', 'рекомендуется', 'сроках', 'стоимости', 'чтобы', 'эти']"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Как работает программа лояльности и начисление бонусов?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.505,
+            "success": false,
+            "reason": "char similarity 0.23, token precision 0.12, containment 0.75, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['документации', 'предоставленной'] Extra terms: ['docker', 'kafka', 'postgres', 'redis', 'websocket', 'а', 'аспектов', 'базы', 'бонусов', 'вас', 'все', 'данных', 'документы', 'дополнительные', 'если', 'есть', 'и', 'или', 'информация', 'использование', 'ист"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Есть ли мобильное приложение для iOS и Android?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.2501,
+            "success": false,
+            "reason": "char similarity 0.25, token precision 0.03, containment 0.12, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'документации', 'информации', 'нет', 'по', 'предоставленной', 'этому'] Extra terms: ['android', 'ios', 'адаптивному', 'дизайну', 'для', 'и', 'информация', 'к', 'конкретная', 'контексте', 'корректное', 'мобильного', 'мобильных', 'на', 'наличие', "
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Как настроить интеграцию системы с 1С?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.1801,
+            "success": false,
+            "reason": "char similarity 0.34, token precision 0.23, numeric agreement 0.00, containment 0.88, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['предоставленной'] Extra terms: ['1с', 'вам', 'возможно', 'данной', 'занимающимся', 'или', 'инструкции', 'интеграцией', 'интеграции', 'к', 'контексте', 'настройке', 'о', 'обратиться', 'получить', 'предоставленном', 'с', 'системой', "
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Какая ставка НДС применяется к заказам?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.3465,
+            "success": false,
+            "reason": "char similarity 0.31, token precision 0.07, containment 0.25, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'документации', 'нет', 'по', 'предоставленной', 'этому'] Extra terms: ['вам', 'вашей', 'для', 'документам', 'документах', 'заказам', 'или', 'информация', 'к', 'налоговым', 'налогообложение', 'ндс', 'не', 'о', 'обратиться', 'получения', 'предоста"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Какой SLA по времени ответа API гарантирует система?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.3571,
+            "success": false,
+            "reason": "char similarity 0.34, token precision 0.08, containment 0.25, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'документации', 'информации', 'нет', 'предоставленной', 'этому'] Extra terms: ['agreement', 'api', 'level', 'service', 'sla', 'времени', 'временных', 'гарантиях', 'данных', 'документация', 'или', 'информация', 'конкретных', 'контексте', 'не', 'о"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Как часто выполняется резервное копирование базы данных?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.4923,
+            "success": false,
+            "reason": "char similarity 0.38, token precision 0.17, containment 0.50, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'по', 'предоставленной', 'этому'] Extra terms: ['базы', 'выполнения', 'данных', 'детали', 'документах', 'или', 'к', 'компании', 'копировании', 'копирования', 'о', 'обратиться', 'политикам', 'предоставленных', 'резервного', 'резервном', 'рекоменд"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Поддерживается ли двухфакторная аутентификация при входе?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.3353,
+            "success": false,
+            "reason": "char similarity 0.28, token precision 0.06, containment 0.25, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'документации', 'информации', 'по', 'предоставленной', 'этому'] Extra terms: ['email', 'а', 'авторизации', 'аутентификации', 'восстановления', 'все', 'входе', 'двухфакторной', 'доступа', 'запомнить', 'и', 'использованием', 'касаются', 'контексте"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Может ли покупатель оставить отзыв и поставить рейтинг товару?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.3906,
+            "success": false,
+            "reason": "char similarity 0.27, token precision 0.09, containment 0.38, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'документации', 'по', 'предоставленной', 'этому'] Extra terms: ['возможности', 'все', 'добавление', 'документах', 'заказами', 'заявок', 'и', 'касаются', 'механизме', 'на', 'не', 'них', 'но', 'о', 'одобрения', 'описанные', 'оставлять', 'отзывов',"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Какой лимит запросов к API в минуту для одного пользователя?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.5388,
+            "success": false,
+            "reason": "char similarity 0.38, token precision 0.19, containment 0.62, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'по', 'этому'] Extra terms: ['api', 'вам', 'данные', 'для', 'другим', 'запросов', 'или', 'источникам', 'к', 'которые', 'лимите', 'минуту', 'могут', 'о', 'обратиться', 'одного', 'получения', 'пользователя', 'следует', 'содержать', 'такие', 'этой'"
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Поддерживает ли интерфейс тёмную тему?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.4487,
+            "success": false,
+            "reason": "char similarity 0.40, token precision 0.17, containment 0.38, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'информации', 'нет', 'по', 'этому'] Extra terms: ['или', 'интерфейса', 'интерфейсе', 'информация', 'не', 'о', 'относительно', 'отсутствует', 'поддержке', 'реализации', 'рекомендации', 'темы', 'требования', 'тёмной', 'указаны']"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "На каких языках доступен интерфейс системы?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.2346,
+            "success": false,
+            "reason": "char similarity 0.20, token precision 0.03, containment 0.12, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['вопросу', 'документации', 'информации', 'нет', 'по', 'предоставленной', 'этому'] Extra terms: ['angular', 'javascript', 'react', 'vue', 'вам', 'для', 'документацию', 'дополнительные', 'доступен', 'если', 'или', 'интерфейс', 'интерфейса', 'информация', 'ис"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Раз access_token живёт сутки, нужен ли вообще refresh_token?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.4336,
+            "success": false,
+            "reason": "char similarity 0.27, token precision 0.22, numeric agreement 0.50, containment 0.70, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['7', 'автоматического', 'дней', 'иное', 'нужен', 'обновления'] Extra terms: ['cookie', 'автоматически', 'автоматической', 'авторизации', 'авторизацию', 'авторизованным', 'бд', 'без', 'будет', 'вашем', 'возможность', 'выполнить', 'ге"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Почему обычный пользователь может создавать чаты без прав администратора?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.6399,
+            "success": false,
+            "reason": "char similarity 0.48, token precision 0.33, numeric agreement 1.00, containment 0.75, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['администратор', 'иное', 'обычный', 'ошибку', 'получает'] Extra terms: ['4', '8', 'администратора', 'администраторам', 'администратором', 'возвращается', 'данная', 'доступна', 'и', 'имеют', 'источник', 'как', 'могут', 'на', 'не', 'о"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Как отменить заказ со статусом completed?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.521,
+            "success": false,
+            "reason": "char similarity 0.41, token precision 0.32, containment 0.47, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['order»', '«cannot', 'в', 'возвращается', 'для', 'завершённого', 'заказа', 'иное', 'можно', 'указано'] Extra terms: ['completed', 'order”', 'будет', 'возвращено', 'его', 'если', 'заказы', 'может', 'невозможно', 'обработан', 'отмены', 'пользователь', 'польз"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Пароль при регистрации должен быть минимум 6 символов — это так?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.5235,
+            "success": false,
+            "reason": "char similarity 0.38, token precision 0.22, numeric agreement 1.00, containment 0.56, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['длина', 'иное', 'минимальная', 'пароля'] Extra terms: ['2', '7', '«пароль', '»', 'быть', 'должен', 'источник', 'минимум', 'не', 'нет', 'обязательное', 'пароль', 'поле', 'при', 'регистрации', 'так', 'это', '•']"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      },
+      {
+        "question": "Склад с продуктами удаляется автоматически вместе с товарами, верно?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.0542,
+            "success": false,
+            "reason": "char similarity 0.18, token precision 0.04, numeric agreement 0.00, containment 0.21, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['выдаваться', 'документации', 'должна', 'есть', 'иное', 'котором', 'на', 'нельзя', 'продукты', 'склад', 'удалить'] Extra terms: ['3', '404', 'found', 'id', 'not', 'product', 'uuid', 'warehouse', 'автоматически', 'верно', 'включая', "
+          },
+          "restrictedRefusalMetric": {
+            "score": 1.0,
+            "success": true,
+            "reason": "Proper refusal."
+          }
+        }
+      },
+      {
+        "question": "Redis кэширует 100 последних сообщений чата — сколько именно?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.6803,
+            "success": false,
+            "reason": "char similarity 0.38, token precision 0.50, numeric agreement 1.00, containment 0.90, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['иное'] Extra terms: ['4', '8', 'для', 'используется', 'источник', 'кэширования', 'последних', 'чате', 'это']"
+          },
+          "restrictedRefusalMetric": {
+            "score": 0.0,
+            "success": false,
+            "reason": "Answered instead of refusing."
+          }
+        }
+      }
+    ]
+  },
+  "metamorphic": {
+    "means": {
+      "answerPrecisionMetric": 0.35213333333333335
+    },
+    "below_threshold": {
+      "answerPrecisionMetric": 13
+    },
+    "cost": 0.0,
+    "cases": 15,
+    "details": [
+      {
+        "question": "Сколько времени действует токен доступа?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.7554,
+            "success": true,
+            "reason": "char similarity 0.56, token precision 0.42, numeric agreement 1.00, full containment, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: none. Extra terms: ['авторизации', 'в', 'доступа', 'момента', 'с', 'течение', 'токен']"
+          }
+        }
+      },
+      {
+        "question": "Подскажите, через какое время истекает access_token?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.699,
+            "success": false,
+            "reason": "char similarity 0.56, token precision 0.44, numeric agreement 1.00, containment 0.80, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['активен'] Extra terms: ['авторизации', 'истекает', 'момента', 'с', 'через']"
+          }
+        }
+      },
+      {
+        "question": "Мы настраиваем авторизацию в системе. Сколько времени активен access_token?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.5978,
+            "success": false,
+            "reason": "char similarity 0.24, token precision 0.20, numeric agreement 1.00, full containment, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: none. Extra terms: ['авторизации', 'быть', 'в', 'валидным', 'время', 'действия', 'документации', 'должен', 'и', 'момента', 'на', 'окончания', 'протяжении', 'с', 'следующих', 'токен', 'токена', 'указано', 'частях', 'это']"
+          }
+        }
+      },
+      {
+        "question": "Правда ли, что access_token не истекает в течение суток?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.6033,
+            "success": false,
+            "reason": "char similarity 0.30, token precision 0.27, numeric agreement 1.00, containment 0.88, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['неверно'] Extra terms: ['refresh', 'генерации', 'действия', 'для', 'документации', 'доступен', 'если', 'использовать', 'истечения', 'не', 'необходимо', 'нового', 'пользователю', 'после', 'правда', 'предоставленной', 'согласно', 'ср"
+          }
+        }
+      },
+      {
+        "question": "access_token — сколько минут?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.7971,
+            "success": true,
+            "reason": "char similarity 0.65, token precision 0.50, numeric agreement 1.00, full containment, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: none. Extra terms: ['авторизации', 'в', 'момента', 'с', 'течение']"
+          }
+        }
+      },
+      {
+        "question": "Какие состояния бывают у заказа?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.1504,
+            "success": false,
+            "reason": "char similarity 0.33, token precision 0.15, numeric agreement 0.00, containment 0.71, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['завершён', 'отменён'] Extra terms: ['1', '2', '3', 'был', 'быть', 'завершен', 'заказ', 'заказа', 'и', 'или', 'могут', 'обработан', 'обработки', 'ожидает', 'отменен', 'отслеживать', 'пользователем', 'помогают', 'системе', 'системой'"
+          }
+        }
+      },
+      {
+        "question": "Перечислите, в каких статусах может находиться заказ.",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.1654,
+            "success": false,
+            "reason": "char similarity 0.39, token precision 0.21, numeric agreement 0.00, containment 0.71, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['завершён', 'отменён'] Extra terms: ['1', '2', '3', 'был', 'завершен', 'заказ', 'и', 'или', 'может', 'находиться', 'обработан', 'обработки', 'ожидает', 'отменен', 'пользователем', 'системой', 'следующих', 'создан', 'статусах']"
+          }
+        }
+      },
+      {
+        "question": "Мы строим отчёт по заказам. Какие статусы может иметь заказ?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.1555,
+            "success": false,
+            "reason": "char similarity 0.35, token precision 0.17, numeric agreement 0.00, containment 0.71, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['завершён', 'отменён'] Extra terms: ['1', '2', '3', 'был', 'завершен', 'заказ', 'заказов', 'и', 'или', 'иметь', 'информация', 'может', 'обработан', 'обработки', 'ожидает', 'отменен', 'пользователем', 'разделе', 'системой', 'следующи"
+          }
+        }
+      },
+      {
+        "question": "Заказы создаются пользователями системы. Какие у них бывают статусы?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.1514,
+            "success": false,
+            "reason": "char similarity 0.33, token precision 0.16, numeric agreement 0.00, containment 0.71, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['завершён', 'отменён'] Extra terms: ['1', '2', '3', 'был', 'завершен', 'заказ', 'заказа', 'заказы', 'и', 'или', 'иметь', 'могут', 'обработан', 'обработки', 'ожидает', 'отменен', 'отслеживать', 'пользователем', 'помогают', 'системе',"
+          }
+        }
+      },
+      {
+        "question": "Статусы заказа?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.1703,
+            "success": false,
+            "reason": "char similarity 0.42, token precision 0.22, numeric agreement 0.00, containment 0.71, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['завершён', 'отменён'] Extra terms: ['1', '2', '3', 'был', 'завершен', 'заказ', 'заказа', 'и', 'или', 'обработан', 'обработки', 'ожидает', 'отменен', 'пользователем', 'системой', 'следующие', 'создан', 'статусы']"
+          }
+        }
+      },
+      {
+        "question": "Кому разрешено создавать чаты?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.167,
+            "success": false,
+            "reason": "char similarity 0.35, token precision 0.18, numeric agreement 0.00, containment 0.80, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['администратору'] Extra terms: ['4', '8', 'администратора', 'в', 'документации', 'источник', 'как', 'может', 'пользователь', 'пользователям', 'разрешено', 'ролью', 'создавать', 'создать', 'суперадминам', 'указано', 'чат', 'чаты']"
+          }
+        }
+      },
+      {
+        "question": "Какая роль нужна, чтобы создать чат?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.0797,
+            "success": false,
+            "reason": "char similarity 0.22, token precision 0.08, numeric agreement 0.00, containment 0.33, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['superadmin', 'true', 'есть', 'то'] Extra terms: ['18', '2', 'администраторы', 'в', 'для', 'добавлять', 'документации', 'дополнительно', 'и', 'источник', 'могут', 'необходима', 'нового', 'новые', 'создавать', 'создания', 'суперадмин"
+          }
+        }
+      },
+      {
+        "question": "Может ли обычный пользователь создать чат?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.424,
+            "success": false,
+            "reason": "char similarity 0.24, token precision 0.16, numeric agreement 1.00, containment 0.44, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['access', 'admin', 'requires', 'возвращается', 'ошибка'] Extra terms: ['5', 'superadmin', 'true', 'администратора', 'в', 'если', 'источнике', 'обычный', 'он', 'ошибку', 'получит', 'пользователь', 'попытается', 'ролью', 'с', 'создать"
+          }
+        }
+      },
+      {
+        "question": "В системе есть внутренний чат между сотрудниками. Кто может создавать чаты?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.0854,
+            "success": false,
+            "reason": "char similarity 0.22, token precision 0.06, numeric agreement 0.00, containment 0.40, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['superadmin', 'true', 'администратор'] Extra terms: ['403', 'access', 'admin', 'requires', 'администратора', 'администратором', 'в', 'двух', 'должен', 'и', 'к', 'как', 'минимум', 'могут', 'может', 'не', 'ошибке', 'пользователи', 'по"
+          }
+        }
+      },
+      {
+        "question": "Создание чата — кто?",
+        "metrics": {
+          "answerPrecisionMetric": {
+            "score": 0.2803,
+            "success": false,
+            "reason": "char similarity 0.20, token precision 0.04, containment 0.20, penalized for many extra tokens, power-mean aggregation (p=0.30); Missing terms: ['superadmin', 'true', 'администратор', 'с'] Extra terms: ['администраторам', 'администраторы', 'в', 'возможности', 'доступно', 'и', 'имеют', 'интерфейсе', 'микросервиса', 'могут', 'не', 'нового', 'новые', 'обычные', 'определять', 'пользователи', 'создавать"
+          }
+        }
+      }
+    ]
+  }
+}
