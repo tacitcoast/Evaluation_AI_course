@@ -88,7 +88,7 @@ def main():
     title(doc, "RAG Evaluation Report")
     heading(doc, "Report Information", 13)
     table(doc, [
-        ["Field", "Your entry"],
+        ["Field", "Value"],
         ["Student", "Anna Malinovskaia"],
         ["Lecture", "4. RAG — practice 2"],
         ["Date", date.today().strftime("%d.%m.%Y")],
@@ -99,9 +99,10 @@ def main():
 
     heading(doc, "1. Objective")
     body(doc, "I measured the quality of the course RAG system with two frameworks. On happy path "
-              "data I ran Answer Relevancy, Context Relevancy and Faithfulness. On negative and "
-              "metamorphic data I ran Answer Precision and Restricted Refusal, which exist in "
-              "EvaliQA only. The same judge model and the same threshold were used everywhere, so "
+              "data I ran Answer Relevancy, Context Relevancy and Faithfulness. On negative data I "
+              "ran Answer Precision and Restricted Refusal, on metamorphic data Answer Precision. "
+              "These two metrics are available in EvaliQA only. The same judge model and the same "
+              "threshold were used everywhere, so "
               "the two frameworks can be compared directly.")
 
     heading(doc, "2. Datasets and Setup")
@@ -139,14 +140,14 @@ def main():
     table(doc, [
         ["Dataset", "Metric", "Score", "Below 0.7"],
         ["Negative", "Answer Precision", f"{ev['negative']['means']['answerPrecisionMetric']:.3f}",
-         f"{ev['negative']['below_threshold']['answerPrecisionMetric']}/20"],
+         f"{ev['negative']['below_threshold']['answerPrecisionMetric']} of 20"],
         ["Negative", "Restricted Refusal", f"{ev['negative']['means']['restrictedRefusalMetric']:.3f}",
-         f"{ev['negative']['below_threshold']['restrictedRefusalMetric']}/20"],
+         f"{ev['negative']['below_threshold']['restrictedRefusalMetric']} of 20"],
         ["Metamorphic", "Answer Precision", f"{ev['metamorphic']['means']['answerPrecisionMetric']:.3f}",
-         f"{ev['metamorphic']['below_threshold']['answerPrecisionMetric']}/15"],
+         f"{ev['metamorphic']['below_threshold']['answerPrecisionMetric']} of 15"],
     ])
 
-    body(doc, "Context Relevancy by question type (EvaliQA):")
+    body(doc, "Scores by question type (EvaliQA):")
     table(doc, [
         ["Question type", "Cases", "Answer Relevancy", "Context Relevancy"],
         ["factual", "35", "0.950", "0.435"],
@@ -177,13 +178,14 @@ def main():
     body(doc, "Faithfulness in EvaliQA gives 0.00 on Russian answers. The metric checks that the "
               "judge's supporting quote really comes from the context, and the check uses the "
               "regular expression [a-z0-9]{3,}. It matches Latin characters only, so a Russian "
-              "quote produces an empty token set and the check returns False. A correct verdict is "
-              "then rewritten to \"none\" with weight 0.0. The quote \"Токен должен быть валидным на "
-              "протяжении 30 минут\" is present in the context word for word, Python's \"in\" returns "
-              "True, and the library's function returns False. Among cases with a non-zero score, "
-              "Latin words appear in all 29 of 29 answers; among zero-score cases, in 6 of 21. With "
-              "the Cyrillic range added to the regular expression the average rises from 0.528 to "
-              "0.926 and matches DeepEval's 0.972.")
+              "quote produces an empty token set and the check returns False. The verdict the judge "
+              "gave is then replaced with \"none\", and that verdict counts as zero in the score.")
+    body(doc, "The quote \"Токен должен быть валидным на протяжении 30 минут\" is present in the "
+              "context word for word. Python's \"in\" operator finds it, the library's own check "
+              "does not. Among cases with a non-zero score, Latin words appear in all 29 of 29 "
+              "answers; among zero-score cases, in 6 of 21. With the Cyrillic range added to the "
+              "regular expression the average rises from 0.528 to 0.926 and matches DeepEval's "
+              "0.972.")
     body(doc, "Faithfulness in DeepEval fails on gpt-4o-mini. The judge generates 16384 tokens for a "
               "990-token prompt and hits the output limit. The same metric with gpt-4.1-mini takes "
               "seven seconds per case. All numbers in this report use gpt-4.1-mini.")
