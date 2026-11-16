@@ -14,3 +14,4 @@ Lecture2.ML_DL/data/
 Lecture2.ML_DL/*.png
 .env
 .env.local
+Lecture4.RAG/postman/
