@@ -52,5 +52,23 @@
         "reason": "The score is 0.07 because the majority of the retrieval context discusses unrelated topics such as user authorization and input validation, while only a couple of statements mention the refresh_token being stored in cookies. Specifically, the relevant statement is 'При нажатии на кнопку “Запомнить меня” в момент авторизации в системе, refresh token записывается в cookie.' which directly addresses the input question."
       }
     }
+  },
+  {
+    "question": "Сколько записей о токенах может храниться в базе для одного пользователя?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.0,
+        "reason": "The score is 0.00 because the response contradicts the input question by stating a limitation of one record, which does not address the inquiry about the number of records that can be stored for a user."
+      },
+      "FaithfulnessMetric": {
+        "score": null,
+        "reason": "RetryError: RetryError[<Future at 0x1106880d0 state=finished raised TimeoutError>]"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.03225806451612903,
+        "reason": "The score is 0.03 because the majority of the retrieval context discusses various aspects of token management and user registration, which do not answer the question about the number of records stored for a user. The only relevant statement, 'В База данных может существовать только одна запись для одного пользователя,' indicates that only one record can exist per user, but it is overshadowed by the irrelevant context."
+      }
+    }
   }
 ]
