@@ -1,258 +1,258 @@
 {
-  "mean": 0.9055599999999999,
-  "zeros": 2,
-  "below_threshold": 7,
-  "cost": 0.015934,
+  "mean": 0.9260980000000001,
+  "zeros": 1,
+  "below_threshold": 5,
+  "cost": 0.038708,
   "details": [
     {
       "question": "Сколько времени активен access_token?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it correctly states the duration of the access_token's validity. However, it could be strengthened by providing additional details or examples from the context to enhance clarity and depth."
+      "reason": "The answer is well supported by the context, as it clearly states that the access_token is active for 30 minutes, providing a strong factual basis. However, if any additional details about token expiration or renewal are missing, that would be a weaker aspect."
     },
     {
       "question": "Что произойдёт, если access_token истёк, но refresh_token есть в cookie?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately details the regeneration of the access_token when the refresh_token is available in the cookie, demonstrating a clear logical progression from the initial statement. However, while the explanation is coherent, it could benefit from additi"
+      "reason": "The answer is well supported by the context, as it clearly states that an expired access_token is automatically regenerated using the refresh_token stored in the cookie and saved in the database. However, while the context implies continued user access without reauthorization, this is not explicitly"
     },
     {
       "question": "Куда записывается refresh_token при нажатии кнопки «Запомнить меня»?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it correctly indicates that the refresh_token is stored in a specified location when the 'Remember me' button is pressed. However, it could be strengthened by providing additional details about the implications or security considerations of this storag"
+      "reason": "The answer is well supported by the context, as it clearly states that pressing the 'Запомнить меня' button during authorization results in the refresh_token being stored in a cookie. However, the evaluation could be strengthened by specifying any additional conditions or exceptions if present."
     },
     {
       "question": "Сколько записей о токенах может храниться в базе для одного пользователя?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately reflects the information about the limitation of token records for a user. However, it could be strengthened by providing additional details or examples to further clarify the implications of this limitation."
+      "reason": "The answer is well supported by the context, as it clearly states that only one record can exist in the database for each user, providing strong evidence for this claim. However, if any additional nuances or exceptions were implied but not addressed, those aspects would represent weaker support."
     },
     {
       "question": "Пользователю с какой ролью доступно меню заявок на добавление продуктов?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately conveys the information about accessing the menu for product addition requests. However, it could be strengthened by providing specific examples or details from the context to enhance clarity and depth."
+      "reason": "The answer is well supported by the context, as it clearly states that only users with the Superadmin role have access to the menu for managing product addition requests. However, if the answer fails to mention any exceptions or additional roles, that would be a weak point."
     },
     {
       "question": "Какие поля содержит таблица заявок на одобрение продуктов?",
-      "score": 0.6044,
-      "reason": "The answer is well supported by the context as it accurately lists and identifies the fields included in the approval request table, highlighting their significance in conveying essential product characteristics. However, the conclusion drawn about the purpose of these fields lacks direct quotations"
+      "score": 0.95,
+      "reason": "The answer is generally well supported by the context, as it accurately reflects the explicitly listed fields in the approval request table, including 'Название продукта.' However, the claim that these fields enable the admin to see the main product characteristics is not directly stated and relies "
     },
     {
       "question": "Что происходит в базе данных при одобрении продукта?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the database change upon product approval and logically follows from the initial statement, highlighting the consequence of that change. However, the evaluation could be strengthened by providing more specific examples or detail"
+      "reason": "The answer is well supported by the context, as it clearly states that product approval changes the is_available field from False to True, and it reasonably implies that this change signifies the product becoming available. However, the context only implies availability rather than explicitly defini"
     },
     {
       "question": "Что происходит с продуктом, если заявку на его добавление отклонили?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the removal of the product from the database upon rejection of the addition request, with a strong supporting quote that directly confirms this information. However, the evaluation could benefit from additional context or exampl"
+      "reason": "The answer is well supported by the context, as it directly quotes the statement confirming that a product is deleted from the database when a product addition request is rejected. However, the evaluation does not mention any additional details or nuances that might affect the interpretation."
     },
     {
       "question": "Какая база данных используется для агрегации заявок из Kafka?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately reflects the information regarding Redis's role in aggregating requests from Kafka and correctly cites the relevant supporting details. However, it could be strengthened by providing additional context or examples to further illustrate th"
+      "reason": "The answer is well supported by the context, as it clearly states that Redis is used as a NoSQL database for aggregating requests from Kafka. However, any additional claims beyond this specific usage are not directly supported by the provided information."
     },
     {
       "question": "Какие микросервисы предусмотрены в архитектуре системы?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately lists the microservices and describes the functionality of the Users microservice. However, while the details provided are correct, the evaluation could benefit from additional context or examples to further strengthen the explanation."
+      "reason": "The answer is well supported by the context, as it correctly identifies the microservices listed and accurately describes Microservice 1's role in managing registration, authentication, and user data storage. However, any additional details beyond these points are not clearly supported by the provid"
     },
     {
       "question": "Для чего в проекте используется Kafka?",
-      "score": 0.6944,
-      "reason": "The answer is well supported by the context, as it accurately reflects that Kafka is utilized for processing chat notifications and details how user messages are routed to the Kafka topic chat_notifications for monitoring. However, while the context effectively outlines Kafka's specific applications"
+      "score": 1.0,
+      "reason": "The answer is well supported by the context, which clearly details Kafka's role in handling chat notifications through the chat_notifications topic and Kafka Consumer processing. However, the explanation of Kafka's use for transmitting messages about events between services is less explicitly detail"
     },
     {
       "question": "Какие поля должны быть в таблице заказов?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately lists the required fields for the orders table and correctly identifies 'order_id' as the unique identifier for the order. However, the evaluation does not mention any weak parts, suggesting that the answer is robust overall."
+      "reason": "The answer is well supported by the context as it accurately reflects the order status options explicitly listed ('pending, completed, cancelled') along with their corresponding examples in Russian ('в ожидании', 'выполнен', 'отменен'). However, the context provides only brief definitions without fu"
     },
     {
       "question": "Какой минимальной длины должен быть пароль при регистрации?",
-      "score": 0.4204,
-      "reason": "The answer is well supported by the context regarding the requirement for password length, as it accurately reflects the specified criteria. However, it weakens its validity by incorrectly suggesting that unrelated information about password visibility supports the claim about password length."
+      "score": 0.85,
+      "reason": "The answer is well supported by the context regarding the password length requirement, as it clearly states the minimum of 8 characters multiple times. However, the mention of the password being hidden is unrelated to the length criterion and does not affect the accuracy of the length requirement in"
     },
     {
       "question": "Какие статусы может иметь заказ и что происходит с товарами при отмене?",
       "score": 1.0,
-      "reason": "The answer was well supported by the context, as it clearly outlined the statuses of an order and provided a precise definition of the 'pending' status, which strengthens the overall understanding. However, the evaluation could benefit from additional examples or explanations to further clarify the "
+      "reason": "The answer is well supported by the context, as it directly references the explicitly defined order statuses, including the clear description of the 'pending' status as 'Заказ создан и ожидает обработки.' However, the evaluation could be strengthened by confirming that no additional interpretations "
     },
     {
       "question": "Какой длины должно быть имя пользователя при регистрации?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately reflects and cites the specified requirements for username length. However, it could be strengthened by providing additional details or examples from the context to enhance clarity."
+      "reason": "The answer is well supported by the context, as it consistently specifies that the username length must be between 3 and 50 characters across various sections such as the UI requirements and acceptance criteria. However, if any part of the answer overlooks these explicit length constraints, that wou"
     },
     {
       "question": "Каким алгоритмом хешируется пароль пользователя?",
       "score": 1.0,
-      "reason": "The answer was well supported by the context, as it directly aligns with the information provided about password hashing, demonstrating a strong consistency. However, it could be improved by including additional details or examples to further reinforce the explanation."
+      "reason": "The answer is well supported by the context, as it correctly identifies that the password must be hashed using the bcrypt algorithm, which is explicitly stated. However, if any additional details about implementation or alternatives were mentioned without context support, those parts would be weaker"
     },
     {
       "question": "Какая роль назначается пользователю сразу после регистрации?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the user's assigned role post-registration, which aligns with the provided information. However, it could be strengthened by including specific details or examples from the context to enhance clarity and depth."
+      "reason": "The answer is well supported by the context, which clearly states that after successful registration, the user is created as a limited_user in PostgreSQL and assigned the limited_user role. However, any additional details beyond this specific process are not addressed, indicating a focused but somew"
     },
     {
       "question": "Может ли пользователь повысить сам себя до супер-админа?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately reflects the information regarding user permissions and correctly paraphrases the context to confirm that a user cannot promote themselves to super-admin. However, it could be strengthened by providing additional details or examples from "
+      "reason": "The answer is well supported by the context, as it directly quotes the explicit statement that a user cannot promote themselves to super-admin, demonstrating strong factual consistency. There are no weak parts noted in the evaluation."
     },
     {
       "question": "Какая ошибка возвращается, если у пользователя недостаточно прав?",
       "score": 0.0,
-      "reason": "The answer is weakly supported by the context, as it suggests a possible error message for insufficient rights without any explicit backing from the provided information. While the statement implies an error might occur, the lack of specific details in the context undermines its factual consistency."
+      "reason": "The answer is not well supported by the context, as there is no information or implication regarding any specific error message related to insufficient user rights. While the context may provide other relevant details, the inference about the error message lacks evidence."
     },
     {
       "question": "Какие данные видит обычный пользователь при запросе к /users/?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes what a regular user sees when querying /users/ and lists specific data that is directly backed by the provided information. However, it could be strengthened by including additional details or examples to enhance clarity and dep"
+      "reason": "The answer is well supported by the context, as it correctly reflects that a regular user can only access their own data when requesting /users/, and that the user ID (UUID) is included in the visible information. However, any claims beyond these points would lack support from the provided context."
     },
     {
       "question": "Какие статусы может иметь заказ в микросервисе Orders_service?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately lists the statuses of an order and correctly describes the 'pending' status. However, while the strong points highlight the accurate representation of the information, there may be a lack of additional details or examples that could furth"
+      "reason": "The answer is well supported by the context, as it accurately reflects the explicitly listed order statuses in the Orders_service and correctly defines 'pending' as 'Заказ создан и ожидает обработки'. However, the evaluation could be strengthened by referencing any additional relevant details or cla"
     },
     {
       "question": "Заказ с каким статусом можно отменить и что произойдёт со статусом?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately conveys that orders with a 'pending' status can be canceled and that such cancellations result in the order's status changing to 'cancelled' with items being returned to stock. However, the evaluation could be strengthened by providing ad"
+      "reason": "The answer is well supported by the context, as it correctly identifies that an order can be canceled when its status is 'pending' ('в ожидании') and that cancellation changes the status to 'cancelled' with goods returning to stock. However, the evaluation could be strengthened by explicitly confirm"
     },
     {
       "question": "Что вернёт система, если попытаться отменить уже завершённый заказ?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it correctly identifies that cancellation is only possible for 'pending' orders, leading to the conclusion about the specific message returned for completed orders. However, it could be strengthened by providing more detail on the exact message or cons"
+      "reason": "The answer is well supported by the context, as it correctly reflects that cancellation is only allowed for pending orders and that completed or cancelled orders trigger the message 'Cannot cancel this order'. However, the evaluation could be strengthened by explicitly referencing these status condi"
     },
     {
       "question": "Какие поля нужно передать при создании заказа?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context as it accurately lists the required fields for creating an order and correctly emphasizes that the 'quantity' must be greater than 0 and that user authorization is necessary. However, it could be strengthened by providing additional details or examples fro"
+      "reason": "The answer is generally well supported by the context, as it correctly identifies that order_items is a list of products and that product_id is a required field within it. However, any omission or misinterpretation of other required fields within order_items would weaken the overall accuracy."
     },
     {
       "question": "Чем отличаются права обычного пользователя и супер-админа при работе с заказами?",
-      "score": 0.7347,
-      "reason": "The answer is well supported by the context, as it accurately distinguishes the rights of ordinary users and super-administrators regarding order management, highlighting that ordinary users can only view their own orders while super-administrators have broader access. However, the evaluation could "
+      "score": 0.5963,
+      "reason": "The answer is mostly well supported by the context, as it clearly distinguishes that ordinary users can only view their own orders while admins have rights to change order status and filter orders. However, the extension of these admin rights to super-admins is implied but not explicitly confirmed, "
     },
     {
       "question": "Кто может создавать чаты и сколько минимум в чате участников?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately states that administrators can create chats and are automatically included as participants, ensuring that there is always at least one participant present. However, it could be strengthened by explicitly mentioning any limitations or cond"
+      "reason": "The answer is generally well supported by the context, as it correctly identifies that only administrators (superadmins) can create new chats and that the administrator is automatically added as a participant. However, the context does not explicitly clarify whether other participants can be added a"
     },
     {
       "question": "Сколько последних сообщений подгружается при подключении к WebSocket?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately reflects the information about the number of messages loaded upon connecting to WebSocket and correctly infers that the last 50 messages are loaded. However, the evaluation could be strengthened by providing additional details or examples"
+      "reason": "The answer is well supported by the context, as it accurately reflects that the server loads and the client receives the last 50 messages from Redis upon connecting to the WebSocket. However, the evaluation could be strengthened by explicitly confirming that this applies only if such messages exist."
     },
     {
       "question": "Зачем в чате используется Redis?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes Redis's role in caching the last 50 messages, which effectively reduces database requests and speeds up access to chat history. However, while the explanation of loading messages upon WebSocket connection is correct, it could be"
+      "reason": "The answer is well supported by the context, which explicitly states that Redis caches the last 50 messages to reduce database queries and speed up chat history access, and that the server loads these messages from Redis upon WebSocket connection for fast retrieval. However, any details beyond these"
     },
     {
       "question": "Какой длины должно быть название продукта и какие символы в нём допустимы?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately captures the requirements for the product name outlined in the provided information. However, it could be strengthened by including specific examples or details from the context to further substantiate the claims made."
+      "reason": "The answer is mostly well supported by the context, accurately reflecting the requirement that the product name must be between 3 and 100 characters and contain only letters and digits. However, any omission or misinterpretation of these specific constraints would weaken its consistency."
     },
     {
       "question": "Какая ошибка вернётся при попытке создать продукт с уже существующим названием?",
-      "score": 0.0,
-      "reason": "The answer is poorly supported by the context, as it inaccurately asserts that an error occurs for creating a product with an existing name, while the context only addresses errors related to duplicate supplier names. Additionally, the suggestion that similar logic applies to products is unfounded, "
+      "score": 0.381,
+      "reason": "The answer is partially supported by the context, as it correctly identifies that the 422 error applies specifically to duplicate supplier names, not products. However, the inference that similar logic might apply to products is reasonable but not explicitly confirmed, making that part weaker."
     },
     {
       "question": "Какая максимальная цена может быть у продукта?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context as it accurately reflects the maximum price limit mentioned. However, it could be strengthened by providing additional details or examples from the context to enhance clarity and understanding."
+      "reason": "The answer is well supported by the context as it correctly identifies the maximum price allowed for the product as 9999999.99, which is explicitly stated. However, any additional details beyond this specific limit are not addressed, indicating a focus solely on the price cap without further elabora"
     },
     {
       "question": "Какие форматы изображений можно загружать для продукта?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it correctly identifies the allowed image formats mentioned. However, it could be strengthened by providing specific examples or additional details from the context to enhance clarity."
+      "reason": "The answer is well supported by the context, as it clearly states that image uploads are allowed in png, jpeg, and jpg formats. However, if any additional formats were mentioned or implied elsewhere, the evaluation does not address them, which could be a weak point."
     },
     {
       "question": "Что произойдёт при попытке удалить поставщика, у которого есть привязанные продукты?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the error that arises when attempting to delete a supplier with linked products, confirming that such an action will trigger an error message. However, while the conclusion is consistent with the provided information, it could b"
+      "reason": "The answer is well supported by the context, as it directly quotes the explicit requirement that deleting a supplier with linked products is prohibited and must trigger an error. However, the evaluation does not mention any additional details or exceptions, which could be considered a minor weakness"
     },
     {
       "question": "Какие поля обязательны при создании склада?",
-      "score": 1.0,
-      "reason": "The answer is well supported by the context as it accurately lists the required fields for creating a warehouse, demonstrating a strong alignment with the provided information. However, it could be improved by including additional details or examples to enhance clarity and depth."
+      "score": 0.36,
+      "reason": "The answer is partially supported by the context, as it correctly reflects the requirements for the warehouse location and capacity fields, including their mandatory nature and constraints. However, it is weakened by referencing external sources not provided in the context, and by including an intro"
     },
     {
       "question": "Какое значение получает поле current_stock при создании склада?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately reflects the automatic filling of the current_stock field and correctly describes its value. However, while the strong points align with the provided information, there may be additional nuances in the context that could further clarify t"
+      "reason": "The answer is well supported by the context, as it correctly reflects that current_stock is automatically initialized to 0 when a warehouse is created and represents the total number of products in the warehouse. However, the evaluation could be strengthened by explicitly linking these two points to"
     },
     {
       "question": "Можно ли удалить склад, на котором лежат продукты?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately conveys that a warehouse containing products cannot be deleted and that an error message should be generated in such cases. However, while the core information is correct, the evaluation could benefit from additional details about the spe"
+      "reason": "The answer is well supported by the context, as it correctly reflects that a warehouse cannot be deleted if it contains products and that an error must be issued in such cases. However, the evaluation could be strengthened by explicitly referencing the exact wording used in the context regarding the"
     },
     {
       "question": "Какие ограничения у номера телефона поставщика?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately conveys that providing a phone number is optional and correctly specifies the maximum length allowed for the phone number. However, it could be strengthened by including additional details or examples from the context to enhance clarity."
+      "reason": "The answer is generally well supported by the context, accurately reflecting that the phone number is an optional field and noting the maximum length of 15 characters. However, any additional details beyond these points are not substantiated by the provided context."
     },
     {
       "question": "Какой код возвращается при успешном добавлении продукта на склад?",
       "score": 0.4204,
-      "reason": "The answer is well supported by the context, as it clearly mentions that a success message is displayed upon the successful addition of a product. However, it lacks specific details regarding the code returned after this action, which weakens the overall completeness of the information provided."
+      "reason": "The answer is well supported by the context in noting that a success message is displayed upon adding a product, but it is weak in referencing any specific code since the context does not provide such information."
     },
     {
       "question": "Что вернёт система, если запросить продукт по несуществующему ID?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it correctly addresses the situation involving a non-existent product ID. However, it could be strengthened by providing additional details or examples to further clarify the implications of the response."
+      "reason": "The answer is well supported by the context, as it correctly reflects that the system returns a 404 Not Found error when a product with the specified ID is not found. However, the evaluation could be strengthened by including any additional conditions or exceptions mentioned in the context."
     },
     {
       "question": "Чем отличаются правила удаления поставщика и склада?",
-      "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the rules for deleting suppliers and warehouses and summarizes the relevant conditions, including error messages for unauthorized access and non-existent IDs. However, while the core information is strong, additional details abo"
+      "score": 0.9571,
+      "reason": "The answer is partially well supported by the context, as it correctly reflects the rule that a supplier cannot be deleted if linked products exist and the specific error responses for missing supplier ID or unauthorized access. However, the claim about multiple differing deletion rules is overstate"
     },
     {
       "question": "Какие поля доступны для обновления у склада?",
-      "score": 0.4204,
-      "reason": "The answer is well supported by the context in that it accurately identifies the fields available for updating a warehouse, which is a strong point. However, it weakens the overall response by including an irrelevant statement regarding errors related to warehouse IDs, which does not pertain to the "
+      "score": 1.0,
+      "reason": "The answer is well supported by the context, as it correctly identifies both 'Местоположение' and 'Имя управляющего' as fields available for update. However, the evaluation could be strengthened by explicitly confirming that no other relevant fields were overlooked."
     },
     {
       "question": "Какое поле склада заполняется автоматически и недоступно для редактирования?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately identifies the non-editable field and explains that it is automatically generated upon adding the warehouse to the database, both of which are explicitly stated. However, the evaluation does not mention any weak parts, suggesting a strong"
+      "reason": "The answer is well supported by the context, as it correctly reflects that the 'created_at' field is automatically generated upon adding a warehouse to the database and is not user-editable. However, the evaluation could be strengthened by explicitly noting the emphasis on the field's immutability a"
     },
     {
       "question": "Какие Kafka-топики используются в микросервисе заказов?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the Kafka topics utilized in the order_service and correctly identifies the 'orders' topic along with its intended purpose. However, while the strong points highlight the accurate identification of topics, there may be a lack of"
+      "reason": "The answer is well supported by the context, as it correctly identifies that the order_service uses specific Kafka topics and accurately notes that the 'orders' topic is used for sending messages about new orders. However, any additional claims beyond these points are not clearly supported by the pr"
     },
     {
       "question": "Какие поля содержит сообщение события OrderCreated?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately lists the fields in the OrderCreated message and correctly identifies the 'event_type' field along with its description. However, while the strong points highlight the accuracy of the information, there may be a lack of detail regarding t"
+      "reason": "The answer is well supported by the context, as it accurately reflects the explicitly listed fields in the OrderCreated message and correctly identifies event_type as the type of event, specifically 'OrderCreated'. However, the evaluation could be strengthened by providing more detail on how these d"
     },
     {
       "question": "Что означает событие OrderRejected и какие поля оно содержит?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the meaning of the OrderRejected event and correctly identifies the event_type field and its value. However, while the strong points reinforce the accuracy of the information, there are no noted weaknesses in the evaluation."
+      "reason": "The answer is generally well supported by the context, as it accurately reflects that the OrderRejected event indicates an order was rejected by another service for some reason. However, the evaluation could be strengthened by referencing specific fields from the OrderRejected message listed in the "
     },
     {
       "question": "Какие продукты отображаются в списке на экране управления продуктами?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the products displayed on the management screen and logically connects their approval status to their availability. However, while the connection is clear, further details about the implications of this approval could strengthen"
+      "reason": "The answer is well supported by the context, as it clearly states that the product list includes only admin-approved products with is_available set to True, ensuring users see only available items. However, the implication that all shown products are available relies on interpreting approval as avai"
     },
     {
       "question": "Как работает поиск продукта на экране управления продуктами?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately describes the product search feature's functionality and logically follows from the explanation of how the search operates. However, it could be strengthened by providing additional details about the search results or user experience."
+      "reason": "The answer is well supported by the context, as it correctly identifies the requirement for a search form on the product management screen and the need to press the “Найти” button to perform the search. However, any details beyond these points are not explicitly confirmed by the context."
     },
     {
       "question": "Какие поля обязательны в модальном окне добавления склада?",
       "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately lists the required fields for the modal window for adding a warehouse, including the correct identification of 'Местоположение' as a necessary field. However, the evaluation could be strengthened by providing additional details or example"
+      "reason": "The answer is well supported by the context, as it accurately reflects that the modal window for adding a new warehouse includes explicitly listed required fields, with the 'Местоположение' field clearly identified as mandatory. However, the evaluation could be strengthened by specifying all mandato"
     },
     {
       "question": "Какие столбцы содержит таблица списка складов?",
-      "score": 1.0,
-      "reason": "The answer is well supported by the context, as it accurately lists all the columns present in the warehouse list table, with each column directly corroborated by the provided information. However, while the accuracy is strong, the evaluation does not address any potential nuances or additional deta"
+      "score": 0.7901,
+      "reason": "The answer is well supported by the context, as the columns of the warehouse list table, including 'Местоположение,' are explicitly listed, confirming the claim. However, since this is a source reference rather than a direct claim, its role is primarily evidential rather than assertive."
     },
     {
       "question": "Какие инструменты нужны для работы с проектом?",
-      "score": 0.9833,
-      "reason": "The answer is well supported by the context, as it accurately lists the necessary tools for the project and correctly identifies Docker as essential for running the application. However, it weakens slightly by presenting the advice on operating system and processor compatibility as a direct instruct"
+      "score": 1.0,
+      "reason": "The answer is generally well supported by the context, as it correctly notes that Docker is required to run the application and highlights the importance of selecting the appropriate OS and processor. However, it could be stronger by explicitly linking these requirements to the installation process "
     }
   ]
 }

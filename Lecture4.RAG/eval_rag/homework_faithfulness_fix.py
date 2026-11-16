@@ -18,7 +18,7 @@ FOLDER = os.path.dirname(os.path.abspath(__file__))
 ANSWERS = os.path.join(FOLDER, "data", "homework_rag_answers.json")
 RESULTS = os.path.join(FOLDER, "data", "homework_faithfulness_fixed.json")
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-4.1-mini"
 THRESHOLD = 0.7
 
 

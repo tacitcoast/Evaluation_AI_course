@@ -9,6 +9,7 @@ load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__)))), ".env"))
 
 os.environ.setdefault("DEEPEVAL_TELEMETRY_OPT_OUT", "YES")
+os.environ.setdefault("DEEPEVAL_DISABLE_TIMEOUTS", "YES")
 
 from deepeval.test_case import LLMTestCase
 from deepeval.metrics import (
@@ -21,7 +22,7 @@ FOLDER = os.path.dirname(os.path.abspath(__file__))
 ANSWERS = os.path.join(FOLDER, "data", "homework_rag_answers.json")
 RESULTS = os.path.join(FOLDER, "data", "homework_results_deepeval.json")
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-4.1-mini"
 THRESHOLD = 0.7
 
 

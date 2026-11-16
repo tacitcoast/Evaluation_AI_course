@@ -5,15 +5,15 @@
     "scores": {
       "AnswerRelevancyMetric": {
         "score": 1.0,
-        "reason": "The score is 1.00 because the response directly addresses the question about the duration of access_token activity without any irrelevant statements."
+        "reason": "The score is 1.00 because the response directly addresses the question about the active duration of the access_token without including any irrelevant information."
       },
       "FaithfulnessMetric": {
-        "score": null,
-        "reason": "RetryError: RetryError[<Future at 0x1106027a0 state=finished raised TimeoutError>]"
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
       },
       "ContextualRelevancyMetric": {
-        "score": 0.1111111111111111,
-        "reason": "The score is 0.11 because while there are relevant statements such as 'access_token - краткосрочный токен, который активен 30 минут' and 'Время окончания действия токена - 30 минут.', the majority of the retrieval context is irrelevant, discussing topics like user management and registration that do not address the question about the duration of access_token."
+        "score": 0.11764705882352941,
+        "reason": "The score is 0.12 because although most statements are irrelevant, key relevant statements like 'access_token - краткосрочный токен, который активен 30 минут' and 'Время окончания действия токена - 30 минут' directly address the access_token active duration, supporting a low but non-zero relevancy."
       }
     }
   },
@@ -23,15 +23,15 @@
     "scores": {
       "AnswerRelevancyMetric": {
         "score": 0.6666666666666666,
-        "reason": "The score is 0.67 because the mention of the access_token being recorded in the database does not directly address the user's question about the implications of an expired access_token when a refresh_token is available in the cookie."
+        "reason": "The score is 0.67 because the response partially addresses what happens when the access_token is expired and a refresh_token is present, but includes irrelevant information about storing the access_token in the database, which does not directly answer the question."
       },
       "FaithfulnessMetric": {
-        "score": 0.5,
-        "reason": "The score is 0.50 because the actual output states that the access token is regenerated but fails to mention that it is not stored in the database, which contradicts the retrieval context."
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
       },
       "ContextualRelevancyMetric": {
-        "score": 0.03225806451612903,
-        "reason": "The score is 0.03 because the retrieval context primarily contained irrelevant information, such as 'Для хранения токена была добавлена новая таблица tokens в микросервис авторизации', which does not address the question about access_token expiration. However, it did include a relevant statement: 'При истечении срока действия access_token, но при наличии refresh_token в cookie, access_token автоматически генерируется заново и записывается в БД.' This indicates that while there is some relevant information, the overwhelming majority of the context does not pertain to the input."
+        "score": 0.1935483870967742,
+        "reason": "The score is 0.19 because while the retrieval context mostly contains irrelevant information about database schema, WebSocket connections, and message handling, it does include relevant statements such as 'При истечении срока действия access_token, но при наличии refresh_token в cookie, access_token автоматически генерируется заново и записывается в БД.' and details about token lifetimes and refresh token usage, which partially address the input question."
       }
     }
   },
@@ -41,15 +41,15 @@
     "scores": {
       "AnswerRelevancyMetric": {
         "score": 1.0,
-        "reason": "The score is 1.00 because the response directly addresses the question about where the refresh_token is stored when the 'Remember Me' button is clicked, without any irrelevant statements."
+        "reason": "The score is 1.00 because the response directly addresses where the refresh_token is stored when the 'Remember me' button is clicked, with no irrelevant information included."
       },
       "FaithfulnessMetric": {
-        "score": null,
-        "reason": "RetryError: RetryError[<Future at 0x110688ed0 state=finished raised TimeoutError>]"
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
       },
       "ContextualRelevancyMetric": {
-        "score": 0.06896551724137931,
-        "reason": "The score is 0.07 because the majority of the retrieval context discusses unrelated topics such as user authorization and input validation, while only a couple of statements mention the refresh_token being stored in cookies. Specifically, the relevant statement is 'При нажатии на кнопку “Запомнить меня” в момент авторизации в системе, refresh token записывается в cookie.' which directly addresses the input question."
+        "score": 0.08333333333333333,
+        "reason": "The score is 0.08 because although the retrieval context contains relevant statements like 'При нажатии на кнопку “Запомнить меня” в момент авторизации в системе, refresh token записывается в cookie.' and 'Добавить возможность «запомнить меня» для сохранения токена авторизации.', the majority of the context is irrelevant, focusing on unrelated topics such as database schema, chat messages, and form fields, which lowers the overall relevancy."
       }
     }
   },
@@ -58,16 +58,844 @@
     "test_type": "factual",
     "scores": {
       "AnswerRelevancyMetric": {
-        "score": 0.0,
-        "reason": "The score is 0.00 because the response contradicts the input question by stating a limitation of one record, which does not address the inquiry about the number of records that can be stored for a user."
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question without any irrelevant information, providing a clear and concise answer."
       },
       "FaithfulnessMetric": {
-        "score": null,
-        "reason": "RetryError: RetryError[<Future at 0x1106880d0 state=finished raised TimeoutError>]"
+        "score": 0.0,
+        "reason": "The score is 0.00 because the actual output incorrectly states that only one record per user can exist in the database, while the retrieval context clarifies that this restriction applies specifically to token records, not all records for a user, indicating a clear contradiction."
       },
       "ContextualRelevancyMetric": {
-        "score": 0.03225806451612903,
-        "reason": "The score is 0.03 because the majority of the retrieval context discusses various aspects of token management and user registration, which do not answer the question about the number of records stored for a user. The only relevant statement, 'В База данных может существовать только одна запись для одного пользователя,' indicates that only one record can exist per user, but it is overshadowed by the irrelevant context."
+        "score": 0.1,
+        "reason": "The score is 0.10 because the relevant statements like 'В База данных может существовать только одна запись для одного пользователя.' provide minimal direct information about token record limits per user, while the majority of the context focuses on unrelated topics such as token types, user registration, and logging, as indicated by the extensive reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Пользователю с какой ролью доступно меню заявок на добавление продуктов?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the answer directly addresses the user's question about which role has access to the product addition request menu, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.3333333333333333,
+        "reason": "The score is 0.33 because while the retrieval context includes relevant statements such as 'Данное меню доступно только пользователю с ролью Суперадмин' indicating the menu access role, much of the context is irrelevant, focusing on product creation rules and order processing rather than user roles or menu access, as highlighted by reasons like 'This statement describes the menu functionality but does not specify user roles.'"
+      }
+    }
+  },
+  {
+    "question": "Какие поля содержит таблица заявок на одобрение продуктов?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the input by listing the fields contained in the product approval request table, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.5121951219512195,
+        "reason": "The score is 0.51 because while many statements are irrelevant, the retrieval context includes detailed information about the approval requests table fields such as 'Название продукта', 'Описание продукта', 'Категория продукта', 'Цена', and their validation rules, which partially addresses the input question."
+      }
+    }
+  },
+  {
+    "question": "Что происходит в базе данных при одобрении продукта?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses what happens in the database when a product is approved, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.40540540540540543,
+        "reason": "The score is 0.41 because while many statements are irrelevant, the relevant ones clearly explain that upon product approval, the 'is_available' field in the 'products' table of the 'products_service' database changes from False to True, and rejected products are deleted from the database, directly addressing the input question."
+      }
+    }
+  },
+  {
+    "question": "Что происходит с продуктом, если заявку на его добавление отклонили?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about what happens to a product if its addition request is rejected, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.625,
+        "reason": "The score is 0.62 because while many statements are irrelevant, key relevant statements such as 'При отклонении заявки продукт удаляется из БД.' directly address what happens to the product if the addition request is rejected, supporting a moderate relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какая база данных используется для агрегации заявок из Kafka?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the answer directly addresses the question about the database used for aggregating requests from Kafka, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.2777777777777778,
+        "reason": "The score is 0.28 because while many statements do not mention the database used for aggregating Kafka requests, the relevant statements clearly state 'Для агрегации заявкок из Kafka используется NoSQL БД Redis.' and describe Redis usage for caching and managing requests, supporting partial relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какие микросервисы предусмотрены в архитектуре системы?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about microservices in the system architecture without any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.575,
+        "reason": "The score is 0.57 because while the retrieval context includes relevant microservice descriptions such as 'Микросервис 1: Пользователи — управляет регистрацией, аутентификацией и хранением данных о пользователях.' and 'Микросервис 3: Заказы — отвечает за создание и управление заказами,' much of the context is irrelevant, focusing on infrastructure like Kafka messaging and ELK logging, which are not microservices themselves, as noted in the reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Для чего в проекте используется Kafka?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the answer directly addresses the use of Kafka in the project without including any irrelevant information, making it fully relevant and concise."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.42857142857142855,
+        "reason": "The score is 0.43 because while many statements are irrelevant, such as those about WebSocket, Redis, and database operations, there are several relevant statements like 'Kafka используется для обработки уведомлений о новых сообщениях в чатах.' and 'Связь через Kafka позволит передавать сообщения о событиях между сервисами, например, при изменении статуса заказа.' that directly explain Kafka's role in the project."
+      }
+    }
+  },
+  {
+    "question": "Какие поля должны быть в таблице заказов?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.8333333333333334,
+        "reason": "The score is 0.83 because the response mostly addresses the fields needed in the orders table, but it includes an irrelevant statement about user authorization, which does not pertain to the requested information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.7837837837837838,
+        "reason": "The score is 0.78 because while many statements like 'Пользователь должен быть авторизован.' and 'В таблице заказов должна быть кнопка «Отменить заказ»' are irrelevant as they describe user permissions and UI elements, relevant details such as 'Номер заказа (order_id) должен быть в таблице заказов.', 'Статус (pending, completed, cancelled) должен быть в таблице заказов.', and 'Дата и время создания должны быть в таблице заказов.' directly address the fields required in the orders table."
+      }
+    }
+  },
+  {
+    "question": "Какой минимальной длины должен быть пароль при регистрации?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.6666666666666666,
+        "reason": "The score is 0.67 because the answer partially addresses the minimum password length but includes irrelevant information like 'Источник 1: 16' which does not clarify the requirement, preventing a higher score."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.23809523809523808,
+        "reason": "The score is 0.24 because most retrieval context statements focus on unrelated topics like name, email, and authentication processes, as noted in reasons such as 'The statement about the registration button and success message does not relate to the minimum password length requirement.' However, relevant statements like 'Пароль: Обязательное поле. Минимум 8 символов.' clearly address the minimum password length, justifying some relevance but overall low score."
+      }
+    }
+  },
+  {
+    "question": "Какие статусы может иметь заказ и что происходит с товарами при отмене?",
+    "test_type": "multi_hop",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the answer fully addresses the question about order statuses and the handling of products upon cancellation, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions indicating that the actual output fully aligns with the retrieval context."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.6451612903225806,
+        "reason": "The score is 0.65 because while many statements like 'pending (В ожидании): Заказ создан и ожидает обработки.' and 'При отмене заказа его статус меняется на cancelled.' directly address order statuses and product handling upon cancellation, a significant portion of the context is irrelevant, focusing on data validation, error handling, and logging, which do not pertain to the input question."
+      }
+    }
+  },
+  {
+    "question": "Какой длины должно быть имя пользователя при регистрации?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.8,
+        "reason": "The score is 0.80 because the answer mostly addresses the username length requirement, but it includes a reference to a source without providing direct information, which slightly reduces relevancy."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context, demonstrating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.2857142857142857,
+        "reason": "The score is 0.29 because while most retrieval context statements are irrelevant, there are key relevant statements specifying username length requirements such as 'Поле для ввода имени: минимум 3 символа, максимум 50 символов.' and 'Имя: Обязательное поле. Минимум 3 символа, максимум 50 символов.' which partially address the input question."
+      }
+    }
+  },
+  {
+    "question": "Каким алгоритмом хешируется пароль пользователя?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about the password hashing algorithm without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.20689655172413793,
+        "reason": "The score is 0.21 because although the relevant statements clearly specify that the password must be hashed using the bcrypt algorithm, the majority of the retrieval context focuses on unrelated topics such as email validation, token management, and user interface elements, as highlighted by the numerous reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Какая роль назначается пользователю сразу после регистрации?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the user's question about the role assigned immediately after registration without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.2413793103448276,
+        "reason": "The score is 0.24 because most statements focus on registration form fields and error handling, such as 'The statement describes registration form fields but does not mention the role assigned to the user after registration.' However, the relevant statement 'После успешной регистрации пользователь создается как ограниченный пользователь (limited_user) в базе PostgreSQL, и ему назначается роль limited_user.' directly answers the input question, indicating a limited relevancy."
+      }
+    }
+  },
+  {
+    "question": "Может ли пользователь повысить сам себя до супер-админа?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the user's question without any irrelevant information, providing a clear and concise answer."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.6285714285714286,
+        "reason": "The score is 0.63 because while many statements are irrelevant, key relevant statements such as 'Пользователь не может повысить сам себя до супер-админа.' and 'Супер-админ должен иметь возможность повышать других пользователей до роли супер-админа.' directly address the question, indicating partial but not full relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какая ошибка возвращается, если у пользователя недостаточно прав?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.6,
+        "reason": "The score is 0.60 because the response includes clarifications and offers of further help that do not directly answer the question about the specific error returned when a user lacks sufficient permissions. However, it still partially addresses the topic, which justifies the moderate score."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.11538461538461539,
+        "reason": "The score is 0.12 because the relevant statements such as 'Ошибка при повышении прав: красное уведомление с текстом ошибки' and 'В уведомлениях и сообщениях об ошибках должны быть указаны точные причины ошибки' provide some insight into error messaging for insufficient rights, but the majority of the context focuses on unrelated topics like registration and login errors, making the overall relevance low."
+      }
+    }
+  },
+  {
+    "question": "Какие данные видит обычный пользователь при запросе к /users/?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the user's question about the data visible to a regular user when querying /users/. There are no irrelevant statements, making the answer perfectly relevant and concise."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.3055555555555556,
+        "reason": "The score is 0.31 because while the input asks about data visible to a regular user at /users/, most retrieval context statements focus on super-admin capabilities, which are irrelevant as noted in reasons like 'The statement \"Супер-админ может видеть список всех пользователей системы.\" is irrelevant because the input asks about what a обычный пользователь sees.' However, relevant statements such as 'Обычный пользователь может получить информацию только о себе.' and 'При запросе к /users/, пользователь видит только свои данные...' support partial relevancy, justifying the low but non-zero score."
+      }
+    }
+  },
+  {
+    "question": "Какие статусы может иметь заказ в микросервисе Orders_service?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about possible order statuses in the Orders_service microservice without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.6296296296296297,
+        "reason": "The score is 0.63 because while many statements like 'Пользователь должен иметь возможность создать новый заказ.' and 'Статусы заказов: “в ожидании”, “выполнен”, “отменен”.' directly address order statuses, a significant portion of the context focuses on unrelated topics such as authorization ('Доступ к этим данным осуществляется по токену авторизации...') and error handling ('Обработка ошибок: Сообщения об ошибках должны быть информативными.'), reducing overall relevancy."
+      }
+    }
+  },
+  {
+    "question": "Заказ с каким статусом можно отменить и что произойдёт со статусом?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about which order statuses allow cancellation and what happens to the status afterward, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.48484848484848486,
+        "reason": "The score is 0.48 because while the retrieval context includes relevant statements such as 'Пользователь может отменить заказ, если он еще не выполнен.' and 'После отмены заказа его статус должен измениться на “отменен”', a significant portion of the context is irrelevant, including statements about data validation, logging, and unrelated microservice interactions, which dilute the overall relevancy."
+      }
+    }
+  },
+  {
+    "question": "Что вернёт система, если попытаться отменить уже завершённый заказ?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question without any irrelevant information, providing a clear and concise answer."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.5161290322580645,
+        "reason": "The score is 0.52 because while many statements like 'Пользователь может отменить заказ, если он еще не выполнен.' and 'Если заказ уже обработан (статус completed) или уже отменен, возвращается сообщение “Cannot cancel this order”.' directly address the cancellation of completed orders, a significant portion of the context is irrelevant, focusing on unrelated topics such as order viewing and microservice subscriptions."
+      }
+    }
+  },
+  {
+    "question": "Какие поля нужно передать при создании заказа?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about which fields need to be provided when creating an order, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.7,
+        "reason": "The score is 0.70 because while many statements are irrelevant, such as those about supplier creation and contact details, the relevant statements clearly specify required fields for order creation like 'order_items: product_id', 'quantity', 'warehouse_id', and validation rules, which directly answer the input question."
+      }
+    }
+  },
+  {
+    "question": "Чем отличаются права обычного пользователя и супер-админа при работе с заказами?",
+    "test_type": "multi_hop",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the difference between regular user and super-admin rights when working with orders, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.5714285714285714,
+        "reason": "The score is 0.57 because while many statements are irrelevant, such as those about warehouse management and user registration, relevant statements like 'Администраторы могут изменять статус заказа' and 'Супер-админ может получать информацию по всем заказам в системе' clearly outline the differences in rights between ordinary users and super-admins when working with orders."
+      }
+    }
+  },
+  {
+    "question": "Кто может создавать чаты и сколько минимум в чате участников?",
+    "test_type": "multi_hop",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses who can create chats and the minimum number of participants required, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.36363636363636365,
+        "reason": "The score is 0.36 because while the retrieval context includes relevant statements such as 'Создание нового чата (только для администраторов)' and 'Администраторы (суперадмины) дополнительно могут создавать новые чаты и добавлять участников в существующие чаты,' it lacks explicit information on the minimum number of participants in a chat, and many statements are unrelated procedural UI details as noted in the reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Сколько последних сообщений подгружается при подключении к WebSocket?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about how many recent messages are loaded when connecting to the WebSocket, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.25,
+        "reason": "The score is 0.25 because while the retrieval context includes relevant statements such as 'При подключлении клиент получает последние 50 сообщений из чата' and 'При подключении пользователя к WebSocket сервер загружает из Redis последние 50 сообщений,' the majority of the context is irrelevant, focusing on message sending, Kafka processing, and caching unrelated to the number of messages loaded on WebSocket connection."
+      }
+    }
+  },
+  {
+    "question": "Зачем в чате используется Redis?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the use of Redis in chat applications without any irrelevant information, providing a clear and focused explanation."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.41935483870967744,
+        "reason": "The score is 0.42 because while many statements focus on Kafka and general message handling unrelated to Redis, relevant statements such as 'Сервер загружает последние 50 сообщений чата из Redis.' and 'Redis используется для кэширования последних 50 сообщений в чате.' directly explain Redis's role in caching chat messages, supporting partial relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какой длины должно быть название продукта и какие символы в нём допустимы?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the question about product name length and allowed characters without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.16216216216216217,
+        "reason": "The score is 0.16 because while the relevant statements like 'Название: • Обязательное поле. • Длина от 3 до 100 символов. • Только буквы и цифры' directly address product name length and allowed characters, the majority of the retrieval context is irrelevant, focusing on unrelated fields such as description, category, price, and supplier details, as noted in the reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Какая ошибка вернётся при попытке создать продукт с уже существующим названием?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about the error returned when attempting to create a product with an existing name, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 0.75,
+        "reason": "The score is 0.75 because the actual output incorrectly associates the 422 error 'This supplier is already existed' with product creation, while the retrieval context specifies this error only occurs during supplier creation, indicating a partial misalignment."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.26666666666666666,
+        "reason": "The score is 0.27 because most statements, such as 'Заголовок модального окна: «Добавить новый продукт»' and 'Описание: Поле необязательно для заполнения,' do not address errors for duplicate product names, while relevant statements like 'При вводе отрицательного количества или пустого названия система должна показывать сообщение об ошибке' only partially relate to input validation but not specifically to duplicate name errors."
+      }
+    }
+  },
+  {
+    "question": "Какая максимальная цена может быть у продукта?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about the maximum price of a product without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.1346153846153846,
+        "reason": "The score is 0.13 because while the retrieval context includes relevant statements such as 'Цена: • Обязательное поле. • Положительное число с 2-мя нулями после запятой, больше 0, максимум 9999999.99) (формат ввода: 20.00)' indicating the maximum price, most of the context is irrelevant, focusing on unrelated fields like product name, description, and supplier requirements."
+      }
+    }
+  },
+  {
+    "question": "Какие форматы изображений можно загружать для продукта?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about acceptable image formats for product uploads without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.06666666666666667,
+        "reason": "The score is 0.07 because although the retrieval context contains relevant statements like 'Форматы: png, jpeg, jpg' and 'Загрузка картинки в форматах: png, jpeg, jpg' that directly answer the input question about image formats, the majority of the context is irrelevant, focusing on unrelated product fields and functionalities as indicated by numerous reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Что произойдёт при попытке удалить поставщика, у которого есть привязанные продукты?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about what happens when attempting to delete a supplier with linked products, providing relevant and focused information without any irrelevant content."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.1724137931034483,
+        "reason": "The score is 0.17 because while the context includes relevant statements like 'Нельзя удалить поставщика (должна выдаваться ошибка), если у данного поставщика уже есть привязанные продукты с данным поставщиком в системе' and 'Пользователь должен иметь возможность удалить поставщика по его ID.', most of the retrieval context is irrelevant, focusing on unrelated topics such as product deletion, authorization errors, and supplier creation, as indicated by reasons like 'The statement describes creating a supplier, which is unrelated to deleting a supplier with linked products.'"
+      }
+    }
+  },
+  {
+    "question": "Какие поля обязательны при создании склада?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.6,
+        "reason": "The score is 0.60 because the response includes relevant information about mandatory fields but also contains several irrelevant details about field lengths, value constraints, and data types that do not address the mandatory status. These irrelevant statements prevent a higher score, though the core answer partially addresses the question."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context, demonstrating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.5161290322580645,
+        "reason": "The score is 0.52 because while the context includes relevant mandatory fields like 'Местоположение: Поле обязательно для заполнения.' and 'Вместимость (куб. м): Поле обязательно для заполнения.', it also contains many irrelevant statements such as 'Имя управляющего: Поле необязательно.' and UI-related details that do not address required fields, reducing overall relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какое значение получает поле current_stock при создании склада?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about the value of the current_stock field when creating a warehouse, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.2903225806451613,
+        "reason": "The score is 0.29 because while the relevant statements clarify that 'current_stock' is automatically set to 0 upon warehouse creation ('Текущее количество продуктов на складе (current_stock) - Заполняется автоматически значением 0'), most of the retrieval context is unrelated, focusing on other fields like location, manager name, and contact details, which do not inform about 'current_stock'."
+      }
+    }
+  },
+  {
+    "question": "Можно ли удалить склад, на котором лежат продукты?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about deleting a warehouse storing products without any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.47368421052631576,
+        "reason": "The score is 0.47 because while the retrieval context includes relevant statements such as 'Пользователь должен иметь возможность удалить склад по его ID.' and 'Нельзя удалить склад (должна выдаваться ошибка), если у данного склада уже есть продукты', many other statements focus on unrelated actions like viewing or editing warehouses and products, as noted in the reasons for irrelevancy like 'The statement describes viewing warehouse details, not about deleting a warehouse with products.' This mix of relevant and irrelevant information lowers the overall contextual relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какие ограничения у номера телефона поставщика?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the question about the limitations of the supplier's phone number without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.11428571428571428,
+        "reason": "The score is 0.11 because most statements address unrelated fields like 'Название', 'contact_name', and authorization errors, while only a few relevant statements mention phone number constraints such as 'Номер телефона (phone_number): Необязательное поле. Максимальная длина: 15 символов, включает только цифры целые и символ +' and updateable fields including 'телефон'."
+      }
+    }
+  },
+  {
+    "question": "Какой код возвращается при успешном добавлении продукта на склад?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly answers the question about the code returned upon successful product addition to the warehouse, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.23333333333333334,
+        "reason": "The score is 0.23 because while the context includes relevant statements like 'При успешном добавлении товара выводит сообщение «Товар успешно добавлен на склад»' and details about adding products, it lacks explicit information about the specific code returned upon successful product addition, as highlighted by the many irrelevant statements such as 'The statement is about deleting a product, unrelated to adding a product or the code returned.' This partial relevance results in a low score."
+      }
+    }
+  },
+  {
+    "question": "Что вернёт система, если запросить продукт по несуществующему ID?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about what the system returns when querying a product by a non-existent ID, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.23076923076923078,
+        "reason": "The score is 0.23 because while the retrieval context includes relevant statements such as 'Если продукт с указанным ID не найден, возвращается ошибка 404 Not Found.' and 'Пользователь должен иметь возможность получить информацию о конкретном продукте по его ID.', the majority of the context is irrelevant, focusing on authorization, product creation, and unrelated actions, as highlighted by reasons like 'This statement relates to unauthorized user access' and 'This statement is about deleting a product, not about the system's response when requesting a product by a non-existent ID.'"
+      }
+    }
+  },
+  {
+    "question": "Чем отличаются правила удаления поставщика и склада?",
+    "test_type": "comparative",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the difference between the rules for deleting a supplier and a warehouse without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 0.9090909090909091,
+        "reason": "The score is 0.91 because the actual output incorrectly suggests that both a 401 Unauthorized and a 404 Not Found error are returned simultaneously upon authorization failure, whereas the context specifies only one error is returned depending on the condition."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.4117647058823529,
+        "reason": "The score is 0.41 because while many statements are irrelevant, such as those about creation and editing unrelated to deletion rules, there are relevant statements like 'Пользователь должен иметь возможность удалить поставщика по его ID' and 'Нельзя удалить поставщика... если у данного поставщика уже есть привязанные продукты', which directly address deletion rules for suppliers and warehouses."
+      }
+    }
+  },
+  {
+    "question": "Какие поля доступны для обновления у склада?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 0.875,
+        "reason": "The score is 0.88 because the response mostly addresses which fields can be updated for a warehouse, but includes an irrelevant statement about error handling when a warehouse ID is not found, which does not directly answer the question."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.4166666666666667,
+        "reason": "The score is 0.42 because while many statements relate to deletion, error handling, and authorization (e.g., 'Пользователь должен иметь возможность удалить склад по его ID.'), the relevant statements clearly specify updateable fields such as 'Поля, доступные для обновления: Местоположение, имя управляющего, вместимость, текущий запас, телефон, email, площадь.' and describe the edit form and required fields, indicating partial relevance."
+      }
+    }
+  },
+  {
+    "question": "Какое поле склада заполняется автоматически и недоступно для редактирования?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about which warehouse field is automatically filled and not editable, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.40625,
+        "reason": "The score is 0.41 because while most statements do not address the automatically filled and non-editable field, the relevant context includes 'Текущее общее количество всех товаров: Заполняется автоматически...' and 'Дата добавления склада (created_at)... Автоматически генерируемое поле... недоступна для редактирования пользователем,' which partially answer the input question."
+      }
+    }
+  },
+  {
+    "question": "Какие Kafka-топики используются в микросервисе заказов?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about Kafka topics used in the order microservice without any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context. Great job maintaining accuracy!"
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.375,
+        "reason": "The score is 0.38 because while the retrieval context contains relevant statements such as 'В текущей реализации микросервиса заказов (order_service) используются следующие Kafka-топики: orders и order_responses.' and details about their usage, many reasons for irrelevancy highlight that most statements focus on unrelated topics like logging, databases, frontend technologies, and Redis, which do not address Kafka topics in the orders microservice."
+      }
+    }
+  },
+  {
+    "question": "Какие поля содержит сообщение события OrderCreated?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the question about the fields contained in the OrderCreated event message without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.3225806451612903,
+        "reason": "The score is 0.32 because while the retrieval context contains relevant statements such as 'Событие OrderCreated отправляется при создании нового заказа и содержит информацию о заказе и товарах в нем.' and detailed field descriptions like 'Формат сообщения OrderCreated включает поля: event_type, order_id, user_id, order_items, и timestamp.', much of the context is irrelevant, focusing on other events like OrderRejected and OrderConfirmed, as noted in reasons like 'The input asks about the fields of the OrderCreated event, but the statement refers to event_type: \"OrderRejected\".' This mix lowers the overall relevancy."
+      }
+    }
+  },
+  {
+    "question": "Что означает событие OrderRejected и какие поля оно содержит?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the meaning of the OrderRejected event and its fields without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions; the actual output fully aligns with the retrieval context, demonstrating complete faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.4090909090909091,
+        "reason": "The score is 0.41 because while the retrieval context includes relevant statements such as 'event_type: \"OrderRejected\"', 'order_id: Идентификатор отклоненного заказа.', and 'Событие OrderRejected содержит поля: event_type, order_id, reason, rejected_at.', a majority of the context is irrelevant, focusing instead on 'OrderCreated' events and unrelated order statuses, as indicated by reasons like 'The statement is about \"OrderCreated\" event, but the input asks about \"OrderRejected\" event.' This mix lowers the overall relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какие продукты отображаются в списке на экране управления продуктами?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response directly addresses the question about which products are displayed in the product management screen, with no irrelevant information included."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating perfect alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.5555555555555556,
+        "reason": "The score is 0.56 because while many statements are irrelevant, key relevant details such as 'Таблица списка продуктов Цель: Отображать существующие продукты с возможностью их редактирования и удаления.' and 'Отображается только список продуктов, которые были одобрены админом, то есть имеют значение is_available = True' directly address which products are displayed in the product management screen list."
+      }
+    }
+  },
+  {
+    "question": "Как работает поиск продукта на экране управления продуктами?",
+    "test_type": "explanatory",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses how product search works on the product management screen without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.375,
+        "reason": "The score is 0.38 because while the retrieval context includes relevant statements such as 'Должна быть реализована форма поиска продукта по названию. Поиск работает по кнопке “Найти” и в списке должен отображаться найденый продукт.' and 'Шапка страницы: Поле поиска товаров. Placeholder: «Найдите товар». Функции: поиск по названию.', much of the context is irrelevant, focusing on product addition, supplier management, and other unrelated features as noted in the reasons for irrelevancy."
+      }
+    }
+  },
+  {
+    "question": "Какие поля обязательны в модальном окне добавления склада?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the question about required fields in the warehouse addition modal without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.20588235294117646,
+        "reason": "The score is 0.21 because most statements are irrelevant, such as 'Имя управляющего: Поле необязательно.' and 'Контактный телефон: Поле необязательно.', which do not address mandatory fields. However, relevant statements like 'Местоположение: Поле обязательно для заполнения.' and 'Вместимость (куб. м): Поле обязательно для заполнения.' do specify required fields, justifying a low but non-zero relevancy score."
+      }
+    }
+  },
+  {
+    "question": "Какие столбцы содержит таблица списка складов?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the question about the columns in the warehouse list table without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context, indicating complete alignment and faithfulness."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.29411764705882354,
+        "reason": "The score is 0.29 because while the relevant statements list the columns of the warehouse list table such as 'Местоположение', 'Управляющий', 'Вместимость', and others, the majority of the retrieval context focuses on unrelated button functionalities and UI elements, as noted in the reasons for irrelevancy like 'Кнопка «Создать склад»... is about the create button functionality, which is not related to the columns.' This mix lowers the overall relevancy."
+      }
+    }
+  },
+  {
+    "question": "Какие инструменты нужны для работы с проектом?",
+    "test_type": "factual",
+    "scores": {
+      "AnswerRelevancyMetric": {
+        "score": 1.0,
+        "reason": "The score is 1.00 because the response fully addresses the question about the tools needed for the project without including any irrelevant information."
+      },
+      "FaithfulnessMetric": {
+        "score": 0.95,
+        "reason": "The score is 0.95 because the actual output incorrectly implies that registering on GitHub is necessary for working with GIT, whereas the context only states that registration on GitHub is needed for using the GitHub website, not for GIT itself."
+      },
+      "ContextualRelevancyMetric": {
+        "score": 0.717948717948718,
+        "reason": "The score is 0.72 because while many statements describe project functionalities and architecture, relevant tool mentions such as 'Docker is needed to run the application,' 'Git is required to get the program version,' and 'Postman is needed for API testing' directly address the input question about tools needed for working with the project. However, the presence of many irrelevant statements lowers the overall relevancy."
       }
     }
   }

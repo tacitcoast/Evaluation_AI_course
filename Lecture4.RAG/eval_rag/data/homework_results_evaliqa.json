@@ -1,16 +1,16 @@
 {
   "happy_path": {
     "means": {
-      "answerRelevancyMetric": 0.926988,
-      "faithfulnessMetric": 0.45724200000000004,
-      "contextualRelevancyMetric": 0.43326
+      "answerRelevancyMetric": 0.934384,
+      "faithfulnessMetric": 0.5281600000000001,
+      "contextualRelevancyMetric": 0.48253599999999996
     },
     "below_threshold": {
-      "answerRelevancyMetric": 4,
-      "faithfulnessMetric": 31,
-      "contextualRelevancyMetric": 41
+      "answerRelevancyMetric": 5,
+      "faithfulnessMetric": 28,
+      "contextualRelevancyMetric": 39
     },
-    "cost": 0.053428,
+    "cost": 0.149223,
     "cases": 50,
     "details": [
       {
@@ -19,17 +19,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly stating the duration of validity for an access token, demonstrating strong relevance. However, it lacks additional context or examples that could enhance understanding of the topic."
+            "reason": "The answer effectively addresses the user's question by clearly stating that the access_token remains valid for 30 minutes after authorization, providing a precise and relevant timeframe. However, it could be improved by briefly explaining the implications of this validity period or how to handle token expiration."
           },
           "faithfulnessMetric": {
-            "score": 0.0,
-            "success": false,
-            "reason": "The answer is well supported by the context, as it correctly states the duration of the access_token's validity. However, it could be strengthened by providing additional details or examples from the context to enhance clarity and depth."
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it clearly states that the access_token is active for 30 minutes, providing a strong factual basis. However, if any additional details about token renewal or expiration conditions were omitted, that would represent a weaker aspect of the support."
           },
           "contextualRelevancyMetric": {
-            "score": 0.4433,
+            "score": 0.416,
             "success": false,
-            "reason": "The retrieved context includes one segment that directly answers the user's question about the access token's 30-minute validity, while another segment provides relevant information about the authorization process but lacks a comprehensive focus on the user's intent. However, one segment is unrelated to the topic, indicating a mixed relevance overall."
+            "reason": "The retrieved context includes clear and direct information about the access_token's validity period, effectively addressing the user's question about token duration. However, one segment is unrelated, focusing on Redis caching, which does not contribute to answering the user's query."
           }
         }
       },
@@ -37,19 +37,19 @@
         "question": "Что произойдёт, если access_token истёк, но refresh_token есть в cookie?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.95,
+            "score": 1.0,
             "success": true,
-            "reason": "The answer effectively clarifies the implications of an expired access_token while a refresh_token remains available, highlighting the user experience of uninterrupted access. However, it falls short by not detailing the specific mechanics of the token renewal process."
+            "reason": "The answer effectively clarifies that a new access_token is automatically generated and stored upon expiration if a refresh_token exists, allowing the user to continue working without re-authentication. However, it could be improved by briefly outlining any potential limitations or exceptions to this automatic refresh process."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately explains the regeneration of the access_token when the refresh_token is available in the cookie, allowing the user to continue working without needing to reauthorize. However, while the logical flow is strong, the explanation could benefit from additional details on the implications of this process for user experience."
+            "reason": "The answer is well supported by the context, as it clearly states that the access_token is automatically regenerated and saved when expired if the refresh_token is present, allowing the user to continue without reauthorization. However, the context only implies rather than explicitly confirms uninterrupted user activity, which is a weaker aspect of the support."
           },
           "contextualRelevancyMetric": {
-            "score": 0.04,
+            "score": 0.136,
             "success": false,
-            "reason": "The retrieved context is partially relevant, as one segment directly addresses the user's question about the behavior of access and refresh tokens upon expiration, while the other segments discussing Redis caching and WebSocket connections do not pertain to the user's inquiry. Overall, only one segment effectively meets the user's needs."
+            "reason": "The retrieved context includes one highly relevant segment that directly addresses the behavior when an access_token expires but a refresh_token is present, effectively answering the user's question and intent. However, the other segments provide only general or unrelated information, limiting the overall completeness of the response."
           }
         }
       },
@@ -59,17 +59,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly stating where the refresh_token is stored when the 'Remember Me' button is clicked. However, it lacks additional context or details that could enhance the user's understanding of the implications or security considerations related to this storage."
+            "reason": "The answer effectively addresses the user's question by clearly explaining that the refresh_token is stored in a cookie upon selecting the 'Remember me' option, demonstrating a direct and relevant response. However, it could be improved by providing additional context on security implications or cookie management."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it correctly indicates that the refresh_token is stored in a specified location when the 'Remember me' button is pressed. However, it could be strengthened by providing additional details about the implications or security considerations of this storage method."
+            "reason": "The answer is well supported by the context, as it clearly states that pressing the 'Запомнить меня' button during authorization results in the refresh_token being stored in a cookie. However, the evaluation does not mention any additional details about how this process works or potential exceptions, which could provide a more comprehensive understanding."
           },
           "contextualRelevancyMetric": {
-            "score": 0.104,
+            "score": 0.24,
             "success": false,
-            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question about the storage of the refresh_token when the 'Remember me' feature is used, other segments fail to provide specific information on this topic, limiting their usefulness in fully meeting the user's needs."
+            "reason": "The retrieved context includes one highly relevant segment that directly explains where the refresh_token is stored when the 'Запомнить меня' button is clicked, fully addressing the user's question. However, the other segments are only partially relevant or unrelated, limiting the overall completeness of the information provided."
           }
         }
       },
@@ -79,17 +79,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly stating the limit on the number of token records for a single user in the database. However, it lacks additional context or examples that could enhance understanding of the implications of this limit."
+            "reason": "The answer effectively addresses the user's question by clearly stating that the database stores only one token record per user, demonstrating precise and relevant information; however, it could be improved by briefly explaining the implications of this limitation."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the information about the limitation of token records for a user. However, it could be strengthened by providing additional details or examples to further clarify the implications of this limitation."
+            "reason": "The answer is well supported by the context, as it clearly states that only one record can exist in the database for each user, providing strong evidence for this claim. However, if the answer includes any information beyond this explicit statement, those parts may be weakly supported or unsupported."
           },
           "contextualRelevancyMetric": {
-            "score": 0.192,
+            "score": 0.04,
             "success": false,
-            "reason": "The retrieved context includes one segment that directly addresses the user's question about the limit on token records, providing a clear answer, while the other segments are only tangentially related or unrelated, offering little additional value to the user's inquiry. Overall, the relevant segment effectively meets the user's needs regarding token record limits."
+            "reason": "The retrieved context includes one highly relevant segment that directly answers the user's question about token storage limits per user, while the other segments are unrelated and do not contribute to addressing the user's intent. Overall, the relevant information sufficiently meets the user's needs despite the presence of unrelated content."
           }
         }
       },
@@ -99,17 +99,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly identifying the specific role that has access to the menu for product addition requests. However, it lacks additional context or details that could enhance understanding of the role's responsibilities or the process involved."
+            "reason": "The answer clearly addresses the user's question by identifying that only the 'Суперадмин' role can access the product addition request menu, demonstrating precise and relevant information; however, it could be improved by briefly explaining why other roles lack this access."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately conveys the information about accessing the menu for product addition requests. However, it could be strengthened by providing specific examples or details from the context to enhance clarity and depth."
+            "reason": "The answer is well supported by the context, as it clearly states that only users with the Superadmin role have access to the menu for managing product addition requests. However, if the answer fails to mention this role restriction explicitly, that would be a weak point in its accuracy."
           },
           "contextualRelevancyMetric": {
-            "score": 0.104,
+            "score": 0.24,
             "success": false,
-            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question about the role required to add products, the other segments focus on managing products and orders, which do not pertain to the user's specific inquiry. Overall, the most pertinent information is clearly provided, but additional context could enhance understanding."
+            "reason": "The retrieved context includes one highly relevant segment that directly addresses the user's question about which roles can access the product addition request menu, while the other segments provide related information but do not specifically clarify role-based access. Overall, the context sufficiently answers the user's intent by identifying the Superadmin role as having access."
           }
         }
       },
@@ -117,19 +117,19 @@
         "question": "Какие поля содержит таблица заявок на одобрение продуктов?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.9833,
+            "score": 0.9333,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the fields included in the product approval request table and explaining their purposes, which enhances understanding. However, it lacks a comprehensive overview of how these fields interact or their significance in the approval process, which could provide deeper insight."
+            "reason": "The answer effectively includes the key fields 'Название продукта' and 'Описание продукта' in the table as requested, clearly indicating their presence. However, it falls short by not providing a complete list of all fields, limiting the comprehensiveness of the response."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context as it accurately lists and identifies the fields included in the approval request table, demonstrating a strong alignment with the provided information. However, there are no notable weak parts in this evaluation, as the statement consistently reflects the details from the context."
+            "reason": "The answer is well supported by the context, as it correctly identifies 'Название продукта' as a field in the approval request table, which is explicitly listed along with other fields like 'Описание продукта', 'Категория продукта', and 'Цена'. However, the evaluation could be strengthened by referencing the full list of fields rather than focusing solely on one."
           },
           "contextualRelevancyMetric": {
-            "score": 0.192,
-            "success": false,
-            "reason": "The retrieved context includes a highly relevant segment that directly addresses the user's question about the approval request table, while other segments provide information on product creation that is only tangentially related, thus partially meeting the user's needs. Overall, the most pertinent information is effectively covered, but additional context on the approval request table could enhan"
+            "score": 0.76,
+            "success": true,
+            "reason": "The retrieved context is largely relevant, as it explicitly identifies the fields included in the product approval requests table, directly addressing the user's question. While some segments focus on related product creation and inventory details, only the first segment fully satisfies the user's intent."
           }
         }
       },
@@ -139,17 +139,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively details the database changes that occur upon product approval and clarifies that this leads to the product's availability. However, it lacks specific examples or context that could enhance understanding of the process."
+            "reason": "The answer effectively addresses the user's request by clearly describing the database change upon product approval and explaining its implications, thereby fully clarifying the update's significance. However, it could be strengthened by providing a brief example to illustrate the change in context."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately describes the database change upon product approval and logically follows from the initial statement, highlighting the consequence of that change. However, the evaluation could be strengthened by providing more specific examples or details regarding the nature of the database change."
+            "reason": "The answer is well supported by the context, as it clearly states that product approval changes the is_available field from False to True, indicating availability. However, the implication that this change makes the product accessible is inferred rather than explicitly confirmed, representing a minor weakness."
           },
           "contextualRelevancyMetric": {
             "score": 0.56,
             "success": false,
-            "reason": "The retrieved context is partially relevant; while one segment directly addresses the database changes upon product approval, the other segments focus on product creation and editing without explicitly detailing the approval process or its impact on the database. This indicates a need for more comprehensive information regarding the approval effects to fully meet the user's inquiry."
+            "reason": "The retrieved context is largely relevant, with one segment explicitly detailing the database changes upon product approval that directly address the user's question, while the other segments provide useful technical and UI background but are less focused on the approval-related database updates. Overall, the information sufficiently meets the user's intent by explaining how product approval affec"
           }
         }
       },
@@ -159,17 +159,17 @@
           "answerRelevancyMetric": {
             "score": 0.95,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry about the consequences of rejecting a product addition request by providing a direct response and contextual support from a referenced document. However, it lacks additional insights or examples that could enhance understanding of the implications."
+            "reason": "The answer effectively addresses the user's question by clearly stating that the product is deleted from the database after application rejection, supported by a cited document that reinforces this claim. However, it lacks additional details or elaboration beyond the direct statement, limiting the depth of the explanation."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the outcome of the rejected product addition request and is reinforced by a direct quote confirming the product's removal from the database. However, the evaluation could benefit from additional context regarding the implications of this removal for the overall product management process."
+            "reason": "The answer is well supported by the context, as it clearly states that a rejected product addition request results in the product being deleted from the database. However, if there were any nuances or exceptions not mentioned, those would represent weaker support."
           },
           "contextualRelevancyMetric": {
             "score": 0.264,
             "success": false,
-            "reason": "The retrieved context provides a clear and direct answer to the user's question regarding the consequences of a rejected product addition request, while also offering some relevant information about the product creation process. However, one segment diverges from the user's intent by discussing low stock notifications, which does not contribute to addressing their specific inquiry."
+            "reason": "The retrieved context is largely relevant, as it clearly explains that rejected product addition requests result in the product being deleted from the database, directly addressing the user's question. Additionally, details about request handling in Redis provide useful complementary information, while unrelated segments on stock notifications do not contribute to the answer."
           }
         }
       },
@@ -179,17 +179,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly identifying the database used for aggregating requests from Kafka, reinforcing the information provided. However, it lacks additional context or insights that could enhance understanding of the database's functionality or relevance."
+            "reason": "The answer effectively addresses the user's question by clearly identifying Redis as the NoSQL database used for aggregating requests from Kafka and strengthens this claim with a supporting source citation. However, it could be improved by providing more context or details about how Redis is utilized in this process."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately reflects the information about using Redis for aggregating requests from Kafka, with explicit mention in the context reinforcing this point. However, the evaluation could be strengthened by providing additional details on how Redis facilitates this aggregation process."
+            "reason": "The answer is well supported by the context, as it explicitly states that Redis is used as a NoSQL database for aggregating requests from Kafka, and this is directly confirmed by a quoted sentence from the relevant context. However, the evaluation does not mention any additional details or potential nuances beyond this direct confirmation."
           },
           "contextualRelevancyMetric": {
-            "score": 0.312,
+            "score": 0.304,
             "success": false,
-            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question by identifying Redis as the NoSQL database used for aggregating requests from Kafka, other segments provide less specific information and do not directly relate to the user's inquiry. Overall, the most pertinent segment effectively meets the user's intent."
+            "reason": "The retrieved context includes one highly relevant segment that directly answers the user's question about using Redis for aggregating requests from Kafka, while the other segments are only tangentially related or unrelated, providing limited additional value. Overall, the context sufficiently addresses the user's intent but could be more focused."
           }
         }
       },
@@ -197,19 +197,19 @@
         "question": "Какие микросервисы предусмотрены в архитектуре системы?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.98,
+            "score": 0.86,
             "success": true,
-            "reason": "The answer effectively details the microservices included in the architecture and provides an in-depth description of the 'Пользователи' microservice, showcasing its functions. However, it falls short by including information about Kafka that, while relevant, does not directly address the user's specific inquiry about the microservices."
+            "reason": "The answer effectively identifies and details the relevant microservices, particularly clarifying the role of the 'Users' microservice, thereby addressing the user's request accurately. However, including Kafka, which is not a microservice, slightly detracts from the focus on the core question."
           },
           "faithfulnessMetric": {
             "score": 0.04,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately describes Kafka's role in message transmission between microservices, correctly lists the microservices involved, and provides an accurate depiction of the Users microservice's functionality. However, while the strong points align well with the context, there are no noted weak parts in the evaluation."
+            "reason": "The answer is well supported by the context in describing Kafka's role for message passing between microservices regarding order status and stock levels, and accurately referencing the listed microservices and their functions. However, it is weaker in explicitly linking Kafka's usage to the specific microservices mentioned, as the context does not detail Kafka's integration with each service indiv"
           },
           "contextualRelevancyMetric": {
-            "score": 0.64,
-            "success": false,
-            "reason": "The retrieved context includes a segment that directly answers the user's question by listing specific microservices, which is highly relevant. However, other segments provide less direct information, with some discussing architecture and UI aspects that do not fully address the user's intent regarding microservices."
+            "score": 0.72,
+            "success": true,
+            "reason": "The retrieved context is largely relevant, with one segment providing a detailed and explicit listing of the microservices that directly addresses the user's question, while another offers a broader overview of the microservice architecture and functional requirements. However, the third segment is only tangentially related, focusing on supporting technologies rather than the microservices themsel"
           }
         }
       },
@@ -217,19 +217,19 @@
         "question": "Для чего в проекте используется Kafka?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 1.0,
-            "success": true,
-            "reason": "The answer effectively highlights Kafka's role in message transmission between microservices and its specific application in handling chat notifications, demonstrating a strong understanding of its functionality. However, it lacks detail on how Kafka integrates with the overall system architecture or its advantages in this context."
+            "score": 0.6806,
+            "success": false,
+            "reason": "The answer effectively clarifies Kafka's role in message passing and event notification by providing a clear explanation and a concrete example of chat message notifications, which directly addresses the user's request. However, while it summarizes Kafka's asynchronous communication function well, it could further enhance clarity by integrating more detailed technical specifics."
           },
           "faithfulnessMetric": {
-            "score": 0.25,
-            "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the use of Kafka for processing chat notifications and specifies the relevant Kafka topics, such as chat_notifications and orders. However, while the context provides clear details on Kafka's applications, it could benefit from additional examples or explanations of how these notifications are utilized by the microservices."
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it accurately reflects Kafka's role in processing chat notifications through the chat_notifications topic and its use in transmitting order status messages between services. However, the context provides stronger detail on chat notifications than on order status changes, making the latter aspect less explicitly supported."
           },
           "contextualRelevancyMetric": {
-            "score": 0.7,
+            "score": 0.84,
             "success": true,
-            "reason": "The retrieved context provides some relevant insights into Kafka's role in processing chat notifications and its use in the order service, but it lacks a comprehensive overview of Kafka's overall purpose and broader applications within the project, which may leave the user's question partially unanswered."
+            "reason": "The retrieved context is highly relevant and effectively addresses the user's question by clearly explaining Kafka's role across multiple microservices, including its use as a message broker for chat notifications, order processing, and product-related messaging. It provides both broad and specific examples that comprehensively meet the user's intent."
           }
         }
       },
@@ -239,17 +239,17 @@
           "answerRelevancyMetric": {
             "score": 0.95,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by explicitly listing the necessary fields for the order table and providing a clear definition of 'order_id.' However, it falls short by including information about user authorization and product details that, while relevant, do not directly pertain to the user's specific inquiry about table fields."
+            "reason": "The answer effectively identifies key fields for the order table, including a unique order_id, directly addressing the user's request. However, it somewhat diverges by discussing user authorization and product details, which, while related, do not specifically pertain to the order table fields."
           },
           "faithfulnessMetric": {
-            "score": 0.0,
+            "score": 0.25,
             "success": false,
-            "reason": "The answer lacks strong support from the context, as it fails to specify the fields that should be included in the orders table and does not mention 'order_id' as a relevant field. This absence of specific details weakens the overall validity of the response."
+            "reason": "The answer is generally well supported by the context, accurately reflecting the order ID, statuses in both English and Russian, and the creation date and time. However, the introductory phrase mentioned does not assert a fact, which slightly weakens the direct factual support."
           },
           "contextualRelevancyMetric": {
-            "score": 0.228,
+            "score": 0.352,
             "success": false,
-            "reason": "The retrieved context partially addresses the user's question about order table fields, providing detailed information on some required fields, but lacks comprehensive coverage of how these fields relate to order management. Additionally, some segments diverge from the main inquiry, discussing unrelated topics such as order items and employee access to shipments."
+            "reason": "The retrieved context provides useful information about order items within the orders table, directly addressing the user's question, though with minor gaps. However, the inclusion of product and supplier fields is only partially or not relevant, limiting the overall completeness of the answer."
           }
         }
       },
@@ -259,17 +259,17 @@
           "answerRelevancyMetric": {
             "score": 0.95,
             "success": true,
-            "reason": "The answer effectively meets the user's request by clearly stating the minimum password length required for registration and referencing supporting documentation for context. However, it lacks additional concrete details that could enhance understanding of the password policy."
+            "reason": "The answer effectively addresses the user's question by clearly stating the minimum password length as 8 characters and reinforcing it with documentation references. However, while the additional detail about password masking is relevant, it slightly diverts focus from the core query about length requirements."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context regarding the requirement for password length, as it accurately reflects the specified criteria. However, it weakens the overall claim by including a second part that discusses password visibility, which is unrelated to the minimum password length."
+            "reason": "The answer is well supported by the context regarding the password's minimum length of 8 characters, which is clearly stated multiple times; however, the mention of the password being hidden is unrelated to the length requirement and does not affect the factual consistency."
           },
           "contextualRelevancyMetric": {
             "score": 0.84,
             "success": true,
-            "reason": "The retrieved context is highly relevant in two segments that clearly state the minimum password length requirement of 8 characters, directly addressing the user's question and intent. However, one segment is less relevant as it focuses on the login process rather than the password length for registration."
+            "reason": "The retrieved context is largely relevant, with multiple segments explicitly specifying the minimum password length requirement of 8 characters, directly addressing the user's question and registration intent. However, some segments focus on related but less pertinent topics like login and authentication, offering limited support for the specific password length inquiry."
           }
         }
       },
@@ -277,19 +277,19 @@
         "question": "Какие статусы может иметь заказ и что происходит с товарами при отмене?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 1.0,
+            "score": 0.9667,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by explicitly listing the possible order statuses and providing a thorough explanation of the 'pending' status. However, it lacks coverage of the other statuses in detail, which could enhance the overall completeness of the response."
+            "reason": "The answer effectively addresses the user's request by clearly explaining the 'pending' and 'completed' order statuses and their implications, while also providing relevant context on cancellation behavior; however, it falls short of fully listing all possible order statuses, leaving a gap in comprehensive coverage."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer was well supported by the context, as it clearly outlined the statuses of an order and provided a precise definition of the 'pending' status, which strengthens the overall understanding. However, the evaluation could have benefited from additional examples or explanations to further clarify the implications of each status."
+            "reason": "The answer was well supported by the context, as it accurately reflected the explicit definition of the 'pending' status provided (\"Заказ создан и ожидает обработки\"). However, the evaluation could be strengthened by referencing the full list of order statuses to ensure comprehensive understanding."
           },
           "contextualRelevancyMetric": {
-            "score": 0.76,
+            "score": 0.88,
             "success": true,
-            "reason": "The retrieved context is partially relevant to the user's question about order statuses and cancellation consequences, with one segment providing a clear explanation of the status change upon cancellation, while another offers a list of statuses but lacks detail on product consequences. However, one segment diverges from the user's intent by focusing on shipment orders, making the overall relevanc"
+            "reason": "The retrieved context effectively covers the range of order statuses and clearly explains that canceled orders change status to \"cancelled\" with products returned to stock, directly addressing the user's question. However, some segments lack details on product handling after cancellation, making the overall relevance strong but somewhat uneven in completeness."
           }
         }
       },
@@ -299,17 +299,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively meets the user's request by clearly stating the minimum and maximum length requirements for a username and citing a reliable source to support this information. However, it lacks additional context or examples that could further enhance understanding of username creation."
+            "reason": "The answer effectively addresses the user's request by clearly stating the minimum and maximum username length requirements and reinforcing this information with a reference to the registration form, providing both clarity and credibility. However, it could be improved by including examples or additional context to enhance understanding."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects and cites the specified requirements for username length. However, it could be strengthened by providing additional details or examples from the context to enhance clarity."
+            "reason": "The answer is well supported by the context, as it directly quotes the clearly stated requirement that the username must be between 3 and 50 characters long, which is emphasized in multiple sections including the UI requirements and acceptance criteria. However, the evaluation could be strengthened by referencing any additional relevant details or exceptions if present."
           },
           "contextualRelevancyMetric": {
-            "score": 0.496,
+            "score": 0.464,
             "success": false,
-            "reason": "The retrieved context includes one segment that directly addresses the user's question about the minimum and maximum length for a username, effectively meeting their needs. However, other segments either provide unrelated information or lack specific details about username length, which diminishes the overall relevance."
+            "reason": "The retrieved context is highly relevant as it clearly specifies the username length constraints (3 to 50 characters), directly addressing the user's question and intent regarding registration requirements. Although some segments are less focused on UI specifics or unrelated to registration, the key information needed is well covered."
           }
         }
       },
@@ -319,17 +319,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly stating that the password is hashed with the bcrypt algorithm, demonstrating a strong understanding of the hashing process. However, it lacks additional context or details about the benefits of using bcrypt, which could enhance the response."
+            "reason": "The answer effectively addresses the user's request by clearly recommending the bcrypt algorithm for password hashing, demonstrating a direct and relevant response. However, it lacks additional context or guidance on implementation details that could enhance practical understanding."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer was well supported by the context, as it directly aligns with the information provided about password hashing, demonstrating a strong consistency. However, there may be a lack of additional details or examples that could further enhance the explanation."
+            "reason": "The answer is well supported by the context, as it correctly identifies that the password must be hashed using the bcrypt algorithm, which is explicitly stated. However, if any additional details about implementation or alternatives were mentioned without context support, those parts would be weaker."
           },
           "contextualRelevancyMetric": {
-            "score": 0.416,
+            "score": 0.58,
             "success": false,
-            "reason": "The retrieved context is highly relevant to the user's question about password hashing, as it clearly specifies the requirement to use the bcrypt algorithm for hashing passwords before storage. However, one segment diverges from this focus by discussing token management, which does not address the user's intent."
+            "reason": "The retrieved context is largely relevant, as it explicitly addresses the requirement to hash passwords using the bcrypt algorithm, directly fulfilling the user's question and intent. However, some segments unrelated to password hashing, such as those focusing on token management, do not contribute to answering the user's query."
           }
         }
       },
@@ -339,17 +339,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly outlining the role assigned after registration, demonstrating strong relevance to the request. However, it lacks additional context or examples that could enhance understanding of the role's implications or responsibilities."
+            "reason": "The answer effectively addresses the user's question by clearly stating that the 'limited_user' role is assigned immediately after registration, but it could be improved by providing additional context or implications of this role."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately describes the role assigned to the user after registration, which aligns with the provided information. However, it could be strengthened by including specific details or examples from the context to enhance clarity and depth."
+            "reason": "The answer is well supported by the context, which clearly states that after successful registration, the user is created as a limited_user in PostgreSQL and assigned the limited_user role. However, any additional details beyond this specific process are not addressed, limiting the scope of support."
           },
           "contextualRelevancyMetric": {
-            "score": 0.6,
+            "score": 0.52,
             "success": false,
-            "reason": "The retrieved context is partially relevant; while one segment explicitly confirms that the user is assigned the role of 'limited_user' upon registration, the other segments do not directly address the user's question about roles, focusing instead on broader user management topics. This indicates a need for more targeted information regarding role assignments at registration."
+            "reason": "The retrieved context partially addresses the user's question by explicitly identifying the limited_user role as the default assignment after registration, while other segments provide related information on registration requirements and role management without directly specifying the initial role. Overall, the context is relevant but only one segment fully satisfies the user's intent."
           }
         }
       },
@@ -359,17 +359,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry about elevating access to super-admin by providing a direct response and referencing relevant documentation for support. However, it could be strengthened by offering additional context or examples to enhance understanding."
+            "reason": "The answer effectively addresses the user's question by clearly stating that self-promotion to super-admin is not possible and reinforces this with supporting documentation, demonstrating strong relevance and accuracy. However, it could be improved by briefly explaining the rationale or alternative procedures for obtaining super-admin rights."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the information regarding user permissions and correctly paraphrases the detail that a user cannot promote themselves to super-admin. However, it could be strengthened by providing additional context or examples to further clarify the implications of these permissions."
+            "reason": "The answer is well supported by the context, as it directly quotes the explicit statement that a user cannot promote themselves to super-admin, providing strong evidence for the claim. However, the evaluation does not address any additional nuances or exceptions that might exist beyond the quoted sentence."
           },
           "contextualRelevancyMetric": {
-            "score": 0.192,
+            "score": 0.6,
             "success": false,
-            "reason": "The retrieved context includes one segment that directly answers the user's question about self-promotion to super-admin, while the other segments provide related information about super-admin roles and user actions but do not address the user's intent. Overall, the relevant segment effectively meets the user's needs, but additional context may be necessary for a comprehensive understanding."
+            "reason": "The retrieved context includes a clear and direct explanation that users cannot self-promote to super-admin, effectively addressing the user's core question and intent. While additional segments provide related information on super-admin management and logging, they only partially or tangentially relate to the user's inquiry about self-promotion."
           }
         }
       },
@@ -377,19 +377,19 @@
         "question": "Какая ошибка возвращается, если у пользователя недостаточно прав?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.2943,
-            "success": false,
-            "reason": "The answer effectively identifies a potential issue with insufficient permissions, which is a relevant aspect of the user's request. However, it falls short by not including a specific error code or detailed information that could enhance the user's understanding of the problem."
+            "score": 0.8333,
+            "success": true,
+            "reason": "The answer reasonably addresses the user's request by inferring a likely error message related to insufficient permissions and offering a plausible example, which supports understanding despite the lack of a specific error provided. However, it falls short of directly answering the question with concrete details, relying instead on inference and an offer for further clarification."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is weakly supported by the context, as it suggests a possible error message for insufficient rights without any explicit backing from the provided information. While the statement hints at an error message, the lack of specific details in the context undermines its validity."
+            "reason": "The answer is not well supported by the context, as there is no information or implication regarding any specific error message related to insufficient user rights. While the answer suggests such an error message, this is not corroborated by the provided context."
           },
           "contextualRelevancyMetric": {
-            "score": 0.384,
+            "score": 0.256,
             "success": false,
-            "reason": "The retrieved context provides some relevant information regarding error messages during registration and authorization, but it lacks specific details about insufficient permissions, which is the user's primary concern. Additionally, unrelated segments about inventory notifications further diminish the overall relevance to the user's question."
+            "reason": "The retrieved context segments do not directly address errors related to insufficient user permissions or authorization issues, instead focusing on general error messages, user registration details, and unrelated notifications. Therefore, they are largely irrelevant for answering the user's question about errors returned when lacking sufficient rights."
           }
         }
       },
@@ -399,17 +399,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly outlining the information visible to a regular user at the /users/ endpoint, including specific details about the user's ID. However, it lacks additional context or examples that could enhance understanding of the endpoint's broader functionality."
+            "reason": "The answer effectively addresses the user's question by clearly stating that a regular user can only access their own data when querying /users/, including the visibility of their user ID (UUID). However, it could be improved by providing additional context or examples to enhance understanding."
           },
           "faithfulnessMetric": {
             "score": 0.64,
             "success": false,
-            "reason": "The answer is well supported by the context, as it clearly lists and accurately describes the specific data that a regular user can see when querying /users/, directly aligning with the information provided. However, while the statement is strong in its accuracy, it could benefit from additional context or examples to enhance clarity."
+            "reason": "The answer is well supported by the context, as it correctly reflects that a regular user can only access their own data via /users/, including both the user ID (UUID) and username within the specified character limits. However, any omission or misrepresentation of these details would weaken the consistency."
           },
           "contextualRelevancyMetric": {
-            "score": 0.304,
+            "score": 0.368,
             "success": false,
-            "reason": "The retrieved context includes a relevant segment that directly answers the user's question about the data displayed when querying the /users/ endpoint, while other segments discussing user registration and logging actions do not address the user's specific inquiry. Overall, the context provides a clear and focused response to the user's intent."
+            "reason": "The retrieved context includes a clear and direct explanation of the data visible to regular users at the /users/ endpoint, effectively addressing the user's question and intent. Additional information about super-admin capabilities and logging is relevant background but does not directly answer the user's query."
           }
         }
       },
@@ -419,17 +419,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly outlining the possible statuses of an order in the Orders_service microservice and providing a precise definition of the 'pending' status. However, it lacks additional context or examples that could enhance understanding of how these statuses are applied in real scenarios."
+            "reason": "The answer effectively addresses the user's request by clearly listing the possible order statuses and providing a detailed definition of the 'pending' status, demonstrating a strong understanding of the topic. However, it falls short by not elaborating on the other statuses, leaving the explanation incomplete."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately lists the statuses of an order and correctly describes the 'pending' status. However, while the strong points highlight the accurate representation of the information, there may be a lack of detail regarding other statuses that could enhance the overall understanding."
+            "reason": "The answer is well supported by the context, as the possible order statuses are clearly listed in section 2, and the definition of the 'pending' status matches exactly with the phrase 'Заказ создан и ожидает обработки'. However, the evaluation could be strengthened by referencing any additional details or nuances about the statuses if present."
           },
           "contextualRelevancyMetric": {
-            "score": 0.8,
+            "score": 0.76,
             "success": true,
-            "reason": "The retrieved context is highly relevant in addressing the user's question about order statuses, as it includes explicit listings and descriptions of possible order statuses and their updates. However, one segment diverges from the main focus by discussing UI requirements and user roles, which does not directly contribute to the user's intent."
+            "reason": "The retrieved context is highly relevant as it clearly defines the possible order statuses and their meanings, along with how these statuses update based on specific events, directly addressing the user's question. Although one segment focuses on UI and user roles, it does not detract from the comprehensive coverage of order status information provided."
           }
         }
       },
@@ -439,17 +439,17 @@
           "answerRelevancyMetric": {
             "score": 0.95,
             "success": true,
-            "reason": "The answer effectively addresses the user's question about which order status can be canceled and clearly explains the implications of cancellation. However, it falls short by not directly linking the relevant documentation to the user's specific inquiry, leading to some redundancy in the explanation."
+            "reason": "The answer effectively identifies the specific order status that permits cancellation and clearly explains the resulting status change and inventory impact, directly addressing the user's query. However, it relies heavily on repeated documentation excerpts without adding further detailed insights beyond the initial clear explanation."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the information regarding the status of an order that can be canceled and correctly describes the outcome of the cancellation. However, while the strong points align with the context, there may be a lack of additional details that could further enhance understanding."
+            "reason": "The answer is well supported by the context, as it accurately reflects that an order can be canceled if it is not completed and that the status 'pending' corresponds to 'в ожидании'. However, while the context clearly states that cancellation changes the order status to 'cancelled' and returns goods to stock, the answer could be stronger by explicitly mentioning these post-cancellation effects."
           },
           "contextualRelevancyMetric": {
-            "score": 0.464,
-            "success": false,
-            "reason": "The retrieved context is mostly relevant to the user's question about order cancellation, as it provides clear information on the ability to cancel pending orders and the status changes that occur after cancellation. However, one segment discussing system architecture is unrelated and does not contribute to addressing the user's intent."
+            "score": 0.76,
+            "success": true,
+            "reason": "The retrieved context is largely relevant, as it clearly identifies which order statuses allow cancellation and explains the resulting status change and stock update, directly addressing the user's question. However, some segments provide only partial or tangential information, offering limited additional insight into order statuses or cancellation processes."
           }
         }
       },
@@ -459,17 +459,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly outlining the consequences of trying to cancel a completed order, highlighting the system's specific response. However, it lacks additional context or examples that could enhance understanding of the implications involved."
+            "reason": "The answer effectively addresses the user's question by clearly presenting the system's message and explaining why cancellation is prohibited for completed orders, though it could be improved by briefly outlining any possible next steps or alternatives."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it correctly identifies that cancellation is only allowed for 'pending' orders, leading to a specific message when trying to cancel a completed order. However, it could be strengthened by providing more details about the exact message returned."
+            "reason": "The answer is well supported by the context, as it correctly reflects that cancellation is only allowed for pending orders and that completed or cancelled orders trigger the message 'Cannot cancel this order.' However, the evaluation could be strengthened by explicitly referencing these status conditions to clarify the reasoning."
           },
           "contextualRelevancyMetric": {
-            "score": 0.68,
+            "score": 0.52,
             "success": false,
-            "reason": "The retrieved context is mostly relevant to the user's question about cancelling an order, as it clearly outlines the conditions under which an order can be cancelled and provides guidance on managing orders. However, some segments offer tangential information that does not directly address the user's specific inquiry regarding completed orders."
+            "reason": "The retrieved context includes a clear and direct explanation that only pending orders can be canceled and that attempting to cancel a completed order results in a specific error message, effectively addressing the user's question. While additional segments provide useful background on order statuses and processing, they do not explicitly clarify the cancellation behavior, making the first segment"
           }
         }
       },
@@ -477,19 +477,19 @@
         "question": "Какие поля нужно передать при создании заказа?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.98,
+            "score": 0.9,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the required fields for creating an order and detailing the specific requirements for 'product_id,' along with important considerations about quantity limits and user authorization. However, it could be improved by including examples or context to further enhance understanding."
+            "reason": "The answer partially addresses the user's request by introducing and highlighting relevant required fields for order creation, demonstrating an understanding of the topic. However, it falls short by not providing a complete list or detailed enumeration of these fields, leaving the response incomplete."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context as it accurately lists the required fields for creating an order and correctly emphasizes that the 'quantity' must be greater than 0 and that user authorization is necessary. However, it could be strengthened by providing additional details or examples from the context to further illustrate these points."
+            "reason": "The answer is generally well supported by the context, as it correctly identifies that order_items is a list of products and that product_id is a required field within it. However, any omission or misinterpretation of other required fields within order_items would weaken the overall accuracy."
           },
           "contextualRelevancyMetric": {
-            "score": 0.56,
+            "score": 0.104,
             "success": false,
-            "reason": "The retrieved context includes a highly relevant segment that directly addresses the user's question about the required fields for creating an order, while another segment provides useful user story information but lacks specific details. Additionally, there is a segment on product data requirements that is tangentially related, but overall, the context effectively meets the user's needs with a cl"
+            "reason": "The retrieved context includes a highly relevant segment that explicitly details the required fields and constraints for creating an order, directly addressing the user's question and intent. However, the other segments offer only general behavioral information or unrelated product data, providing limited additional value for the user's specific needs."
           }
         }
       },
@@ -497,19 +497,19 @@
         "question": "Чем отличаются права обычного пользователя и супер-админа при работе с заказами?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 1.0,
-            "success": true,
-            "reason": "The answer effectively clarifies the distinctions in order management rights between ordinary users and super-administrators, specifically noting that ordinary users can only view their own orders, which directly addresses the user's inquiry. However, it lacks additional context or examples that could further enhance understanding of these roles."
+            "score": 0.5877,
+            "success": false,
+            "reason": "The answer effectively clarifies the distinct access rights by specifying that ordinary users can only view their own orders and cancel pending ones, while super-admins have broader management capabilities, directly addressing the user's query. However, it could be improved by explicitly contrasting these roles in a more concise manner to enhance clarity."
           },
           "faithfulnessMetric": {
-            "score": 0.0204,
+            "score": 0.0494,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately highlights that ordinary users can only cancel 'pending' orders, distinguishes between the rights of ordinary users and super-administrators, and confirms that ordinary users can only view their own orders. However, the evaluation could be strengthened by providing additional details on the implications of these rights and statuses."
+            "reason": "The answer is generally well supported by the context, as it correctly reflects that users can cancel orders only when the status is pending and that users cannot access others' orders, aligning with the described distinctions between ordinary users and super-admins. However, the inclusion of a heading or label does not constitute a factual claim and thus does not contribute to the factual consist"
           },
           "contextualRelevancyMetric": {
-            "score": 0.9,
+            "score": 0.78,
             "success": true,
-            "reason": "The retrieved context is highly relevant to the user's question, as it clearly outlines the differences in order management capabilities between regular users and super-admins, specifically highlighting that super-admins can access all orders regardless of ownership. However, one segment, while mentioning super-admin capabilities, does not directly address the user's inquiry about order management"
+            "reason": "The retrieved context is highly relevant as it clearly outlines the differing permissions between regular users and admins in order management, including viewing, filtering, status changes, and creation capabilities. While some details on user roles are less directly related, the core information effectively addresses the user's question about permission differences."
           }
         }
       },
@@ -517,19 +517,19 @@
         "question": "Кто может создавать чаты и сколько минимум в чате участников?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.7667,
+            "score": 0.9,
             "success": true,
-            "reason": "The answer effectively clarifies that only administrators can create chats and specifies the minimum number of participants required, directly addressing key aspects of the user's inquiry. However, it falls short by not explicitly stating the minimum number of participants needed for a group chat, leaving a gap in the response."
+            "reason": "The answer effectively addresses the user's question by clearly identifying who can create chats and specifying the minimum number of participants needed. However, it includes extra details about group chats that, while informative, do not directly pertain to the core query about participant requirements and creator permissions."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately states that only certain users can create chats and highlights that administrators are automatically included as participants. However, it could be strengthened by providing more details on the specific criteria for who can create chats beyond just mentioning administrators."
+            "reason": "The answer is generally well supported by the context, as it correctly identifies that only administrators (superadmins) can create new chats and that the administrator is automatically added as a participant. However, the context does not explicitly clarify whether other participants can be added at creation, which is a minor gap in support."
           },
           "contextualRelevancyMetric": {
-            "score": 0.528,
-            "success": false,
-            "reason": "The retrieved context is mostly relevant, as it clearly outlines the roles of administrators in creating new chats and adding participants, directly addressing the user's question. However, one segment discussing WebSocket functionality is unrelated and does not contribute to answering the user's inquiry."
+            "score": 0.72,
+            "success": true,
+            "reason": "The retrieved context is partially relevant, as it clearly identifies that only administrators can create new chats and outlines participant requirements, but it lacks complete details on the minimum number of participants needed. Additionally, some segments focus on technical messaging aspects that do not directly address the user's question about chat creation and participant criteria."
           }
         }
       },
@@ -537,19 +537,19 @@
         "question": "Сколько последних сообщений подгружается при подключении к WebSocket?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.95,
+            "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry about the number of recent messages loaded when connecting to a WebSocket and enhances understanding by referencing relevant documentation. However, it could be improved by providing specific examples or details about the message loading process."
+            "reason": "The answer effectively addresses the user's question by clearly stating that 50 recent messages are loaded upon WebSocket connection and reinforcing this with direct documentation quotes, fully satisfying the user's request without notable gaps."
           },
           "faithfulnessMetric": {
-            "score": 0.0,
+            "score": 0.4204,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the information about the number of messages loaded upon connecting to WebSocket and correctly infers that the last 50 messages are loaded. However, the evaluation could be strengthened by providing additional details or examples from the context to further substantiate the claims made."
+            "reason": "The answer is well supported by the context, as it accurately reflects that the server loads and the client receives the last 50 messages from Redis upon connecting to the WebSocket. However, the evaluation could be strengthened by explicitly confirming that these messages are only sent if they exist."
           },
           "contextualRelevancyMetric": {
-            "score": 0.56,
+            "score": 0.528,
             "success": false,
-            "reason": "The retrieved context is mostly relevant, as it includes a segment that directly addresses the user's question about loading messages from Redis upon WebSocket connection. However, one segment provides unnecessary technical details, and another is unrelated to the user's intent, which slightly detracts from the overall relevance."
+            "reason": "The retrieved context is highly relevant as it directly addresses the user's question by specifying that the last 50 messages are loaded and sent upon WebSocket connection. However, one segment about stock level notifications is unrelated and does not contribute to answering the query."
           }
         }
       },
@@ -559,17 +559,17 @@
           "answerRelevancyMetric": {
             "score": 0.975,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly explaining how Redis is utilized for caching messages and detailing the retrieval process via the WebSocket server. However, it falls short by reiterating benefits without introducing any new insights or information."
+            "reason": "The answer effectively addresses the user's request by clearly explaining Redis's primary role in enhancing chat history access speed and providing a concrete example to illustrate this benefit. However, it could be improved by offering more detailed insights beyond the quoted source to deepen understanding."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately describes Redis's role in caching the last 50 messages, which effectively reduces database requests and enhances access speed to chat history. However, while the explanation of loading messages upon WebSocket connection is correct, it could benefit from additional details on how this process impacts overall performance."
+            "reason": "The answer is well supported by the context, as it accurately reflects that Redis is used to cache the last 50 messages to minimize database queries and speed up chat history retrieval. However, while the context clearly states the server loads these messages from Redis upon WebSocket connection, any additional details beyond this are not explicitly supported."
           },
           "contextualRelevancyMetric": {
-            "score": 0.496,
-            "success": false,
-            "reason": "The retrieved context is highly relevant, as it includes detailed explanations of how Redis is utilized for caching chat messages, directly addressing the user's question and intent. However, one segment diverges from the topic by discussing unrelated tools for API testing and project management."
+            "score": 0.7,
+            "success": true,
+            "reason": "The retrieved context is highly relevant as it clearly explains Redis's role in caching the last 50 chat messages to improve access speed and reduce database queries, directly addressing the user's question. However, one segment mentioning Redis in a future release lacks explanation of its purpose, making it less pertinent."
           }
         }
       },
@@ -579,17 +579,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly specifying the length and character restrictions for a product name, demonstrating strong relevance. However, it lacks additional context or examples that could enhance understanding and applicability."
+            "reason": "The answer effectively addresses the user's request by clearly specifying the length requirements and permitted characters for the product name, but it could be improved by including examples or additional context to enhance clarity."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately captures the requirements for the product name outlined in the provided information. However, it could be strengthened by including specific examples or details from the context to further substantiate the claims made."
+            "reason": "The answer is well supported by the context, as it correctly identifies the product name requirements regarding length and allowed characters. However, any omission or misinterpretation of these specific constraints would weaken the response's accuracy."
           },
           "contextualRelevancyMetric": {
-            "score": 0.464,
+            "score": 0.24,
             "success": false,
-            "reason": "The retrieved context is partially relevant; while one segment directly addresses the user's question about product name requirements, the other segments focus on supplier names and user stories, which do not align with the user's intent regarding product names. Overall, only one segment effectively meets the user's needs."
+            "reason": "The retrieved context includes one highly relevant segment that clearly defines the product name length and allowed characters, directly addressing the user's question. However, the other segments either provide incomplete or unrelated information, limiting the overall comprehensiveness of the answer."
           }
         }
       },
@@ -597,19 +597,19 @@
         "question": "Какая ошибка вернётся при попытке создать продукт с уже существующим названием?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.9333,
+            "score": 0.8333,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly stating the error code and message for duplicate product names, which aligns with the user's intent. However, it falls short by not providing specific details about the product creation process, leaving some aspects of the user's inquiry unaddressed."
+            "reason": "The answer provides relevant context by discussing supplier error logic and reasonably infers that duplicate product names should trigger an error, aligning with the user's intent; however, it inaccurately attributes a supplier-specific error code to product duplicates, leaving the response only partially accurate."
           },
           "faithfulnessMetric": {
-            "score": 0.0,
+            "score": 0.381,
             "success": false,
-            "reason": "The answer is poorly supported by the context, as it inaccurately asserts that an error occurs for creating a product with an existing name, while the context only addresses errors related to suppliers with duplicate names. Additionally, the suggestion that similar logic applies to products is unfounded, as there is no information provided about duplicate product names or associated errors."
+            "reason": "The answer is partially supported by the context, as it correctly identifies that the 422 error applies to duplicate supplier names, but it weakly infers similar error handling for products without direct evidence, making the claim plausible yet not explicitly confirmed."
           },
           "contextualRelevancyMetric": {
-            "score": 0.1083,
+            "score": 0.38,
             "success": false,
-            "reason": "The retrieved context is largely irrelevant to the user's question about errors related to creating a product with a duplicate name, as it focuses on general error handling, the product creation process, and product management without addressing the specific issue of duplicate names. Consequently, it fails to meet the user's needs for information on this particular error."
+            "reason": "The retrieved context provides related information on error handling and validation for entities like suppliers and products but does not explicitly address the specific error code or message for duplicate product names. Therefore, it offers partial but insufficient relevance to fully answer the user's question about duplicate product name errors."
           }
         }
       },
@@ -619,17 +619,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly stating the maximum price of the product, demonstrating strong relevance. However, it lacks additional context or details that could enhance the user's understanding of pricing factors or comparisons."
+            "reason": "The answer effectively addresses the user's request by clearly stating the maximum possible price of the product, demonstrating strong relevance and clarity; however, it could be improved by offering additional context or justification for that price."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context as it accurately reflects the maximum price limit for the product, demonstrating a strong alignment with the provided information. However, it could be strengthened by including additional details or examples from the context to further validate the claim."
+            "reason": "The answer is well supported by the context as it correctly identifies the maximum price allowed for the product as 9999999.99, which is explicitly stated. However, any additional details beyond this specific limit are not addressed, indicating a focus solely on the price cap without further elaboration."
           },
           "contextualRelevancyMetric": {
-            "score": 0.62,
+            "score": 0.52,
             "success": false,
-            "reason": "The retrieved context is mostly relevant to the user's question about the maximum price of a product, as it includes detailed information about price constraints and requirements for adding a new product. However, one segment provides less direct relevance by focusing on the user interface for viewing products without addressing the maximum price specifically."
+            "reason": "The retrieved context is partially relevant, as it includes a clear statement of the maximum allowed product price, directly addressing the user's question. However, other segments focus on product creation and management without specifying price limits, offering limited additional value for the user's specific inquiry."
           }
         }
       },
@@ -639,17 +639,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the acceptable image formats for upload, demonstrating strong relevance. However, it lacks additional context or examples that could enhance understanding of the formats' specific uses or limitations."
+            "reason": "The answer effectively addresses the user's request by clearly listing the permitted image formats for product uploads, providing a direct and relevant response. However, it could be improved by briefly explaining any format-specific advantages or limitations to enhance user understanding."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it correctly identifies the allowed image formats mentioned. However, it could be strengthened by providing specific examples or additional details from the context to enhance clarity."
+            "reason": "The answer is well supported by the context, as it clearly states that image uploads are allowed in png, jpeg, and jpg formats. However, if the answer omitted any of these formats or included unsupported ones, that would weaken its accuracy."
           },
           "contextualRelevancyMetric": {
-            "score": 0.7,
-            "success": true,
-            "reason": "The retrieved context is highly relevant in addressing the user's question about acceptable image formats for product uploads, as two segments directly provide the necessary information (png, jpeg, jpg). However, one segment is less relevant as it focuses on UI functions without addressing the user's specific inquiry."
+            "score": 0.336,
+            "success": false,
+            "reason": "The retrieved context provides relevant information on supported image formats (png, jpeg, jpg) for product uploads, directly addressing the user's question. However, some segments include unrelated details, making the overall information somewhat scattered but still sufficiently informative."
           }
         }
       },
@@ -659,17 +659,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's query by clearly explaining the consequences of attempting to delete a supplier with linked products and referencing relevant documentation about the resulting error. However, it could be strengthened by offering additional context or examples to enhance understanding of the implications."
+            "reason": "The answer effectively addresses the user's question by clearly stating that an error occurs when attempting to delete a supplier with linked products and supports this with relevant documentation, fully meeting the user's intent without any notable gaps."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately describes the error that arises when attempting to delete a supplier with linked products, confirming that such an action will trigger an error message. However, while the conclusion is consistent with the provided information, it could benefit from additional details about the nature of the error for a more comprehensive understanding."
+            "reason": "The answer is well supported by the context, as it directly quotes the explicit requirement that deleting a supplier with linked products is prohibited and must trigger an error. However, the evaluation could be strengthened by addressing any additional conditions or exceptions if present in the context."
           },
           "contextualRelevancyMetric": {
-            "score": 0.096,
+            "score": 0.4,
             "success": false,
-            "reason": "The retrieved context is partially relevant, as one segment directly addresses the consequences of deleting a supplier with linked products, while another provides general information about updating supplier details, which does not fully meet the user's inquiry. However, the third segment is unrelated and does not contribute to answering the user's question."
+            "reason": "The retrieved context includes a directly relevant segment that clearly addresses the user's question about supplier deletion restrictions when linked products exist, while the other segments provide related but less specific information. Overall, the context sufficiently meets the user's needs by confirming that suppliers with linked products cannot be deleted."
           }
         }
       },
@@ -679,17 +679,17 @@
           "answerRelevancyMetric": {
             "score": 0.98,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the required fields for creating a warehouse and offering specific details about the location field, including its maximum length. However, it falls short by not providing additional context or elaboration on the referenced sources, which could enhance understanding."
+            "reason": "The answer effectively addresses the user's request by clearly listing the mandatory fields for creating a warehouse and specifying 'location' with relevant details, demonstrating strong alignment with the user's intent. However, the inclusion of source references, while informative, adds background context rather than directly enhancing the core response."
           },
           "faithfulnessMetric": {
-            "score": 1.0,
-            "success": true,
-            "reason": "The answer is well supported by the context as it accurately identifies the required fields for creating a warehouse, demonstrating a strong alignment with the provided information. However, it could be improved by including additional details or examples to enhance clarity and depth."
+            "score": 0.6044,
+            "success": false,
+            "reason": "The answer is well supported by the context regarding the mandatory nature and constraints of the warehouse location and capacity fields, accurately reflecting their requirements. However, it is weakened by the inclusion of references to sources not present in the provided context, which undermines its overall reliability."
           },
           "contextualRelevancyMetric": {
-            "score": 0.64,
-            "success": false,
-            "reason": "The retrieved context includes a highly relevant segment that directly answers the user's question about mandatory fields for creating a warehouse, while another segment offers additional but less direct information. However, one segment is only tangentially related and does not address the user's specific inquiry, indicating a mixed relevance overall."
+            "score": 0.7,
+            "success": true,
+            "reason": "The retrieved context is largely relevant, as it includes explicit details on mandatory and optional fields required for warehouse creation, directly addressing the user's question and intent. However, some segments focus on UI elements without specifying creation requirements, offering limited value for the user's needs."
           }
         }
       },
@@ -697,19 +697,19 @@
         "question": "Какое значение получает поле current_stock при создании склада?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.65,
-            "success": false,
-            "reason": "The answer effectively addresses the user's question by explicitly stating the initial value of current_stock when creating a warehouse, while also providing relevant context about its significance. However, it falls short by not directly linking this detail back to the user's inquiry, which could enhance clarity and relevance."
+            "score": 0.95,
+            "success": true,
+            "reason": "The answer effectively addresses the user's question by clearly stating that current_stock is initialized to 0 when a warehouse is created, while also enhancing comprehension through relevant background information about current_stock. However, the additional context, though helpful, slightly dilutes the focus from the direct initialization detail."
           },
           "faithfulnessMetric": {
-            "score": 1.0,
-            "success": true,
-            "reason": "The answer is well supported by the context, as it accurately reflects the automatic filling of the current_stock field and correctly describes its value. However, while the strong points align with the provided information, there may be additional nuances in the context that could further clarify the implications of the current_stock value."
+            "score": 0.4204,
+            "success": false,
+            "reason": "The answer is generally well supported by the context, as it correctly identifies that current_stock represents the total number of products in the warehouse and is automatically initialized to 0 upon warehouse creation. However, the context does not provide details on how current_stock is updated after initialization, which limits the completeness of the support."
           },
           "contextualRelevancyMetric": {
             "score": 0.4,
             "success": false,
-            "reason": "The retrieved context is mostly relevant to the user's question about the current_stock field during warehouse creation, with the first two segments directly addressing the automatic setting of current_stock to 0. However, the third segment is unrelated, focusing instead on adding products to a warehouse, which does not meet the user's needs."
+            "reason": "The retrieved context is largely relevant, as it clearly explains that the 'current_stock' field is automatically initialized to 0 when creating a warehouse, directly addressing the user's question. However, some segments are less focused or unrelated, such as those about adding products, which do not contribute to understanding the initial value of 'current_stock'."
           }
         }
       },
@@ -719,17 +719,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly explaining why a warehouse with products cannot be deleted and includes relevant details about the resulting error. However, it could be strengthened by offering potential solutions or alternatives for managing the warehouse."
+            "reason": "The answer effectively addresses the user's question by clearly stating that a warehouse containing products cannot be deleted and supports this with the explanation that an error occurs if deletion is attempted. However, it could be strengthened by providing additional context or alternatives for handling such warehouses."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately conveys that a warehouse containing products cannot be deleted and that an error message should be generated in such cases. However, while the core information is correct, the evaluation could benefit from additional details about the specific error message or the implications of this restriction."
+            "reason": "The answer is well supported by the context, as it correctly reflects that a warehouse cannot be deleted if it contains products and that an error must be issued in such cases. However, the evaluation could be strengthened by explicitly referencing the exact wording or conditions under which the error is triggered."
           },
           "contextualRelevancyMetric": {
-            "score": 0.384,
+            "score": 0.66,
             "success": false,
-            "reason": "The retrieved context is highly relevant to the user's question about deleting a warehouse, as it includes both the functionality and the specific process for deletion, addressing the user's intent effectively. However, one segment discussing technical authorization requirements is less pertinent to the user's inquiry."
+            "reason": "The retrieved context is highly relevant as it directly addresses the conditions and process for deleting a warehouse, specifically noting that warehouses containing products cannot be deleted. While some information on product deletion is included, the key points effectively clarify the user's query about deleting warehouses storing products."
           }
         }
       },
@@ -739,17 +739,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly outlining the limitations of the supplier's phone number and noting its optional status. However, it could be strengthened by providing additional context or examples of how these limitations might impact the user."
+            "reason": "The answer effectively addresses the user's request by clearly introducing the topic of phone number restrictions for the supplier and specifying that providing a phone number is optional. However, it could be improved by offering more context or examples to fully clarify the implications of this restriction."
           },
           "faithfulnessMetric": {
             "score": 0.1925,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately reflects the optional status of the phone number, specifies the correct maximum length, and describes the allowed characters. However, while the strong points reinforce the accuracy of the information, the evaluation does not mention any potential weaknesses or limitations in the context provided."
+            "reason": "The answer is generally well supported by the context, accurately reflecting that the phone number is optional, limited to 15 characters, and composed only of digits and the plus symbol. However, any omission or misinterpretation of these specific constraints would weaken its consistency."
           },
           "contextualRelevancyMetric": {
-            "score": 0.252,
+            "score": 0.192,
             "success": false,
-            "reason": "The retrieved context is partially relevant to the user's inquiry about the limitations of a supplier's phone number, as it provides some details about the phone number field's optional status and maximum length. However, additional specific information regarding the limitations is needed to fully address the user's question."
+            "reason": "The retrieved context includes one highly relevant segment that explicitly outlines the restrictions on the supplier's phone number, directly addressing the user's question. However, the other segments are either unrelated or lack specific details on phone number limitations, making the overall relevance partial but sufficient for answering the query."
           }
         }
       },
@@ -757,19 +757,19 @@
         "question": "Какой код возвращается при успешном добавлении продукта на склад?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.0,
+            "score": 0.5,
             "success": false,
-            "reason": "The answer effectively highlights the absence of a specific HTTP status code and mentions a success message, but it fails to directly address the user's request for information about the actual HTTP status code returned when adding a product. This gap significantly undermines the overall relevance of the response."
+            "reason": "The answer effectively addresses the user's query by clarifying that there is no specific HTTP code for successful product addition and offers relevant context about success messages; however, it falls short by not explicitly specifying the appropriate HTTP status code typically used in such scenarios."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is partially supported by the context; while it lacks specific details about the code returned upon successful product addition, it is strengthened by the clear mention of a success notification message being displayed, which confirms the success of the operation."
+            "reason": "The answer is well supported by the context in stating that the system displays the message «Товар успешно добавлен на склад» upon successful product addition, but it is weak in referencing any specific code returned, as the context does not provide such information."
           },
           "contextualRelevancyMetric": {
             "score": 0.156,
             "success": false,
-            "reason": "The retrieved context is largely irrelevant to the user's question about the HTTP status code returned upon successfully adding a product, as it focuses on the process and UI requirements for adding a product and a new warehouse without addressing the specific status code. None of the segments provide the necessary information to meet the user's needs."
+            "reason": "The retrieved context provides useful information about the process and UI aspects of adding a product but lacks any details about the specific HTTP status code returned upon successful addition, making it only partially relevant to fully addressing the user's question."
           }
         }
       },
@@ -779,17 +779,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's inquiry by clearly explaining how the system responds to a request for a product with a non-existent ID. However, it lacks additional context or examples that could enhance understanding of the implications of such a response."
+            "reason": "The answer effectively addresses the user's question by clearly stating that the system returns a 404 Not Found error for a non-existent product ID, demonstrating accurate and relevant information. However, it could be improved by briefly explaining why this response is appropriate or expected."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it correctly addresses the situation involving a non-existent product ID. However, it could be strengthened by providing additional details or examples to further clarify the implications of such a response."
+            "reason": "The answer is well supported by the context, as it correctly reflects that the system returns a 404 Not Found error when a product with the specified ID is not found. However, the evaluation could be strengthened by explicitly referencing any additional conditions or exceptions mentioned in the context."
           },
           "contextualRelevancyMetric": {
-            "score": 0.16,
+            "score": 0.64,
             "success": false,
-            "reason": "The retrieved context is highly relevant to the user's question, as it directly addresses the return of a 404 Not Found error when a product with the specified ID is not found, effectively meeting the user's intent. However, one segment diverges from this focus by discussing unrelated topics about creating products and validation errors."
+            "reason": "The retrieved context is largely relevant as it clearly states that a 404 Not Found error is returned when a product with the specified ID does not exist, directly addressing the user's question. However, some segments focus more on UI behavior or deletion rather than retrieval, offering less direct relevance."
           }
         }
       },
@@ -797,19 +797,19 @@
         "question": "Чем отличаются правила удаления поставщика и склада?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.9857,
+            "score": 0.9429,
             "success": true,
-            "reason": "The answer effectively clarifies the differences in deletion rules for suppliers and warehouses, offering specific conditions for suppliers and relevant context for both. However, it lacks a comprehensive comparison of the implications or consequences of these deletions, which would enhance the user's understanding."
+            "reason": "The answer effectively addresses the user's request by clearly highlighting the main rule differences regarding supplier and warehouse deletion in relation to linked products, providing relevant context that clarifies these distinctions. However, it includes some additional error handling details that, while informative, are not central to the core comparison sought."
           },
           "faithfulnessMetric": {
-            "score": 0.36,
+            "score": 0.1111,
             "success": false,
-            "reason": "The answer is well supported by the context, as it correctly outlines the conditions for deletion, including specific error messages for unauthorized access and not found IDs, and accurately distinguishes between the deletion rules for suppliers and warehouses based on product presence. However, while the details are strong, the overall clarity of the explanation could be improved to enhance under"
+            "reason": "The answer is generally well supported by the context, accurately reflecting the error responses for missing supplier or warehouse IDs and unauthorized users. However, some parts are introductory phrases or headings rather than factual claims, which do not contribute to factual consistency."
           },
           "contextualRelevancyMetric": {
-            "score": 0.8,
-            "success": true,
-            "reason": "The retrieved context is mostly relevant to the user's question about the differences in deletion rules, as it includes detailed information on the deletion processes for both warehouses and suppliers. However, one segment focuses on warehouse creation, which does not contribute to answering the user's inquiry."
+            "score": 0.66,
+            "success": false,
+            "reason": "The retrieved context is highly relevant as it directly addresses the rules and restrictions for deleting suppliers and warehouses, including authorization and error handling, which aligns closely with the user's question. However, the inclusion of warehouse creation details is only marginally pertinent and does not contribute to understanding deletion differences."
           }
         }
       },
@@ -817,19 +817,19 @@
         "question": "Какие поля доступны для обновления у склада?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.9125,
+            "score": 0.9667,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the fields available for updating in the warehouse management system, demonstrating strong relevance. However, it includes extraneous information about an error message related to a warehouse ID, which detracts from the focus on the user's primary inquiry."
+            "reason": "The answer effectively identifies and lists the specific fields that can be updated for warehouse information, clearly addressing the user's request. However, it includes an unrelated error message that does not contribute to clarifying which fields are updatable, slightly detracting from the focus."
           },
           "faithfulnessMetric": {
-            "score": 0.4204,
-            "success": false,
-            "reason": "The answer is well supported by the context in that it accurately identifies the fields available for updating a warehouse, which is a strong point. However, it weakens the overall response by including an irrelevant statement regarding errors related to the warehouse ID, which does not pertain to the fields for updating."
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is generally well supported by the context, as it correctly identifies both 'Местоположение' and 'Имя управляющего' as updatable fields. However, the evaluation could be strengthened by explicitly referencing any additional relevant details or limitations mentioned in the context."
           },
           "contextualRelevancyMetric": {
-            "score": 0.72,
-            "success": true,
-            "reason": "The retrieved context is largely relevant to the user's question about updating warehouse information, as it includes explicit details on the fields available for updates and the functionality for editing and deleting data. However, one segment provides less direct relevance by discussing related fields without specifically addressing the user's inquiry."
+            "score": 0.6,
+            "success": false,
+            "reason": "The retrieved context is partially relevant, as it explicitly lists the fields available for updating a warehouse, directly addressing the user's question, while other segments provide related information on editing, deleting, and adding warehouses without specifying updatable fields. Overall, it sufficiently meets the user's needs by clearly identifying which fields can be updated."
           }
         }
       },
@@ -837,19 +837,19 @@
         "question": "Какое поле склада заполняется автоматически и недоступно для редактирования?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.95,
+            "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's question by clearly identifying the automatically filled and non-editable field, while also offering valuable context on its generation. However, it could be improved by including specific examples or scenarios to enhance clarity further."
+            "reason": "The answer effectively addresses the user's question by clearly stating that the 'created_at' field is automatically generated and not editable, supported by a concrete example of its automatic population when adding a warehouse. However, it could be improved by briefly explaining why this automatic generation occurs or its purpose."
           },
           "faithfulnessMetric": {
-            "score": 0.0,
-            "success": false,
-            "reason": "The answer is well supported by the context, as it accurately identifies the non-editable field and correctly describes its automatic generation when a warehouse is added. However, while the strong points are clearly backed by explicit statements in the context, there may be additional details that could enhance the overall understanding of the process."
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is well supported by the context, as it clearly states that the 'Дата добавления склада (created_at)' is an automatically generated, non-editable field assigned upon adding the warehouse to the database. However, the evaluation could be strengthened by explicitly addressing any potential exceptions or user interactions, which the context does not mention."
           },
           "contextualRelevancyMetric": {
-            "score": 0.384,
+            "score": 0.4028,
             "success": false,
-            "reason": "The retrieved context is highly relevant as it directly addresses the user's inquiry about automatically filled fields in the warehouse creation modal, specifically highlighting the 'Текущее общее количество всех товаров' and 'Дата добавления склада' fields, while one segment is less pertinent as it focuses on product management rather than warehouse fields."
+            "reason": "The retrieved context is highly relevant as it directly identifies which warehouse fields are auto-filled and non-editable, specifically the total quantity field and the creation date, thereby effectively addressing the user's question. The unrelated segment about product list management does not impact the clarity of the key information provided."
           }
         }
       },
@@ -859,17 +859,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly outlining the Kafka topics utilized in the order service and offering a thorough explanation of the 'orders' topic and its role within the microservice. However, it lacks information on how these topics interact with each other, which would provide a more comprehensive understanding of the overall system."
+            "reason": "The answer effectively addresses the user's request by explicitly naming the Kafka topics, including 'orders,' used in the order microservice, demonstrating clear relevance and completeness. However, it could be improved by providing additional context or details about how these topics are utilized within the service."
           },
           "faithfulnessMetric": {
             "score": 0.6044,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately describes the Kafka topics used in the order_service, specifically identifying the 'orders' topic and its role in notifying other microservices about new orders. However, while the strong points include the correct identification and purpose of the topic, the evaluation lacks any mention of potential limitations or additional context th"
+            "reason": "The answer is well supported by the context, as it clearly identifies that the order_service uses specific Kafka topics and that the 'orders' topic is explicitly used for sending messages about new orders and notifying other microservices. However, the evaluation could be strengthened by detailing any additional Kafka topics mentioned or clarifying the scope of notifications beyond new orders."
           },
           "contextualRelevancyMetric": {
-            "score": 0.3224,
+            "score": 0.464,
             "success": false,
-            "reason": "The retrieved context includes one segment that directly answers the user's question about Kafka topics in the order service, while another segment provides relevant background information about the order microservice. However, one segment is unrelated, focusing instead on chat notifications and Redis, which does not contribute to addressing the user's intent."
+            "reason": "The retrieved context is largely relevant, providing clear information on the Kafka topics used by the order microservice and its interaction with those topics, effectively addressing the user's question. However, the inclusion of unrelated Kafka usage for chat notifications adds some extraneous detail not pertinent to the user's intent."
           }
         }
       },
@@ -877,19 +877,19 @@
         "question": "Какие поля содержит сообщение события OrderCreated?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 1.0,
+            "score": 0.9889,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by explicitly listing the fields included in the OrderCreated event message and providing a clear definition of the event_type field. However, it lacks additional context or examples that could further enhance understanding of how these fields are utilized in practice."
+            "reason": "The answer effectively addresses the user's request by explicitly naming key fields like event_type and order_id within the OrderCreated event, demonstrating a clear understanding of the included data. However, it falls short by not providing a comprehensive list or detailed descriptions of all fields, leaving the response somewhat incomplete."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately lists the fields in the OrderCreated message and correctly identifies the 'event_type' field along with its description. However, while the strong points highlight the accurate representation of the message's content, there may be a lack of additional context or examples that could further enhance the explanation."
+            "reason": "The answer is well supported by the context, as it accurately reflects the explicitly listed fields in the OrderCreated message and correctly identifies event_type as the type of event, specifically 'OrderCreated'. However, the evaluation could be strengthened by providing more detail on how these definitions are used or connected within the context."
           },
           "contextualRelevancyMetric": {
-            "score": 0.04,
+            "score": 0.44,
             "success": false,
-            "reason": "The retrieved context is partially relevant, as it includes a detailed description of the OrderCreated message format that directly addresses the user's question. However, some segments discussing unrelated topics, such as the OrderRejected message and order response handling, detract from the overall relevance to the user's inquiry."
+            "reason": "The retrieved context includes one segment that directly and comprehensively lists the fields in the OrderCreated event, fully addressing the user's question. The other segments provide related background on order processing and events but do not contribute specific details about the OrderCreated event fields."
           }
         }
       },
@@ -897,19 +897,19 @@
         "question": "Что означает событие OrderRejected и какие поля оно содержит?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 0.3403,
+            "score": 0.5625,
             "success": false,
-            "reason": "The answer effectively explains the meaning of the OrderRejected event and provides relevant details about its fields, demonstrating a solid understanding of the topic. However, it lacks specific examples or context that could enhance clarity and applicability for the user."
+            "reason": "The answer effectively clarifies the meaning of the OrderRejected event and accurately explains the role of the event_type field within this context. However, it could be improved by providing more detail on the specific reasons or conditions under which an order might be rejected."
           },
           "faithfulnessMetric": {
-            "score": 0.64,
-            "success": false,
-            "reason": "The answer is well supported by the context, as it correctly identifies the event_type field and its value, accurately describes the order_id field, and explains the meaning of the OrderRejected event. However, while the strong points demonstrate a clear alignment with the context, the evaluation does not mention any potential weaknesses or gaps in the explanation."
+            "score": 1.0,
+            "success": true,
+            "reason": "The answer is generally well supported by the context, as it correctly reflects that the OrderRejected event indicates an order was rejected by another service for some reason. However, the evaluation could be strengthened by explicitly referencing the detailed fields of the OrderRejected message listed in the context."
           },
           "contextualRelevancyMetric": {
-            "score": 0.64,
+            "score": 0.496,
             "success": false,
-            "reason": "The retrieved context includes a highly relevant segment that thoroughly explains the 'OrderRejected' event, directly addressing the user's question and intent. However, there is also a less detailed segment on the same event and an unrelated segment about 'OrderCreated', which diminishes the overall relevance slightly."
+            "reason": "The retrieved context is largely relevant and effectively addresses the user's question by providing detailed definitions and descriptions of the OrderRejected event, including its meaning and fields. However, one segment about the unrelated OrderCreated event is less pertinent to the user's specific inquiry."
           }
         }
       },
@@ -919,17 +919,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly identifying that only products available for sale are displayed in the management interface. However, it lacks additional details about the types of products or any specific examples that could enhance understanding."
+            "reason": "The answer effectively clarifies which products appear on the product management screen by detailing approval and availability criteria, directly addressing the user's intent. However, it could be strengthened by providing more context on how these criteria impact user interaction or management processes."
           },
           "faithfulnessMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer is well supported by the context, as it accurately describes the products displayed on the management screen and logically interprets their approval status for sale. However, while the connection between the statements is clear, further details on the implications of product approval could strengthen the overall understanding."
+            "reason": "The answer is well supported by the context, as it clearly states that the product list includes only admin-approved products with is_available set to True, ensuring users see only available products. However, the implication that users see exclusively available products relies on this condition without additional confirmation, which is a minor weakness."
           },
           "contextualRelevancyMetric": {
-            "score": 0.62,
+            "score": 0.56,
             "success": false,
-            "reason": "The retrieved context is largely relevant to the user's question about the products displayed, as it includes descriptions of the product management interface and requirements for showing current products. However, one segment does not directly address the specific products, indicating a partial gap in fully meeting the user's needs."
+            "reason": "The retrieved context is highly relevant as it directly addresses which products are displayed on the product management screen, specifying that only approved products are shown and detailing the table columns and interactions. While some segments focus more broadly on warehouse stock management, the core information effectively meets the user's question and intent."
           }
         }
       },
@@ -939,17 +939,17 @@
           "answerRelevancyMetric": {
             "score": 0.96,
             "success": true,
-            "reason": "The answer effectively outlines the product search functionality and user actions needed to initiate a search, showcasing its strengths in clarity and detail. However, it falls short by not fully elaborating on the search process and lacking additional context regarding the results display."
+            "reason": "The answer effectively addresses the user's request by clearly explaining how the search function operates through a form where the user inputs a product name to initiate the search, fully covering the interaction aspect. However, it relies heavily on contextual references from the requirements document without adding deeper operational details beyond the basic search process."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately describes the product search feature's functionality and logically follows from the provided information about how the search operates. However, it could be strengthened by including additional details about the search results or user experience to provide a more comprehensive understanding."
+            "reason": "The answer is well supported by the context, as it correctly identifies the requirement for a search form on the product management screen and the need to press the “Найти” button to perform the search. However, any details beyond these points are not explicitly confirmed, indicating some limitations in the support."
           },
           "contextualRelevancyMetric": {
-            "score": 0.228,
+            "score": 0.44,
             "success": false,
-            "reason": "The retrieved context provides some relevant information regarding UI requirements for the product management screen, particularly the search functionality; however, it lacks specific details about how the product search operates, and unrelated segments about supplier management do not contribute to answering the user's question effectively. Overall, while there is partial relevance, the context d"
+            "reason": "The retrieved context includes a highly relevant segment that directly explains the product search functionality on the product management screen, effectively addressing the user's question. However, the other segments pertain to related but distinct areas, such as general UI functions and supplier management, which are less pertinent to the specific inquiry."
           }
         }
       },
@@ -957,19 +957,19 @@
         "question": "Какие поля обязательны в модальном окне добавления склада?",
         "metrics": {
           "answerRelevancyMetric": {
-            "score": 1.0,
-            "success": true,
-            "reason": "The answer effectively meets the user's request by clearly listing the required fields for the warehouse addition form, including the specific mention of 'Местоположение' as essential. However, it lacks additional context or guidance on how to complete the form, which could enhance its usefulness."
+            "score": 0.64,
+            "success": false,
+            "reason": "The answer effectively addresses the user's request by clearly listing the required fields in the warehouse addition modal, including the explicitly mentioned 'Местоположение' field. However, it could be improved by providing additional context or examples to enhance clarity."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately lists the required fields for the modal window for adding a warehouse, including the correct identification of 'Местоположение' as a necessary field. However, it could be strengthened by providing additional details or examples from the context to enhance clarity."
+            "reason": "The answer is well supported by the context, as it explicitly identifies the required fields in the modal window for adding a new warehouse, including the mandatory status of 'Местоположение'. However, the evaluation could be strengthened by detailing any additional required fields mentioned in the context."
           },
           "contextualRelevancyMetric": {
             "score": 0.304,
             "success": false,
-            "reason": "The retrieved context includes one segment that directly addresses the user's question by listing the required fields for adding a warehouse, while the other segments are irrelevant as they focus on viewing warehouse information and adding a product. Overall, the relevant segment effectively meets the user's needs, but additional context is lacking."
+            "reason": "The retrieved context includes one highly relevant segment that directly lists and identifies the mandatory fields in the add warehouse modal, effectively addressing the user's question. The other segments, while related to warehouses or products, do not pertain to the add warehouse modal fields and thus offer limited relevance."
           }
         }
       },
@@ -979,17 +979,17 @@
           "answerRelevancyMetric": {
             "score": 1.0,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the columns included in the warehouse table, demonstrating strong relevance. However, it lacks additional context or details that could enhance the user's understanding of the table's purpose or usage."
+            "reason": "The answer effectively addresses the user's request by clearly listing the columns in the warehouse list table and explicitly including the 'Местоположение' column. However, it could be improved by providing additional context or examples to enhance understanding."
           },
           "faithfulnessMetric": {
             "score": 0.0,
             "success": false,
-            "reason": "The answer is well supported by the context as it accurately identifies all the columns in the warehouse list table, including the specific mention of the column 'Местоположение.' However, it could be strengthened by providing additional context or details about the significance of these columns."
+            "reason": "The answer is well supported by the context, as the warehouse list table columns are explicitly listed, including the column 'Местоположение.' However, the evaluation does not mention any additional verification beyond this direct match, which could be a potential weakness."
           },
           "contextualRelevancyMetric": {
-            "score": 0.04,
+            "score": 0.304,
             "success": false,
-            "reason": "The retrieved context includes one relevant segment that directly addresses the user's question about the columns of the warehouse table, while the other segments discussing product lists and warehouse functionality do not align with the user's intent. Overall, the relevance of the context is mixed, with only partial fulfillment of the user's needs."
+            "reason": "The retrieved context includes one highly relevant segment that explicitly lists the columns of the warehouse list table, directly addressing the user's question. However, the other segments are less relevant, focusing on warehouse management UI without specifying columns or describing unrelated product list tables."
           }
         }
       },
@@ -999,17 +999,17 @@
           "answerRelevancyMetric": {
             "score": 0.9583,
             "success": true,
-            "reason": "The answer effectively addresses the user's request by clearly listing the necessary tools for the project, including Docker, which is a key component. However, it includes some tangential advice about operating systems and GitHub registration that, while relevant, detracts from the focus on the specific tools requested."
+            "reason": "The answer effectively addresses the user's request by clearly identifying Docker and GIT as necessary tools and providing relevant installation details for both. However, it could be improved by offering a more comprehensive overview of all required tools rather than focusing primarily on Docker and GIT."
           },
           "faithfulnessMetric": {
             "score": 0.6944,
             "success": false,
-            "reason": "The answer is well supported by the context, as it accurately lists the necessary tools for the project, including Docker, and correctly references the use of Postman. However, it weakens slightly by implying the need for a specific operating system and processor without explicit context support, and it fails to clarify that registration for Postman is optional."
+            "reason": "The answer is generally well supported by the context, accurately stating that Docker is required to run the application and Git is needed to obtain the program version from a remote repository. However, the introductory phrase does not assert a fact, and while the context advises careful selection of OS and processor for Docker, this caution is only implied rather than explicitly detailed."
           },
           "contextualRelevancyMetric": {
-            "score": 0.825,
-            "success": true,
-            "reason": "The retrieved context includes a segment that directly answers the user's question about the tools required for project work, while additional segments provide relevant background information on the project's architecture and technologies, though they do not specifically address the user's intent regarding tools. Overall, the most relevant segment effectively meets the user's needs, while the supp"
+            "score": 0.58,
+            "success": false,
+            "reason": "The retrieved context is largely relevant as it clearly identifies and describes key tools essential for the user's project work, directly addressing their question and intent. However, some parts are only tangentially related, discussing broader concepts without specifying tools, which limits their direct usefulness."
           }
         }
       }
