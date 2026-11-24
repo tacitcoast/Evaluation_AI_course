@@ -1,0 +1,626 @@
+[
+  {
+    "id": "L01",
+    "test_type": "local_trace",
+    "question": "Извлеки товары с этой страницы",
+    "urls": [
+      "http://books.toscrape.com/"
+    ],
+    "expected_tools": [
+      "extract_offers"
+    ],
+    "comment": "базовый случай: один инструмент",
+    "output": "Я извлёк объявления с указанной страницы. Вот некоторые из них:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - £50 - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - £47 - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\nЕсли вам нужна дополнительная информация, например, статистика или фильтрация по цене, дайте знать!",
+    "tools_used": [
+      "extract_offers"
+    ],
+    "error": null,
+    "latency_sec": 10.43,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "http://books.toscrape.com/"
+        },
+        "output": {
+          "items": 20,
+          "first": {
+            "title": "A Light in the Attic",
+            "price": "51",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+          }
+        },
+        "duration_ms": 7305.1,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "L02",
+    "test_type": "local_trace",
+    "question": "Извлеки товары и посчитай статистику по ценам",
+    "urls": [
+      "http://books.toscrape.com/"
+    ],
+    "expected_tools": [
+      "extract_offers",
+      "compute_stats"
+    ],
+    "comment": "цепочка из двух инструментов",
+    "output": "Извлечены объявления с сайта:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - £50 - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - £47 - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\n### Статистика по ценам:\n- Минимальная цена: £13\n- Максимальная цена: £57\n- Средняя цена: £37\n- Медианная цена: £41\n\nЕсли нужны дополнительные действия, дайте знать!",
+    "tools_used": [
+      "extract_offers",
+      "compute_stats"
+    ],
+    "error": null,
+    "latency_sec": 11.73,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "http://books.toscrape.com/"
+        },
+        "output": {
+          "items": 20,
+          "first": {
+            "title": "A Light in the Attic",
+            "price": "51",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+          }
+        },
+        "duration_ms": 7539.6,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 20
+        }
+      },
+      {
+        "step_id": "2",
+        "type": "tool_call",
+        "name": "compute_stats",
+        "input": {
+          "prices": {
+            "items": 20,
+            "first": "51"
+          }
+        },
+        "output": {
+          "min": "13",
+          "max": "57",
+          "avg": "37",
+          "median": "41"
+        },
+        "duration_ms": 0.0,
+        "status": "success",
+        "error": null,
+        "error_type": null
+      }
+    ]
+  },
+  {
+    "id": "L03",
+    "test_type": "local_trace",
+    "question": "Отбери товары дешевле 20 и посчитай по ним среднее",
+    "urls": [
+      "http://books.toscrape.com/"
+    ],
+    "expected_tools": [
+      "extract_offers",
+      "filter_offers",
+      "compute_stats"
+    ],
+    "comment": "цепочка из трёх",
+    "output": "Вот результаты фильтрации и статистики по объявлениям с ценой ниже 20:\n\n### Отфильтрованные объявления:\n1. **The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull** - £17  \n   [Ссылка](http://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html)\n   \n2. **Starving Hearts (Triangular Trade Trilogy, #1)** - £13  \n   [Ссылка](http://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html)\n   \n3. **Shakespeare's Sonnets** - £20  \n   [Ссылка](http://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html)\n   \n4. **Set Me Free** - £17  \n   [Ссылка](http://books.toscrape.com/catalogue/set-me-free_988/index.html)\n\n### Статистика по ценам:\n- **Минимальная цена:** £13\n- **Максимальная цена:** £20\n- **Средняя цена:** £16\n- **Медианная цена:** £17\n\nЕсли нужны дополнительные действия или информация, дайте знать!",
+    "tools_used": [
+      "extract_offers",
+      "filter_offers",
+      "compute_stats"
+    ],
+    "error": null,
+    "latency_sec": 16.74,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "http://books.toscrape.com/"
+        },
+        "output": {
+          "items": 20,
+          "first": {
+            "title": "A Light in the Attic",
+            "price": "51",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+          }
+        },
+        "duration_ms": 5206.9,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 20
+        }
+      },
+      {
+        "step_id": "2",
+        "type": "tool_call",
+        "name": "filter_offers",
+        "input": {
+          "offers": {
+            "items": 20,
+            "first": {
+              "title": "A Light in the Attic",
+              "price": "51",
+              "currency": "£",
+              "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+            }
+          },
+          "max_price": "20"
+        },
+        "output": {
+          "items": 4,
+          "first": {
+            "title": "The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull",
+            "price": "17",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html"
+          }
+        },
+        "duration_ms": 0.0,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 4
+        }
+      },
+      {
+        "step_id": "3",
+        "type": "tool_call",
+        "name": "compute_stats",
+        "input": {
+          "offers": {
+            "items": 4,
+            "first": {
+              "title": "The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull",
+              "price": "17",
+              "currency": "£",
+              "url": "http://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html"
+            }
+          }
+        },
+        "output": {
+          "min": "13",
+          "max": "20",
+          "avg": "16",
+          "median": "17"
+        },
+        "duration_ms": 0.0,
+        "status": "success",
+        "error": null,
+        "error_type": null
+      }
+    ]
+  },
+  {
+    "id": "L04",
+    "test_type": "local_trace",
+    "question": "Переведи цены в рубли",
+    "urls": [
+      "http://books.toscrape.com/"
+    ],
+    "expected_tools": [
+      "extract_offers",
+      "normalize_offers_currency"
+    ],
+    "comment": "конвертация из фунтов: пары GBP в таблице нет",
+    "output": "",
+    "tools_used": [
+      "extract_offers",
+      "normalize_offers_currency"
+    ],
+    "error": "ValueError: No rate for £->RUB",
+    "latency_sec": 12.38,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "http://books.toscrape.com/"
+        },
+        "output": {
+          "items": 20,
+          "first": {
+            "title": "A Light in the Attic",
+            "price": "51",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+          }
+        },
+        "duration_ms": 5175.6,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 20
+        }
+      },
+      {
+        "step_id": "2",
+        "type": "tool_call",
+        "name": "normalize_offers_currency",
+        "input": {
+          "offers": {
+            "items": 20,
+            "first": {
+              "title": "A Light in the Attic",
+              "price": "51",
+              "currency": "£",
+              "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+            }
+          },
+          "target_currency": "RUB"
+        },
+        "output": null,
+        "duration_ms": 0.0,
+        "status": "error",
+        "error": "No rate for £->RUB",
+        "error_type": "ValueError"
+      }
+    ]
+  },
+  {
+    "id": "L05",
+    "test_type": "local_trace",
+    "question": "Переведи цены в евро",
+    "urls": [
+      "https://webscraper.io/test-sites/e-commerce/allinone"
+    ],
+    "expected_tools": [
+      "extract_offers",
+      "normalize_offers_currency"
+    ],
+    "comment": "конвертация из долларов в евро: пары USD в EUR в таблице нет",
+    "output": "",
+    "tools_used": [
+      "extract_offers",
+      "normalize_offers_currency"
+    ],
+    "error": "ValueError: No rate for USD->EUR",
+    "latency_sec": 4.45,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "https://webscraper.io/test-sites/e-commerce/allinone"
+        },
+        "output": {
+          "items": 3,
+          "first": {
+            "title": "Dell Inspiron...",
+            "price": "1144",
+            "currency": "USD",
+            "url": "https://webscraper.io/test-sites/e-commerce/allinone/product/111"
+          }
+        },
+        "duration_ms": 2246.2,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 3
+        }
+      },
+      {
+        "step_id": "2",
+        "type": "tool_call",
+        "name": "normalize_offers_currency",
+        "input": {
+          "offers": {
+            "items": 3,
+            "first": {
+              "title": "Dell Inspiron...",
+              "price": "1144",
+              "currency": "USD",
+              "url": "https://webscraper.io/test-sites/e-commerce/allinone/product/111"
+            }
+          },
+          "target_currency": "EUR"
+        },
+        "output": null,
+        "duration_ms": 0.0,
+        "status": "error",
+        "error": "No rate for USD->EUR",
+        "error_type": "ValueError"
+      }
+    ]
+  },
+  {
+    "id": "L06",
+    "test_type": "local_trace",
+    "question": "Переведи цены в рубли",
+    "urls": [
+      "https://webscraper.io/test-sites/e-commerce/allinone"
+    ],
+    "expected_tools": [
+      "extract_offers",
+      "normalize_offers_currency"
+    ],
+    "comment": "конвертация из долларов в рубли: пара есть, должно сработать",
+    "output": "Цены на объявления переведены в рубли:\n\n1. **Dell Inspiron...** - 102,960 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/111)\n2. **Acer Aspire 3...** - 44,460 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/91)\n3. **Asus ROG Strix...** - 159,210 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/58)\n\nЕсли нужны дополнительные действия или информация, дайте знать!",
+    "tools_used": [
+      "extract_offers",
+      "normalize_offers_currency"
+    ],
+    "error": null,
+    "latency_sec": 5.98,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "https://webscraper.io/test-sites/e-commerce/allinone"
+        },
+        "output": {
+          "items": 3,
+          "first": {
+            "title": "Dell Inspiron...",
+            "price": "1144",
+            "currency": "USD",
+            "url": "https://webscraper.io/test-sites/e-commerce/allinone/product/111"
+          }
+        },
+        "duration_ms": 1955.1,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 3
+        }
+      },
+      {
+        "step_id": "2",
+        "type": "tool_call",
+        "name": "normalize_offers_currency",
+        "input": {
+          "offers": {
+            "items": 3,
+            "first": {
+              "title": "Dell Inspiron...",
+              "price": "1144",
+              "currency": "USD",
+              "url": "https://webscraper.io/test-sites/e-commerce/allinone/product/111"
+            }
+          },
+          "target_currency": "RUB"
+        },
+        "output": {
+          "items": 3,
+          "first": {
+            "title": "Dell Inspiron...",
+            "price": "102960",
+            "currency": "RUB",
+            "url": "https://webscraper.io/test-sites/e-commerce/allinone/product/111"
+          }
+        },
+        "duration_ms": 0.0,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "L07",
+    "test_type": "local_trace",
+    "question": "Извлеки объявления с этой страницы",
+    "urls": [
+      "https://www.propertyfinder.ae/en/no-such-page-xyz-404"
+    ],
+    "expected_tools": [
+      "extract_offers"
+    ],
+    "comment": "страница отдаёт 404",
+    "output": "",
+    "tools_used": [
+      "extract_offers"
+    ],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.propertyfinder.ae/en/no-such-page-xyz-404'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+    "latency_sec": 1.1,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "https://www.propertyfinder.ae/en/no-such-page-xyz-404"
+        },
+        "output": null,
+        "duration_ms": 248.7,
+        "status": "error",
+        "error": "Client error '404 Not Found' for url 'https://www.propertyfinder.ae/en/no-such-page-xyz-404'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+        "error_type": "HTTPStatusError"
+      }
+    ]
+  },
+  {
+    "id": "L08",
+    "test_type": "local_trace",
+    "question": "Извлеки объявления с этой страницы",
+    "urls": [
+      "https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html"
+    ],
+    "expected_tools": [
+      "extract_offers"
+    ],
+    "comment": "большая страница: видно, сколько доходит до модели",
+    "output": "К сожалению, на указанной странице не удалось извлечь объявления. Возможно, страница не содержит доступных предложений или возникла ошибка при извлечении данных. Если у вас есть другие ссылки или дополнительные запросы, пожалуйста, дайте знать!",
+    "tools_used": [
+      "extract_offers"
+    ],
+    "error": null,
+    "latency_sec": 3.26,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html"
+        },
+        "output": {
+          "items": 0
+        },
+        "duration_ms": 1447.6,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "L09",
+    "test_type": "local_trace",
+    "question": "Отбери объявления дешевле 20",
+    "urls": [],
+    "expected_tools": [],
+    "comment": "без ссылок: видно, по какому списку работает фильтр",
+    "output": "У вас нет ссылок для извлечения объявлений. Пожалуйста, предоставьте URL-адреса, чтобы я мог помочь вам с фильтрацией объявлений дешевле 20.",
+    "tools_used": [],
+    "error": null,
+    "latency_sec": 0.89,
+    "trace": []
+  },
+  {
+    "id": "L10",
+    "test_type": "local_trace",
+    "question": "Найди товары дешевле 100 и посчитай среднее",
+    "urls": [
+      "http://books.toscrape.com/"
+    ],
+    "expected_tools": [
+      "extract_offers",
+      "filter_offers",
+      "compute_stats"
+    ],
+    "comment": "граница фильтра, через которую проходят нулевые цены",
+    "output": "Вот результаты поиска товаров с ценой ниже 100:\n\n### Объявления:\n1. **Starving Hearts (Triangular Trade Trilogy, #1)** - £13 - [Ссылка](http://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html)\n2. **The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull** - £17 - [Ссылка](http://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html)\n3. **Set Me Free** - £17 - [Ссылка](http://books.toscrape.com/catalogue/set-me-free_988/index.html)\n4. **Shakespeare's Sonnets** - £20 - [Ссылка](http://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html)\n5. **The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics** - £22 - [Ссылка](http://books.toscrape.com/catalogue/the-boys-in-the-boat-nine-americans-and-their-epic-quest-for-gold-at-the-1936-berlin-olympics_992/index.html)\n6. **The Requiem Red** - £22 - [Ссылка](http://books.toscrape.com/catalogue/the-requiem-red_995/index.html)\n7. **The Dirty Little Secrets of Getting Your Dream Job** - £33 - [Ссылка](http://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html)\n8. **Olio** - £23 - [Ссылка](http://books.toscrape.com/catalogue/olio_984/index.html)\n9. **Mesaerion: The Best Science Fiction Stories 1800-1849** - £37 - [Ссылка](http://books.toscrape.com/catalogue/mesaerion-the-best-science-fiction-stories-1800-1849_983/index.html)\n10. **It's Only the Himalayas** - £45 - [Ссылка](http://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html)\n\n### Статистика:\n- **Минимальная цена:** £13\n- **Максимальная цена:** £45\n- **Средняя цена:** £25\n- **Медианная цена:** £22\n\nЕсли вам нужны дополнительные данные или фильтрация, дайте знать!",
+    "tools_used": [
+      "extract_offers",
+      "filter_offers",
+      "compute_stats"
+    ],
+    "error": null,
+    "latency_sec": 22.66,
+    "trace": [
+      {
+        "step_id": "1",
+        "type": "tool_call",
+        "name": "extract_offers",
+        "input": {
+          "url": "http://books.toscrape.com/"
+        },
+        "output": {
+          "items": 20,
+          "first": {
+            "title": "A Light in the Attic",
+            "price": "51",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+          }
+        },
+        "duration_ms": 5604.7,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 20
+        }
+      },
+      {
+        "step_id": "2",
+        "type": "tool_call",
+        "name": "filter_offers",
+        "input": {
+          "offers": {
+            "items": 20,
+            "first": {
+              "title": "A Light in the Attic",
+              "price": "51",
+              "currency": "£",
+              "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+            }
+          },
+          "max_price": "100"
+        },
+        "output": {
+          "items": 20,
+          "first": {
+            "title": "A Light in the Attic",
+            "price": "51",
+            "currency": "£",
+            "url": "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+          }
+        },
+        "duration_ms": 0.0,
+        "status": "success",
+        "error": null,
+        "error_type": null,
+        "metadata": {
+          "items": 20
+        }
+      },
+      {
+        "step_id": "3",
+        "type": "tool_call",
+        "name": "compute_stats",
+        "input": {
+          "offers": {
+            "items": 11,
+            "first": {
+              "title": "The Requiem Red",
+              "price": "22",
+              "currency": "£",
+              "url": "http://books.toscrape.com/catalogue/the-requiem-red_995/index.html"
+            }
+          }
+        },
+        "output": {
+          "min": "13",
+          "max": "45",
+          "avg": "25",
+          "median": "22"
+        },
+        "duration_ms": 0.0,
+        "status": "success",
+        "error": null,
+        "error_type": null
+      }
+    ]
+  }
+]
