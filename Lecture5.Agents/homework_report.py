@@ -40,7 +40,9 @@ def load():
         with open(path, encoding="utf-8") as fh:
             return json.load(fh)
 
-    return read("agent_responses.json"), read("scores_deepeval.json"), read("scores_evallib.json")
+    return (read("agent_responses.json"), read("scores_deepeval.json"),
+            read("scores_evallib.json"), read("scores_traces_shallow.json"),
+            read("scores_traces_deep.json"))
 
 
 def mean(values):
@@ -130,7 +132,7 @@ def table(doc, rows):
 
 # ------------------------------------------------------------------ отчёт
 def main():
-    responses, de, el = load()
+    responses, de, el, tr_shallow, tr_deep = load()
 
     total = len(responses)
     failed = [r for r in responses if r.get("error")]
@@ -364,6 +366,73 @@ def main():
               f"{len(fast)} fast ones break while fetching the page, before any model call. The "
               f"{len(slow)} slow ones break after extraction has already succeeded, inside a tool.")
 
+    heading(doc, "Trace analysis in EvaliQA", 13)
+    body(doc, "EvaliQA keeps a trace in EvalTestCase.execution_trace as a list of TraceStep "
+              "records with a name, the call arguments, the result, a status and a duration. "
+              "Three of its metrics read that field. Planning Quality looks at the shape and "
+              "length of the trajectory. Loop Detection looks for repeated cycles. Context Decay "
+              "checks whether facts introduced in the task survive to the step that needs them.")
+    body(doc, "I ran those three on two traces. The first is the trace the deployed agent exposes: "
+              "/ask returns tools_used, a list of names, so the steps carry no arguments and no "
+              "results. The second comes from running the agent's own code locally with every tool "
+              "call wrapped, which records arguments, results, durations and exceptions.")
+
+    def trace_avg(rows, name):
+        values = [r["scores"][name]["score"] for r in rows
+                  if r["scores"].get(name, {}).get("score") is not None]
+        return sum(values) / len(values) if values else None
+
+    sh_steps = sum(r["trace_steps"] for r in tr_shallow)
+    dp_steps = sum(r["trace_steps"] for r in tr_deep)
+    table(doc, [
+        ["", "Deployed agent trace", "Local run trace"],
+        ["Cases", str(len(tr_shallow)), str(len(tr_deep))],
+        ["Steps in all traces", str(sh_steps), str(dp_steps)],
+        ["Steps carrying arguments",
+         str(sum(r["steps_with_arguments"] for r in tr_shallow)),
+         str(sum(r["steps_with_arguments"] for r in tr_deep))],
+        ["Steps carrying a result",
+         str(sum(r["steps_with_result"] for r in tr_shallow)),
+         str(sum(r["steps_with_result"] for r in tr_deep))],
+        ["Planning Quality", fmt(trace_avg(tr_shallow, "planning_quality")),
+         fmt(trace_avg(tr_deep, "planning_quality"))],
+        ["Loop Detection", fmt(trace_avg(tr_shallow, "loop_detection")),
+         fmt(trace_avg(tr_deep, "loop_detection"))],
+        ["Context Decay", fmt(trace_avg(tr_shallow, "context_decay")),
+         fmt(trace_avg(tr_deep, "context_decay"))],
+    ])
+    body(doc, f"On the deployed agent's trace all three metrics return 1.000 on every one of the "
+              f"{len(tr_shallow)} cases, the 19 that returned HTTP 500 included. That is not a "
+              f"verdict about the agent. Across {sh_steps} steps, none carries an argument and "
+              "none carries a result, so the metrics see a short list of plausible tool names and "
+              "pass it. A dashboard of 1.000 here means nothing was measured.")
+
+    links = [l for r in tr_deep for l in (r.get("chain") or [])]
+    lossy = [l for l in links if l["lost"] > 0]
+    body(doc, "The local trace carries enough to measure. Context Decay drops below 1.000 on one "
+              f"case out of {len(tr_deep)}, and the reason is a defect. Of the {len(links)} "
+              f"hand-offs between steps in these traces, {len(lossy)} loses data: filter_offers "
+              "returned 20 offers and compute_stats received 11. Nine offers vanished between the "
+              "two calls.")
+    body(doc, "The cause is in how the tools are called. Each tool takes the offer list as an "
+              "argument. The agent re-emits the whole array as JSON for the next call, and on a "
+              "long list it drops entries. The tools accept an omitted offers argument and fall "
+              "back to the last extraction, and the system prompt says so, yet the agent "
+              "re-serialises the array every time. This is the mechanism behind an average computed "
+              "over a handful of listings, which from outside was visible only as a symptom.")
+    body(doc, "The trace also names the exceptions behind the server errors, which the HTTP "
+              "response hides. Three steps failed in these ten cases, each with its own cause. "
+              "Two raised ValueError, one for GBP to RUB and one for USD to EUR. The third raised "
+              "HTTPStatusError 404 Not Found. The first two are the rate table, the third is the "
+              "unhandled raise_for_status.")
+    body(doc, "One caveat about the local trace. It runs the code in ai-agent_l5, and the deployed "
+              "agent does not. Locally extract_offers returns zero offers on the Dubai page. The "
+              "first 160000 characters there are almost all script tags, which strip_boilerplate "
+              "then removes, and the deployed agent returns real listings from the same page. The "
+              "rate table does match: locally and in production, dollars convert to roubles at "
+              "exactly 90. So the local trace is evidence about the tools and their arguments, and "
+              "not about the scraping.")
+
     # ---------------------------------------------------------- 4
     heading(doc, "4. Errors found in the AI agent")
 
@@ -428,6 +497,13 @@ def main():
               "reported that it had found one: a three-bedroom apartment in Dubai Creek Harbour, "
               "priced at 0 AED. A placeholder passed a price filter and came back as a real offer. "
               "The correct answer was that nothing matched.")
+
+    body(doc, "Offers are lost between one tool and the next. The trace shows filter_offers "
+              "returning 20 offers and compute_stats receiving 11 of them. The agent passes the "
+              "offer list as a JSON argument on every call instead of letting the tool reuse the "
+              "last extraction. On a long list, entries drop out. Every aggregate computed after "
+              "a filter is therefore built on fewer offers than the filter selected, with nothing "
+              "in the answer to say so.")
 
     body(doc, "Statistics cover a handful of listings while the answer presents them as the page. "
               "The Dubai page carries 89 prices in its HTML and the Warsaw page 92. The agent "
@@ -512,6 +588,24 @@ def main():
               "получить доступ\", which fall outside that list. Of the five cases where the agent "
               "did state it could not do the task, the metric recognised one.")
 
+    body(doc, "The three trace metrics return 1.000 when they have nothing to measure, rather "
+              "than abstaining. Planning Quality answers \"No execution trace available\", Loop "
+              "Detection answers \"Trace too short\", and Context Decay answers \"No "
+              "context_facts provided\". All three then score 1.000, which reads as a pass. On the "
+              "deployed agent's trace that produced a clean sheet across 57 cases, 19 of which were "
+              "server errors. The reason text says what happened, so the trap is in reading the "
+              "number without it.")
+    body(doc, "Context Decay needs its facts supplied by the caller. It takes context_facts with "
+              "introduced_at, used_at and correctly_used, and estimates nothing on its own. I built "
+              "those facts from the trace. The link, the price bound and the target currency come "
+              "from the task, plus one fact per hand-off for whether the offers survived it. With that "
+              "the metric caught the lost offers and scored 0.85 on the case.")
+    body(doc, "TraceStep.type is an unvalidated string, and the wrong value silently zeroes the "
+              "analysis. The vocabulary lives in eval_lib.tracing.SpanType, where a tool call is "
+              "tool_call. I first wrote type as tool. Nothing complained, and Planning Quality "
+              "reported \"0 steps, efficiency 100 percent\" on a three-step trace while still "
+              "scoring 1.000. A typed field or a warning on an unknown type would have caught it.")
+
     body(doc, "A server error is invisible to most metrics. An HTTP 500 carries no text, so a "
               "judge has nothing to score. Left alone, those cases would drop out silently and "
               "every average would improve. I kept them in with the error text as the answer, "
@@ -551,6 +645,12 @@ def main():
                 f"where they disagree by up to {top_gap:.2f}. Every one of those marks a place "
                 "where the two metrics define a good answer differently. One framework "
                 "alone would have produced a plausible number and hidden the question.")
+    bullet(doc, "The trace the service exposes is too thin to evaluate. Trace metrics score "
+                "1.000 on all 57 cases, server errors included, because no step carries an "
+                "argument or a result. Running the same code locally with the calls wrapped turned "
+                "the same metrics into something that found a defect: nine offers lost between the "
+                "filter and the statistics. Returning tool arguments and results from /ask would "
+                "cost little and would make the whole class of defect visible.")
     bullet(doc, f"{total} questions give a coarse picture, where one case moves a share by about "
                 "two points. The figures say where to look rather than how good the agent is in "
                 "absolute terms. The defects, however, are reproducible, and each one above names "
