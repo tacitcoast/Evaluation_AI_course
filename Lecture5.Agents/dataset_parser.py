@@ -9,7 +9,7 @@ class DatasetParser:
 
     def __init__(self):
         self.required_columns = ['question']  # Только question обязательно
-        self.optional_columns = ['expected_response', 'expected_tools']
+        self.optional_columns = ['expected_response', 'expected_tools', 'urls']
 
     def load_dataset(self, file_path: str) -> Optional[pd.DataFrame]:
         """Загрузить датасет из Excel или CSV файла"""
@@ -108,6 +108,52 @@ class DatasetParser:
 
         return [self._parse_tools_field(tools) for tools in df['expected_tools']]
 
+    def _parse_urls_field(self, urls_value) -> List[str]:
+        """
+        Парсит поле со ссылками в список
+
+        Поддерживаемые форматы:
+        - "url1 | url2" (разделитель вертикальная черта)
+        - "url1, url2" (разделитель запятая)
+        - ["url1", "url2"] (уже список)
+        - NaN / None / "" -> пустой список
+        """
+        if urls_value is None or urls_value == "":
+            return []
+        if isinstance(urls_value, list):
+            return [str(u).strip() for u in urls_value if str(u).strip()]
+        if pd.isna(urls_value):
+            return []
+
+        urls_str = str(urls_value).strip()
+        if not urls_str or urls_str.lower() in ['nan', 'none']:
+            return []
+
+        if '|' in urls_str:
+            urls = [u.strip() for u in urls_str.split('|')]
+        elif ',' in urls_str:
+            urls = [u.strip() for u in urls_str.split(',')]
+        else:
+            urls = [urls_str]
+
+        return [u for u in urls if u]
+
+    def get_urls(self, df: pd.DataFrame) -> List[List[str]]:
+        """
+        Получить список ссылок для каждого вопроса
+
+        Агент мониторинга цен без ссылок объявления извлечь не может,
+        поэтому колонка urls для лекции 5 обязательна по смыслу,
+        хотя формально остаётся опциональной.
+
+        Returns:
+            Список списков ссылок (например, [["https://a"], [], ["https://b", "https://c"]])
+        """
+        if 'urls' not in df.columns:
+            return [[] for _ in range(len(df))]
+
+        return [self._parse_urls_field(urls) for urls in df['urls']]
+
     def get_question_response_pairs(self, df: pd.DataFrame) -> List[Dict[str, any]]:
         """
         Получить список пар вопрос-ответ с ожидаемыми тулами
@@ -117,6 +163,7 @@ class DatasetParser:
         """
         pairs = []
         expected_tools_list = self.get_expected_tools(df)
+        urls_list = self.get_urls(df)
 
         for i, row in df.iterrows():
             expected_response = row.get('expected_response', '')
@@ -127,7 +174,8 @@ class DatasetParser:
             pair = {
                 'question': row['question'],
                 'expected_response': expected_response,
-                'expected_tools': expected_tools_list[i] if i < len(expected_tools_list) else []
+                'expected_tools': expected_tools_list[i] if i < len(expected_tools_list) else [],
+                'urls': urls_list[i] if i < len(urls_list) else []
             }
             pairs.append(pair)
 
@@ -151,7 +199,9 @@ class DatasetParser:
             'avg_tools_count': 0,
             'unique_tools': set(),
             'has_expected_response_column': 'expected_response' in df.columns,
-            'has_expected_tools_column': 'expected_tools' in df.columns
+            'has_expected_tools_column': 'expected_tools' in df.columns,
+            'has_urls_column': 'urls' in df.columns,
+            'questions_without_urls': 0
         }
 
         valid_pairs = 0
@@ -160,6 +210,7 @@ class DatasetParser:
         tools_counts = []
 
         expected_tools_list = self.get_expected_tools(df)
+        urls_list = self.get_urls(df)
 
         for i, row in df.iterrows():
             question = str(row['question']).strip()
@@ -184,6 +235,9 @@ class DatasetParser:
             else:
                 tools_counts.append(len(tools))
                 info['unique_tools'].update(tools)
+
+            if not (urls_list[i] if i < len(urls_list) else []):
+                info['questions_without_urls'] += 1
 
             valid_pairs += 1
             question_lengths.append(len(question))
@@ -219,6 +273,11 @@ class DatasetParser:
                     print(f"Ожидаемый ответ: {response_preview}")
                 else:
                     print("Ожидаемый ответ: Не задан")
+
+            # Ссылки
+            if 'urls' in df.columns:
+                urls = self._parse_urls_field(row.get('urls'))
+                print(f"Ссылки: {', '.join(urls) if urls else 'Не заданы'}")
 
             # Ожидаемые тулы
             if 'expected_tools' in df.columns:

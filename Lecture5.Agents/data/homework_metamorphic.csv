@@ -1,0 +1,13 @@
+question,expected_response,expected_tools,urls,test_type,metamorphic_group
+Найди объявления дешевле 2 000 000 AED,Объявления с ценой ниже 2 млн дирхамов,"extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,metamorphic,фильтр по цене
+Покажи квартиры с ценой до 2 миллионов дирхамов,Объявления с ценой ниже 2 млн дирхамов,"extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,metamorphic,фильтр по цене
+Какие варианты укладываются в бюджет 2 000 000 AED?,Объявления с ценой ниже 2 млн дирхамов,"extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,metamorphic,фильтр по цене
+"Отбери всё, что стоит меньше двух миллионов AED",Объявления с ценой ниже 2 млн дирхамов,"extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,metamorphic,фильтр по цене
+Какая средняя цена на этой странице?,Средняя цена объявлений в злотых,"extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,metamorphic,средняя цена
+Посчитай среднюю стоимость квартиры,Средняя цена объявлений в злотых,"extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,metamorphic,средняя цена
+Сколько в среднем стоит одно объявление?,Средняя цена объявлений в злотых,"extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,metamorphic,средняя цена
+Дай средний чек по этим объявлениям,Средняя цена объявлений в злотых,"extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,metamorphic,средняя цена
+Переведи цены в рубли,"Цены позиций, пересчитанные в рубли","extract_offers, normalize_offers_currency",http://books.toscrape.com/,metamorphic,перевод в рубли
+Покажи стоимость в RUB,"Цены позиций, пересчитанные в рубли","extract_offers, normalize_offers_currency",http://books.toscrape.com/,metamorphic,перевод в рубли
+Сколько это будет в российских рублях?,"Цены позиций, пересчитанные в рубли","extract_offers, normalize_offers_currency",http://books.toscrape.com/,metamorphic,перевод в рубли
+Пересчитай цены на рубли,"Цены позиций, пересчитанные в рубли","extract_offers, normalize_offers_currency",http://books.toscrape.com/,metamorphic,перевод в рубли

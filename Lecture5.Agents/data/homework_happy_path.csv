@@ -1,0 +1,31 @@
+question,expected_response,expected_tools,urls,test_type
+Извлеки объявления с этой страницы,"Список объявлений с заголовком, ценой, валютой и ссылкой",extract_offers,https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Какие квартиры есть на этой странице? Покажи 5 примеров,Пять объявлений с ценами в злотых и ссылками,extract_offers,https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Собери список товаров с ценами,Список позиций каталога с ценами в фунтах,extract_offers,http://books.toscrape.com/,happy_path
+"Покажи, что продаётся на странице",Перечень товаров с ценами,extract_offers,https://webscraper.io/test-sites/e-commerce/allinone,happy_path
+Извлеки до 20 объявлений с этой страницы,Не больше 20 объявлений с ценами,extract_offers,https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+"Посчитай минимальную, максимальную и среднюю цену","Три числа: минимум, максимум и среднее в дирхамах","extract_offers, compute_stats",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Какая медианная цена на этой странице?,Медиана цен в злотых,"extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Посчитай статистику по ценам,"Минимум, максимум, среднее и медиана в фунтах","extract_offers, compute_stats",http://books.toscrape.com/,happy_path
+Какой разброс цен на странице?,"Минимальная и максимальная цена, разница между ними","extract_offers, compute_stats",https://webscraper.io/test-sites/e-commerce/allinone,happy_path
+Сколько в среднем стоит квартира по этой странице?,Средняя цена в дирхамах,"extract_offers, compute_stats",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Извлеки объявления и посчитай по ним статистику цен,Список объявлений и агрегаты по ценам,"extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Найди объявления дешевле 2 000 000 AED,Только объявления с ценой ниже 2 млн дирхамов,"extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Покажи квартиры дороже 1 000 000 злотых,Только объявления дороже 1 млн злотых,"extract_offers, filter_offers",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Отбери книги дешевле 20 фунтов,Позиции с ценой ниже 20 фунтов,"extract_offers, filter_offers",http://books.toscrape.com/,happy_path
+Найди объявления в диапазоне от 1 до 3 миллионов AED,Объявления с ценой от 1 до 3 млн дирхамов,"extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+"Покажи объявления, в заголовке которых есть слово Studio","Объявления, где в названии встречается Studio","extract_offers, filter_offers",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Отбери объявления дешевле 800 000 злотых,Объявления с ценой ниже 800 тысяч злотых,"extract_offers, filter_offers",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Переведи цены объявлений в рубли,Те же объявления с ценами в рублях,"extract_offers, normalize_offers_currency",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Покажи цены в долларах,"Цены объявлений, пересчитанные в USD","extract_offers, normalize_offers_currency",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Сколько это будет в евро?,Цены позиций в евро,"extract_offers, normalize_offers_currency",http://books.toscrape.com/,happy_path
+Пересчитай стоимость объявлений в USD,Цены в долларах,"extract_offers, normalize_offers_currency",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Отбери объявления дешевле 2 миллионов AED и посчитай по ним статистику,Отфильтрованный список и агрегаты по нему,"extract_offers, filter_offers, compute_stats",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Квартиры дороже 1 миллиона злотых — какая у них средняя цена?,Средняя цена по объявлениям дороже 1 млн злотых,"extract_offers, filter_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Книги дешевле 30 фунтов: посчитай среднюю цену,Средняя цена по отобранным позициям,"extract_offers, filter_offers, compute_stats",http://books.toscrape.com/,happy_path
+Найди объявления до 1 500 000 AED и дай минимум и максимум,Минимум и максимум по отфильтрованным объявлениям,"extract_offers, filter_offers, compute_stats",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Посчитай среднюю цену и переведи её в рубли,Средняя цена и её рублёвый эквивалент,"extract_offers, compute_stats, normalize_offers_currency",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html,happy_path
+Дай статистику по ценам сразу в долларах,"Агрегаты по ценам, пересчитанные в USD","extract_offers, compute_stats, normalize_offers_currency",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path
+Сравни цены на этих двух страницах,Сопоставление уровней цен по обеим ссылкам,"extract_offers, compute_stats",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html | http://books.toscrape.com/,happy_path
+Где цены ниже?,"Вывод, на какой из двух страниц цены ниже, с числами","extract_offers, compute_stats",https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa | http://books.toscrape.com/,happy_path
+Собери общий отчёт по двум ссылкам,Сводка по объявлениям и ценам с обеих страниц,"extract_offers, compute_stats",https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html | https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/mazowieckie/warszawa,happy_path

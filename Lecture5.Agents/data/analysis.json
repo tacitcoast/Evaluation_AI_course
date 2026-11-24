@@ -1,0 +1,181 @@
+{
+  "failures": {
+    "total": 57,
+    "failed": 19,
+    "failed_ids": [
+      "009",
+      "015",
+      "017",
+      "018",
+      "019",
+      "020",
+      "025",
+      "026",
+      "029",
+      "030",
+      "031",
+      "035",
+      "042",
+      "047",
+      "052",
+      "053",
+      "054",
+      "055",
+      "056"
+    ],
+    "by_test_type": {
+      "happy_path": 9,
+      "negative": 4,
+      "metamorphic": 6
+    },
+    "by_expected_tools": {
+      "extract_offers, compute_stats": 3,
+      "extract_offers, filter_offers": 2,
+      "extract_offers, normalize_offers_currency": 8,
+      "extract_offers, compute_stats, normalize_offers_currency": 2,
+      "extract_offers": 3,
+      "без инструментов": 1
+    },
+    "currency_failed": 11,
+    "currency_total": 11
+  },
+  "metamorphic": {
+    "фильтр по цене": {
+      "cases": 4,
+      "errors": 1,
+      "same_tools": false,
+      "tool_sets": [
+        [
+          "extract_offers",
+          "filter_offers"
+        ],
+        [
+          "extract_offers",
+          "filter_offers"
+        ],
+        [],
+        [
+          "extract_offers",
+          "filter_offers"
+        ]
+      ],
+      "number_overlap": 0.9090909090909091,
+      "common_numbers": [
+        550000,
+        604999,
+        727000,
+        950000,
+        1299000,
+        177830708,
+        177830748,
+        177831010,
+        177831290,
+        177832214
+      ]
+    },
+    "средняя цена": {
+      "cases": 4,
+      "errors": 1,
+      "same_tools": false,
+      "tool_sets": [
+        [
+          "compute_stats",
+          "extract_offers"
+        ],
+        [
+          "compute_stats",
+          "extract_offers"
+        ],
+        [
+          "compute_stats",
+          "extract_offers"
+        ],
+        []
+      ],
+      "number_overlap": 1.0,
+      "common_numbers": [
+        590000,
+        918060,
+        1187375,
+        1212003,
+        1299000,
+        2592000
+      ]
+    },
+    "перевод в рубли": {
+      "cases": 4,
+      "errors": 4,
+      "same_tools": true,
+      "tool_sets": [
+        [],
+        [],
+        [],
+        []
+      ],
+      "number_overlap": null,
+      "common_numbers": []
+    }
+  },
+  "zero_prices": {
+    "responses_with_zero_price": 3,
+    "ids": [
+      "001",
+      "041",
+      "043"
+    ]
+  },
+  "latency": {
+    "ok": {
+      "n": 38,
+      "median": 10.89,
+      "min": 1.23,
+      "max": 19.06
+    },
+    "failed": {
+      "n": 19,
+      "median": 9.86,
+      "min": 1.46,
+      "max": 20.74
+    },
+    "happy_path": {
+      "n": 21,
+      "median": 11.0,
+      "min": 4.21,
+      "max": 19.06
+    },
+    "negative": {
+      "n": 11,
+      "median": 2.18,
+      "min": 1.23,
+      "max": 12.78
+    },
+    "metamorphic": {
+      "n": 6,
+      "median": 13.305,
+      "min": 12.69,
+      "max": 13.83
+    },
+    "fast_failures": 3,
+    "slow_failures": 16
+  },
+  "frameworks": {
+    "AnswerRelevancy": {
+      "deepeval": 0.4595784332626438,
+      "evallib": 0.4861754385964912,
+      "diff": 0.0265970053338474,
+      "n": 57
+    },
+    "ToolCorrectness": {
+      "deepeval": 0.6491228070175439,
+      "evallib": 0.6666666666666666,
+      "diff": 0.01754385964912275,
+      "n": 57
+    },
+    "TaskCompletion / TaskSuccessRate": {
+      "deepeval": 0.5157894736842105,
+      "evallib": 0.48596491228070177,
+      "diff": -0.029824561403508698,
+      "n": 57
+    }
+  }
+}
