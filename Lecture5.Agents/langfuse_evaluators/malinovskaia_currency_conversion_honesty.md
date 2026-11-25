@@ -1,12 +1,12 @@
 # malinovskaia_currency_conversion_honesty
 
 Метрика №3 онлайн-оценки: кастомная LLM-as-a-judge со своим промптом.
-Судья — `gpt-4o-mini` через курсовой прокси `http://5.11.83.110:8000`.
+Судья — `gpt-4o-mini` через курсовой прокси (адрес и ключ в `.env`).
 Шкала: numeric, 0..1. Переменные: `{{input}}` → Input, `{{output}}` → Output.
 Фильтр применения: `isRootObservation = true`.
 
 Живёт в локальном Langfuse, а не в облаке: Langfuse Cloud разрешает в
-LLM-connection только HTTPS-адреса, а у курсового прокси HTTPS-листенера нет.
+LLM Connection только HTTPS-адреса, а у курсового прокси HTTPS нет.
 
 ## Что метрика проверяет
 
