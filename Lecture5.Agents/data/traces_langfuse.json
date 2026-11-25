@@ -5,13 +5,13 @@
     "urls": [
       "http://books.toscrape.com/"
     ],
-    "output": "Я извлёк объявления с указанной страницы. Вот некоторые из них:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - £50 - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - £47 - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\nЕсли вам нужно выполнить дополнительные действия, такие как фильтрация, конвертация валюты или подсчёт статистики, дайте знать!",
+    "output": "Я извлек объявления с указанной страницы. Вот некоторые из них:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - £50 - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - £47 - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\nЕсли вам нужно выполнить дополнительные действия, такие как фильтрация, конвертация валюты или подсчет статистики, дайте знать!",
     "tools_used": [
       "extract_offers"
     ],
     "error": null,
-    "latency_sec": 12.66,
-    "session_id": "hw-34992401"
+    "latency_sec": 9.11,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F02",
@@ -19,14 +19,14 @@
     "urls": [
       "http://books.toscrape.com/"
     ],
-    "output": "Извлечены объявления с сайта:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - £50 - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - £47 - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\n### Статистика по ценам:\n- Минимальная цена: £13\n- Максимальная цена: £57\n- Средняя цена: £37\n- Медианная цена: £41\n\nПримеры ссылок на товары:\n- [A Light in the Attic](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n- [Tipping the Velvet](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n- [Sapiens: A Brief History of Humankind](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)",
+    "output": "Извлечены объявления с сайта:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - £50 - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - £47 - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\n### Статистика по ценам:\n- Минимальная цена: £13\n- Максимальная цена: £57\n- Средняя цена: £37\n- Медианная цена: £41\n\nЕсли нужны дополнительные действия, дайте знать!",
     "tools_used": [
       "extract_offers",
       "compute_stats"
     ],
     "error": null,
-    "latency_sec": 17.58,
-    "session_id": "hw-34992401"
+    "latency_sec": 14.91,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F03",
@@ -34,15 +34,15 @@
     "urls": [
       "http://books.toscrape.com/"
     ],
-    "output": "Вот результаты по объявлениям с ценами ниже 20:\n\n1. **Минимальная цена**: 13 £\n2. **Максимальная цена**: 20 £\n3. **Средняя цена**: 16 £\n4. **Медианная цена**: 17 £\n\n### Примеры объявлений:\n- [The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull](http://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html) — 17 £\n- [Starving Hearts (Triangular Trade Trilogy, #1)](http://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html) — 13 £\n- [Shakespeare's Sonnets](http://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html) — 20 £\n- [Set Me Free](http://books.toscrape.com/catalogue/set-me-free_988/index.html) — 17 £\n\nЕсли нужны дополнительные данные или фильтрация, дайте знать!",
+    "output": "Вот результаты по объявлениям с ценами ниже 20 фунтов:\n\n- **Минимальная цена:** 13 £\n- **Максимальная цена:** 20 £\n- **Средняя цена:** 16 £\n- **Медианная цена:** 17 £\n\nПримеры объявлений:\n1. [The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull](http://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html) — 17 £\n2. [Starving Hearts (Triangular Trade Trilogy, #1)](http://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html) — 13 £\n3. [Shakespeare's Sonnets](http://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html) — 20 £\n4. [Set Me Free](http://books.toscrape.com/catalogue/set-me-free_988/index.html) — 17 £\n\nЕсли нужны дополнительные данные или фильтрация, дайте знать!",
     "tools_used": [
       "extract_offers",
       "filter_offers",
       "compute_stats"
     ],
     "error": null,
-    "latency_sec": 19.48,
-    "session_id": "hw-34992401"
+    "latency_sec": 16.8,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F04",
@@ -53,8 +53,8 @@
     "output": "",
     "tools_used": [],
     "error": "ValueError: No rate for £->RUB",
-    "latency_sec": 14.52,
-    "session_id": "hw-34992401"
+    "latency_sec": 12.09,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F05",
@@ -65,8 +65,8 @@
     "output": "",
     "tools_used": [],
     "error": "ValueError: No rate for USD->EUR",
-    "latency_sec": 4.04,
-    "session_id": "hw-34992401"
+    "latency_sec": 4.75,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F06",
@@ -74,14 +74,14 @@
     "urls": [
       "https://webscraper.io/test-sites/e-commerce/allinone"
     ],
-    "output": "Цены на товары переведены в рубли:\n\n1. **Asus ROG Strix...** - 99,090 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/98)\n2. **Iphone** - 80,910 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/9)\n3. **Toshiba Porteg...** - 116,460 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/134)\n\nЕсли нужны дополнительные данные или фильтрация, дайте знать!",
+    "output": "Цены на объявления переведены в рубли:\n\n1. **Acer Swift 1 S...** - 43,920 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/90)\n2. **Dell Latitude...** - 102,870 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/110)\n3. **Asus ZenBook U...** - 111,510 RUB [Ссылка](https://webscraper.io/test-sites/e-commerce/allinone/product/129)\n\nЕсли нужны дополнительные действия или информация, дайте знать!",
     "tools_used": [
       "extract_offers",
       "normalize_offers_currency"
     ],
     "error": null,
-    "latency_sec": 5.02,
-    "session_id": "hw-34992401"
+    "latency_sec": 4.96,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F07",
@@ -92,18 +92,18 @@
     "output": "",
     "tools_used": [],
     "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.propertyfinder.ae/en/no-such-page-xyz-404'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
-    "latency_sec": 1.0,
-    "session_id": "hw-34992401"
+    "latency_sec": 1.59,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F08",
     "question": "Какая сейчас погода в Дубае?",
     "urls": [],
-    "output": "У меня нет информации о погоде в Дубае, так как я занимаюсь мониторингом цен на жильё. Если у вас есть ссылки на объявления о недвижимости, я могу помочь с их анализом.",
+    "output": "У меня нет информации о погоде в Дубае, так как вы не предоставили ссылки или данные для извлечения. Если у вас есть конкретные ссылки на сайты с погодой, пожалуйста, поделитесь ими, и я помогу вам с информацией.",
     "tools_used": [],
     "error": null,
-    "latency_sec": 1.02,
-    "session_id": "hw-34992401"
+    "latency_sec": 1.24,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F09",
@@ -111,13 +111,13 @@
     "urls": [
       "http://books.toscrape.com/"
     ],
-    "output": "Извлечены объявления с сайта. Вот несколько примеров:\n\n1. **A Light in the Attic** - £51 - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - £53 - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Sapiens: A Brief History of Humankind** - £54 - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n4. **The Requiem Red** - £22 - [Ссылка](http://books.toscrape.com/catalogue/the-requiem-red_995/index.html)\n5. **Scott Pilgrim's Precious Little Life (Scott Pilgrim #1)** - £52 - [Ссылка](http://books.toscrape.com/catalogue/scott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html)\n\nЕсли нужно выполнить дополнительные действия, дайте знать!",
+    "output": "Извлечены объявления с сайта:\n\n1. **A Light in the Attic** - 51 £ - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - 53 £ - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - 50 £ - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - 47 £ - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - 54 £ - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\nЕсли нужны дальнейшие действия, дайте знать!",
     "tools_used": [
       "extract_offers"
     ],
     "error": null,
-    "latency_sec": 12.99,
-    "session_id": "hw-34992401"
+    "latency_sec": 8.27,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F10",
@@ -128,8 +128,8 @@
       "filter_offers"
     ],
     "error": null,
-    "latency_sec": 1.61,
-    "session_id": "hw-34992401"
+    "latency_sec": 1.7,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F11",
@@ -137,13 +137,13 @@
     "urls": [
       "http://books.toscrape.com/"
     ],
-    "output": "Извлечённые объявления с сайта:\n\n1. **A Light in the Attic** - 51 £ - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - 53 £ - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - 50 £ - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - 47 £ - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - 54 £ - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\nК сожалению, в извлечённых объявлениях нет информации о количестве комнат и этаже. Если вам нужна дополнительная информация или помощь, дайте знать!",
+    "output": "Извлечённые объявления с сайта:\n\n1. **A Light in the Attic** - 51 £ - [Ссылка](http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html)\n2. **Tipping the Velvet** - 53 £ - [Ссылка](http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html)\n3. **Soumission** - 50 £ - [Ссылка](http://books.toscrape.com/catalogue/soumission_998/index.html)\n4. **Sharp Objects** - 47 £ - [Ссылка](http://books.toscrape.com/catalogue/sharp-objects_997/index.html)\n5. **Sapiens: A Brief History of Humankind** - 54 £ - [Ссылка](http://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html)\n\nК сожалению, в извлечённых объявлениях нет информации о количестве комнат и этаже, так как это объявления о книгах, а не о недвижимости. Если у вас есть другие ссылки или запросы, пожалуйста, дайте знать!",
     "tools_used": [
       "extract_offers"
     ],
     "error": null,
-    "latency_sec": 9.93,
-    "session_id": "hw-34992401"
+    "latency_sec": 8.75,
+    "session_id": "hw-9a18b6ec"
   },
   {
     "id": "F12",
@@ -151,14 +151,14 @@
     "urls": [
       "http://books.toscrape.com/"
     ],
-    "output": "Вот результаты по товарам, цена которых меньше 100:\n\n- **Минимальная цена**: 13 £\n- **Максимальная цена**: 45 £\n- **Средняя цена**: 25 £\n- **Медианная цена**: 22 £\n\n### Примеры товаров:\n1. [The Requiem Red](http://books.toscrape.com/catalogue/the-requiem-red_995/index.html) - 22 £\n2. [The Dirty Little Secrets of Getting Your Dream Job](http://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html) - 33 £\n3. [Starving Hearts (Triangular Trade Trilogy, #1)](http://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html) - 13 £\n4. [Shakespeare's Sonnets](http://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html) - 20 £\n5. [It's Only the Himalayas](http://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html) - 45 £\n\nЕсли нужны дополнительные данные или фильтрация, дайте знать!",
+    "output": "Вот результаты по товарам, цена которых ниже 100:\n\n- **Минимальная цена**: 13 £\n- **Максимальная цена**: 45 £\n- **Средняя цена**: 25 £\n- **Медианная цена**: 22 £\n\n### Примеры товаров:\n1. [The Requiem Red](http://books.toscrape.com/catalogue/the-requiem-red_995/index.html) - 22 £\n2. [The Dirty Little Secrets of Getting Your Dream Job](http://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html) - 33 £\n3. [Starving Hearts (Triangular Trade Trilogy, #1)](http://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html) - 13 £\n4. [Shakespeare's Sonnets](http://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html) - 20 £\n5. [It's Only the Himalayas](http://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html) - 45 £\n\nЕсли нужны дополнительные данные или фильтрация, дайте знать!",
     "tools_used": [
       "extract_offers",
       "filter_offers",
       "compute_stats"
     ],
     "error": null,
-    "latency_sec": 22.52,
-    "session_id": "hw-34992401"
+    "latency_sec": 18.5,
+    "session_id": "hw-9a18b6ec"
   }
 ]
