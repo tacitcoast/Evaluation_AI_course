@@ -16,11 +16,12 @@ from collections import defaultdict
 from datetime import date
 
 from docx import Document
-from docx.shared import Pt, RGBColor
+from docx.shared import Pt, RGBColor, Inches
 
 FOLDER = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(FOLDER, "data")
 OUT = os.path.join(FOLDER, "Agent_Evaluation_Report.docx")
+UI_SHOT = os.path.join(DATA, "screenshots", "ui_internal_server_error.png")
 
 DARK = RGBColor(0x1F, 0x38, 0x64)
 TEXT = RGBColor(0x26, 0x26, 0x26)
@@ -471,6 +472,22 @@ def main():
               "500, because the dollar to euro pair is missing. The conversion that did work used "
               "a rate of exactly 90 roubles to the dollar, which matches the hardcoded literal. "
               "The deployed agent is running that table.")
+
+    body(doc, "The product's own interface walks the user into the broken path. The UI at "
+              "realestate.eval-ai.com offers two example links and four suggested questions. I "
+              "took its example site, tranio.com, and its suggestion \"Extract listings from the "
+              "site\". That worked: five Miami apartments priced in dollars, extract_offers, 13.1 "
+              "seconds. I then took its next suggestion, \"Convert prices to euros\". Dollars to "
+              "euros is the pair the rate table lacks.")
+    body(doc, "The reply was a red box reading Internal Server Error, with no explanation and no "
+              "suggestion of what to do. A user following the interface's own prompts on the "
+              "interface's own example site reaches a bare server error in two clicks.")
+    if os.path.exists(UI_SHOT):
+        doc.add_picture(UI_SHOT, width=Inches(6.2))
+        caption = doc.paragraphs[-1]
+        r = caption.add_run("")
+        body(doc, "The agent UI after the second suggested question. The first answer carries its "
+                  "tool name and duration, the second returns Internal Server Error.")
 
     body(doc, "A page that does not answer 200 becomes a server error. http_tools.py calls "
               "raise_for_status() and handles nothing. Three different causes give the same result: "
