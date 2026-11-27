@@ -1,0 +1,227 @@
+{
+  "finished_at": "2026-11-27T13:31:25",
+  "threshold": 0.5,
+  "judge": "gpt-4o-mini",
+  "rows": [
+    {
+      "group": 1,
+      "left": "original",
+      "right": "original",
+      "note": "одно и то же изображение",
+      "clip_image_image": 100.0,
+      "lpips": 0.0,
+      "lpips_reading": "Практически идентичные изображения"
+    },
+    {
+      "group": 1,
+      "left": "original",
+      "right": "edited",
+      "note": "тот же человек, другой кадр",
+      "clip_image_image": 98.74,
+      "lpips": 0.1352,
+      "lpips_reading": "Похожие изображения с небольшими различиями"
+    },
+    {
+      "group": 1,
+      "left": "original",
+      "right": "different",
+      "note": "другой человек, другой монитор",
+      "clip_image_image": 95.22,
+      "lpips": 0.3405,
+      "lpips_reading": "Заметные различия между изображениями"
+    },
+    {
+      "group": 1,
+      "left": "edited",
+      "right": "different",
+      "note": "другой человек, другой монитор",
+      "clip_image_image": 94.03,
+      "lpips": 0.3249,
+      "lpips_reading": "Заметные различия между изображениями"
+    },
+    {
+      "group": 2,
+      "image": "original",
+      "caption_kind": "верная для original",
+      "caption": "a man with glasses working on a laptop with code on two monitors",
+      "clip_image_text": 29.17,
+      "reading": "Хорошее соответствие"
+    },
+    {
+      "group": 2,
+      "image": "original",
+      "caption_kind": "верная для different",
+      "caption": "a man in a beige sweater at a desk with charts and graphs on a monitor",
+      "clip_image_text": 25.86,
+      "reading": "Хорошее соответствие"
+    },
+    {
+      "group": 2,
+      "image": "original",
+      "caption_kind": "посторонняя",
+      "caption": "a cat sleeping on a sofa in a living room",
+      "clip_image_text": 11.75,
+      "reading": "Очень слабое соответствие"
+    },
+    {
+      "group": 2,
+      "image": "original",
+      "caption_kind": "верная, но по-русски",
+      "caption": "мужчина в очках работает за ноутбуком, на мониторах код",
+      "clip_image_text": 20.88,
+      "reading": "Умеренное соответствие"
+    },
+    {
+      "group": 2,
+      "image": "different",
+      "caption_kind": "верная для original",
+      "caption": "a man with glasses working on a laptop with code on two monitors",
+      "clip_image_text": 28.59,
+      "reading": "Хорошее соответствие"
+    },
+    {
+      "group": 2,
+      "image": "different",
+      "caption_kind": "верная для different",
+      "caption": "a man in a beige sweater at a desk with charts and graphs on a monitor",
+      "clip_image_text": 30.68,
+      "reading": "Отличное соответствие"
+    },
+    {
+      "group": 2,
+      "image": "different",
+      "caption_kind": "посторонняя",
+      "caption": "a cat sleeping on a sofa in a living room",
+      "clip_image_text": 11.89,
+      "reading": "Очень слабое соответствие"
+    },
+    {
+      "group": 2,
+      "image": "different",
+      "caption_kind": "верная, но по-русски",
+      "caption": "мужчина в очках работает за ноутбуком, на мониторах код",
+      "clip_image_text": 20.01,
+      "reading": "Умеренное соответствие"
+    },
+    {
+      "group": 3,
+      "transform": "jpeg_low",
+      "description": "сжатие JPEG, качество 10",
+      "clip_image_image": 94.38,
+      "lpips": 0.041,
+      "clip_image_text": 30.5
+    },
+    {
+      "group": 3,
+      "transform": "noise",
+      "description": "гауссов шум, сигма 25",
+      "clip_image_image": 95.8,
+      "lpips": 0.053,
+      "clip_image_text": 31.24
+    },
+    {
+      "group": 3,
+      "transform": "blur_light",
+      "description": "размытие, радиус 2",
+      "clip_image_image": 99.77,
+      "lpips": 0.0147,
+      "clip_image_text": 29.05
+    },
+    {
+      "group": 3,
+      "transform": "blur_heavy",
+      "description": "размытие, радиус 8",
+      "clip_image_image": 92.93,
+      "lpips": 0.2636,
+      "clip_image_text": 27.91
+    },
+    {
+      "group": 3,
+      "transform": "grayscale",
+      "description": "оттенки серого",
+      "clip_image_image": 95.59,
+      "lpips": 0.1917,
+      "clip_image_text": 30.1
+    },
+    {
+      "group": 3,
+      "transform": "mirror",
+      "description": "отражение по горизонтали",
+      "clip_image_image": 99.62,
+      "lpips": 0.5188,
+      "clip_image_text": 29.03
+    },
+    {
+      "group": 4,
+      "case": "согласованный текст и снимок",
+      "metric": "ImageCoherence",
+      "score": 0.9,
+      "passed": true,
+      "reason": "Reason for image 0: The image shows a developer at a workstation with a laptop and two external monitors displaying code, which aligns well with the context provided. The description mentions that the code is open on the external monitors and that the laptop is being used as a keyboard, which is visually supported by the image. Therefore, the coherence between the image and the text is strong.",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "согласованный текст и снимок",
+      "metric": "ImageHelpfulness",
+      "score": 0.9,
+      "passed": true,
+      "reason": "Reason for image 0: The image effectively illustrates the context described in the text, showing a developer at a workstation with a laptop and two external monitors displaying code. This visual representation aligns well with the text, which mentions the use of the laptop as a keyboard and the external monitors for coding. Therefore, the image significantly enhances comprehension of the text.",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "согласованный текст и снимок",
+      "metric": "ImageReference",
+      "score": 1.0,
+      "passed": true,
+      "reason": "Reason for image 0: The image is explicitly referenced in the context below, which describes the scene with the code displayed on the external monitors and the laptop being used as a keyboard. The context above also mentions the setup with a laptop and two external monitors. Therefore, the image is clearly related to the text provided.",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "текст про код, снимок с графиками",
+      "metric": "ImageCoherence",
+      "score": 0.9,
+      "passed": true,
+      "reason": "Reason for image 0: The image shows a developer at a workstation with two external monitors displaying code and data visualizations, which aligns well with the context provided. The description mentions that the code is open on the external monitors and that the laptop is used as a keyboard, which is consistent with the setup depicted in the image. Therefore, the coherence between the image and the text is strong.",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "текст про код, снимок с графиками",
+      "metric": "ImageHelpfulness",
+      "score": 0.9,
+      "passed": true,
+      "reason": "Reason for image 0: The image effectively illustrates the context described in the text, showing a developer at a workstation with a laptop and two external monitors displaying code and data visualizations. This visual representation aligns well with the text, enhancing understanding of the developer's work environment and the use of multiple screens for coding and data analysis. Therefore, it significantly aids comprehension.",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "текст про код, снимок с графиками",
+      "metric": "ImageReference",
+      "score": 1.0,
+      "passed": true,
+      "reason": "Reason for image 0: The image is explicitly referenced in the context below, which describes the scene with the code displayed on the external monitors and the laptop being used as a keyboard. This aligns well with the description provided above, where it mentions a developer at a workstation with a laptop and two external monitors. Therefore, the image is properly explained and referenced in both contexts.",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "запрос совпадает со снимком",
+      "metric": "TextToImage",
+      "score": 0.7937253933193772,
+      "passed": true,
+      "reason": "\nThe overall score is 0.79 because the lowest score from semantic consistency was 9.0 \nand the lowest score from perceptual quality was 7.0. These scores were combined to reflect the \noverall effectiveness and quality of the AI-generated image(s).\nReason for Semantic Consistency score: The image effectively depicts a developer wearing glasses, seated at a laptop with code visible on the monitors, aligning well with the prompt. The setting and details are appropriate for the context of a developer's workspace.\nReason for Perceptual Quality score: The image displays a natural scene with appropriate lighting and proportions, making it look realistic. However, there are minor artifacts visible, such as slight blurriness around the edges and some inconsistencies in the textures of the monitors. Overall, it is a well-executed image with room for improvement in detail.\n",
+      "error": null
+    },
+    {
+      "group": 4,
+      "case": "запрос не совпадает со снимком",
+      "metric": "TextToImage",
+      "score": 0.0,
+      "passed": false,
+      "reason": "\nThe overall score is 0.00 because the lowest score from semantic consistency was 0.0 \nand the lowest score from perceptual quality was 7.0. These scores were combined to reflect the \noverall effectiveness and quality of the AI-generated image(s).\nReason for Semantic Consistency score: The image does not depict a beach at sunset, but rather a person working at a desk with computers. This is completely unrelated to the prompt.\nReason for Perceptual Quality score: The image exhibits a high level of naturalness with realistic lighting and proportions, making it appear lifelike. However, there are minor artifacts visible in the background and on the screens, which slightly detract from the overall quality.\n",
+      "error": null
+    }
+  ]
+}

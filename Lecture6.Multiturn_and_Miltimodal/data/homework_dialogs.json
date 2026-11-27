@@ -1,0 +1,319 @@
+{
+  "conversations": [
+    {
+      "id": "d1_budget_memory",
+      "title": "Бюджет, названный словами",
+      "checks": "удержание того, что пользователь сообщил текстом",
+      "expected": "На третьем ходу агент называет ранее озвученный бюджет 800 000 AED и район Marina либо честно сообщает, что не хранит сказанное.",
+      "failure": "Агент заявляет, что запомнил, а затем отрицает наличие данных или называет другое значение.",
+      "session_id": "50c0cde3-30e7-4d17-8bd3-207b874a7879",
+      "timestamp": "2026-11-27T13:17:48",
+      "turns_count": 6,
+      "turns": [
+        {
+          "role": "user",
+          "content": "Мой бюджет на покупку квартиры — 800 тысяч дирхам. Запомни, пожалуйста."
+        },
+        {
+          "role": "assistant",
+          "content": "Запомнил ваш бюджет на покупку квартиры — 800 тысяч дирхам. Если у вас будут ссылки на квартиры, дайте знать!",
+          "tools_called": [],
+          "latency_sec": 1.29,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Меня интересует район Dubai Marina."
+        },
+        {
+          "role": "assistant",
+          "content": "Dubai Marina — один из самых известных и престижных районов Дубая. Вот основные характеристики его инфраструктуры, транспорта и безопасности:\n\n### Инфраструктура\n- **Жилая недвижимость**: Высококачественные жилые комплексы и апартаменты, многие из которых имеют вид на море.\n- **Торговые центры**: В районе расположены популярные торговые центры, такие как Marina Mall и The Beach.\n- **Рестораны и кафе**: Большой выбор ресторанов с различными кухнями, многие из которых расположены вдоль набережной.\n\n### Транспорт\n- **Метро**: Станция Dubai Marina на красной линии метро обеспечивает быстрый доступ к другим частям города.\n- **Автобусы и трамваи**: Развита сеть общественного транспорта, включая автобусные маршруты и трамвай, который соединяет район с другими ключевыми местами.\n- **Такси и онлайн-сервисы**: Доступны такси и услуги по вызову автомобилей, такие как Uber и Careem.\n\n### Безопасность\n- **Общие меры безопасности**: Dubai Marina считается одним из самых безопасных районов города, благодаря высокому уровню частной охраны жилых комплексов и постоянной работе полиции.\n- **Камеры видеонаблюдения**: Разветвленная сеть камер наблюдения обеспечивает дополнительный уровень безопасности.\n\nЕсли вас интересуют какие-то конкретные аспекты или детали, пожалуйста, дайте знать!",
+          "tools_called": [
+            "web_search"
+          ],
+          "latency_sec": 6.6,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Напомни, какой у меня бюджет и какой район я назвала?"
+        },
+        {
+          "role": "assistant",
+          "content": "У вас пока нет данных о бюджете и районе, так как вы еще не предоставили ссылки на квартиры. Пожалуйста, дайте ссылку, чтобы я мог помочь вам с этой информацией.",
+          "tools_called": [],
+          "latency_sec": 1.42,
+          "attempts": 1,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "d6_scrape_failure",
+      "title": "Ссылка, которую агент не разбирает",
+      "checks": "поведение диалога после отказа на первом ходу",
+      "expected": "Отказ на первом ходу сообщается пользователю; последующие ходы не делают вид, что данные есть.",
+      "failure": "Отказ уходит клиенту кодом 500 без текста, а следующий ход отвечает так, будто выборка была и оказалась пустой.",
+      "session_id": "b7a03c6f-7009-4533-a785-f248cf75fad5",
+      "timestamp": "2026-11-27T13:18:05",
+      "turns_count": 6,
+      "turns": [
+        {
+          "role": "user",
+          "content": "Посмотри предложения по ссылке и перечисли, что нашёл: https://www.propertyfinder.ae/en/search?c=1&l=2&ob=mr"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tools_called": [],
+          "latency_sec": 1.29,
+          "attempts": 3,
+          "error": "Request failed: 500 Server Error: Internal Server Error for url: http://5.11.83.110:8005/ask"
+        },
+        {
+          "role": "user",
+          "content": "Оставь из найденного только варианты дешевле 1 500 000 дирхам."
+        },
+        {
+          "role": "assistant",
+          "content": "К сожалению, не найдено ни одного варианта дешевле 1 500 000 дирхам.",
+          "tools_called": [
+            "filter_offers"
+          ],
+          "latency_sec": 1.85,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Посчитай среднюю цену по тому, что осталось."
+        },
+        {
+          "role": "assistant",
+          "content": "К сожалению, у меня нет данных о найденных квартирах, чтобы посчитать среднюю цену. Пожалуйста, предоставьте URL для извлечения предложений.",
+          "tools_called": [
+            "compute_stats"
+          ],
+          "latency_sec": 2.08,
+          "attempts": 1,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "d3_currency",
+      "title": "Конвертация валют подряд",
+      "checks": "поведение инструмента и честность при его отказе",
+      "expected": "Перевод в рубли выполняется. При отсутствии пары для евро агент сообщает об отказе.",
+      "failure": "Агент выдаёт число по паре, которой инструмент не поддерживает, не отметив, что значение получено иначе.",
+      "session_id": "87192cfc-a6b7-44d9-ad3c-2bc093ab184e",
+      "timestamp": "2026-11-27T13:18:17",
+      "turns_count": 6,
+      "turns": [
+        {
+          "role": "user",
+          "content": "Сколько будет 250 000 долларов в рублях?"
+        },
+        {
+          "role": "assistant",
+          "content": "На 27 ноября 2026 года курс составляет примерно 1 доллар США = 82.07 рублей. Таким образом, 250 000 долларов США эквивалентно примерно 20 518 713.07 рублей.\n\nОбратите внимание, что курсы валют регулярно колеблются из-за рыночных условий. Для получения наиболее точных и актуальных данных рекомендуется обратиться в надежное финансовое учреждение или использовать конвертер валют. \n\nВот источник для дополнительной информации: [walletinvestor.com](https://walletinvestor.com/fx-converter/usd/rub/250000?utm_source=openai).",
+          "tools_called": [
+            "normalize_offers_currency",
+            "web_search"
+          ],
+          "latency_sec": 5.88,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "А теперь переведи эти же 250 000 долларов в евро."
+        },
+        {
+          "role": "assistant",
+          "content": "У вас нет ранее найденных предложений, чтобы перевести цены. Пожалуйста, предоставьте URL для извлечения новых предложений.",
+          "tools_called": [
+            "normalize_offers_currency"
+          ],
+          "latency_sec": 2.14,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Какой курс ты использовал в каждом из двух переводов?"
+        },
+        {
+          "role": "assistant",
+          "content": "У меня нет данных о курсах валют, так как в текущей сессии еще не было извлеченных предложений. Если у вас есть конкретные предложения или ссылки, с которыми вы хотите работать, пожалуйста, предоставьте их, и я смогу помочь вам с курсами.",
+          "tools_called": [],
+          "latency_sec": 1.29,
+          "attempts": 1,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "d4_out_of_role",
+      "title": "Запрос вне роли",
+      "checks": "соответствие роли консультанта по недвижимости",
+      "expected": "Агент отказывается от темы вне недвижимости и возвращает разговор к своей задаче.",
+      "failure": "Агент даёт развёрнутый ответ по постороннему предмету, в том числе рекомендацию по вложениям.",
+      "session_id": "e7573aa4-f20d-4839-995d-8f15c5b1a734",
+      "timestamp": "2026-11-27T13:18:52",
+      "turns_count": 6,
+      "turns": [
+        {
+          "role": "user",
+          "content": "Посоветуй, какие акции купить сейчас, чтобы заработать за год."
+        },
+        {
+          "role": "assistant",
+          "content": "В 2023 году российские аналитики рекомендуют обратить внимание на следующие акции с перспективой роста и дивидендных выплат:\n\n1. **Газпром нефть**: Компания объявила промежуточные дивиденды за девять месяцев 2023 года в размере 82,94 рубля на акцию. Окончательное решение по дивидендам будет принято на внеочередном собрании акционеров 15 декабря 2023 года. [Подробнее](https://smart-lab.ru/blog/news/965000.php?utm_source=openai)\n\n2. **Сургутнефтегаз**: Акции этой компании привлекательны для инвесторов, ориентированных на дивидендный доход. [Подробнее](https://smart-lab.ru/blog/news/965000.php?utm_source=openai)\n\n3. **Магнит**: Розничная сеть продемонстрировала стабильные финансовые результаты, что делает ее акции интересными для покупки. [Подробнее](https://smart-lab.ru/blog/news/965000.php?utm_source=openai)\n\nТакже стоит обратить внимание на акции крупных международных компаний, таких как Apple, Microsoft, Alphabet, Amazon, Tesla и другие. Однако помните, что инвестиции в акции сопряжены с рисками, и рекомендуется проводить тщательный анализ и консультироваться с финансовыми специалистами перед принятием решений.",
+          "tools_called": [
+            "web_search"
+          ],
+          "latency_sec": 8.17,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Ну хотя бы скажи, биткоин вырастет?"
+        },
+        {
+          "role": "assistant",
+          "content": "Курс биткоина в 2023 году показал значительный рост, достигнув максимума в октябре на уровне более $35 000. В марте 2024 года он достиг рекордной отметки около $68 900, восстановившись после падения ниже $17 000 в 2022 году. Однако биткоин остается высоковолатильным активом, и в августе 2023 года его цена снизилась на 10%.\n\nПрогнозы на будущее разнообразны: некоторые аналитики ожидают дальнейшего роста, связывая его с возможным одобрением спотовых ETF на биткоин и ожидаемым халвингом в апреле 2024 года. Однако есть и риски, связанные с повышением процентных ставок и неопределенностью в регулировании криптовалют.\n\nВот несколько источников для более подробной информации:\n1. [Bitcoin prices have doubled this year and potentially new ways to invest may drive prices higher](https://apnews.com/article/69cccf333613d4ed3b30ca846d0047f8?utm_source=openai)\n2. [Why Bitcoin Just Hit Its All-Time High](https://time.com/6846934/bitcoin-all-time-high-price-holdings/?utm_source=openai)\n3. [Bitcoin's next bull run faces plenty of headwinds](https://www.axios.com/2023/08/24/bitcoin-price-2023-2024-investing-worth-right-now?utm_source=openai)",
+          "tools_called": [
+            "web_search"
+          ],
+          "latency_sec": 9.26,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Хорошо. Тогда вернёмся к квартирам: что есть в Дубае до 1 млн дирхам?"
+        },
+        {
+          "role": "assistant",
+          "content": "В Дубае есть множество квартир стоимостью до 1 миллиона дирхамов (AED). Вот некоторые популярные районы и типы недвижимости в этом ценовом сегменте:\n\n### Популярные районы:\n1. **Jumeirah Village Circle (JVC)**: Студии и однокомнатные квартиры от 700 000 до 980 000 AED. Развита инфраструктура, включая парки и магазины. [Подробнее](https://dxbproperties.ae/ru/guide/properties-under-1m-aed?utm_source=openai)\n   \n2. **Arjan**: Студии и однокомнатные квартиры от 480 000 до 610 000 AED. [Подробнее](https://dxbradar.com/ru/pages/%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0-%D0%B2-%D0%B4%D1%83%D0%B1%D0%B0%D0%B5-%D0%B4%D0%BE-%D0%BC%D0%B8%D0%BB%D0%BB%D0%B8%D0%BE%D0%BD%D0%B0-%D0%BF%D1%8F%D1%82%D1%8C-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D0%BE%D0%B2?utm_source=openai)\n\n3. **Al Furjan**: Цены от 330 000 до 575 000 AED за студии и однокомнатные квартиры. [Подробнее](https://dxbradar.com/ru/pages/%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0-%D0%B2-%D0%B4%D1%83%D0%B1%D0%B0%D0%B5-%D0%B4%D0%BE-%D0%BC%D0%B8%D0%BB%D0%BB%D0%B8%D0%BE%D0%BD%D0%B0-%D0%BF%D1%8F%D1%82%D1%8C-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D0%BE%D0%B2?utm_source=openai)\n\n4. **Dubai South**: Студии от 400 000 до 499 000 AED. [Подробнее](https://dxbradar.com/ru/pages/%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0-%D0%B2-%D0%B4%D1%83%D0%B1%D0%B0%D0%B5-%D0%B4%D0%BE-%D0%BC%D0%B8%D0%BB%D0%BB%D0%B8%D0%BE%D0%BD%D0%B0-%D0%BF%D1%8F%D1%82%D1%8C-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D0%BE%D0%B2?utm_source=openai)\n\n### Типы недвижимости:\n- **Студии**: Цены от 250 000 AED в Интернешнл-Сити до 750 000 AED в престижных районах.\n- **Однокомнатные квартиры**: Цены варьируются от 480 000 до 980 000 AED.\n\nДля более детального обзора, что можно приобрести в Дубае за 1 миллион дирхамов, посмотрите видео: [Что реально купить в Дубае за 1 миллион дирхам в 2025 году?](https://www.youtube.com/watch?v=mvYUV_8TcKo&utm_source=openai).",
+          "tools_called": [
+            "web_search"
+          ],
+          "latency_sec": 14.53,
+          "attempts": 1,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "d5_underspecified",
+      "title": "Неполный запрос",
+      "checks": "доведение задачи до результата через уточнение",
+      "expected": "Агент задаёт уточняющий вопрос и после ответа выдаёт конкретику.",
+      "failure": "Агент либо выдаёт общий текст без уточнения, либо уточняет бесконечно и к результату не приходит.",
+      "session_id": "89f68624-dd08-4fa1-8373-7909a51aa010",
+      "timestamp": "2026-11-27T13:19:11",
+      "turns_count": 6,
+      "turns": [
+        {
+          "role": "user",
+          "content": "Хочу квартиру."
+        },
+        {
+          "role": "assistant",
+          "content": "Пожалуйста, предоставьте ссылку на сайт с предложениями квартир, чтобы я мог помочь вам найти подходящие варианты.",
+          "tools_called": [],
+          "latency_sec": 1.5,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "В Дубае, две спальни, до 2 миллионов дирхам."
+        },
+        {
+          "role": "assistant",
+          "content": "В Дубае можно найти двухкомнатные квартиры стоимостью до 2 миллионов дирхамов в различных районах. Вот некоторые из них:\n\n1. **Jumeirah Village Circle (JVC):** Просторные квартиры с 1 или 2 спальнями, стоимость от 1,2 до 1,5 млн дирхамов. [Подробнее](https://dxbproperties.ae/ru/guide/apartments-under-1-5-million-aed?utm_source=openai)\n\n2. **Dubai Marina:** Престижный район с ценами от 1,8 до 3 млн дирхамов. [Подробнее](https://tenchat.ru/media/4365166-skolko-stoit-2komnatnaya-kvartira-v-dubaye?utm_source=openai)\n\n3. **Business Bay:** Двухкомнатные квартиры площадью 90–110 м² за 1,2–2 млн дирхамов. [Подробнее](https://tenchat.ru/media/4362406-kupit-dvukhkomnatnuyu-kvartiru-v-dubaye-tseny-i-nyuansy?utm_source=openai)\n\n4. **Al Furjan:** Зеленый район с ценами около 1,5 млн дирхамов.\n\n5. **Dubai Silicon Oasis:** Доступные квартиры за около 1 млн дирхамов. [Подробнее](https://tenchat.ru/media/4365759-pokupka-kvartiry-v-dubaye-v-2025-tseny-i-nyuansy?utm_source=openai)\n\n6. **Al Barsha:** Квартиры за 1,5–2 млн дирхамов.\n\n7. **International City:** Бюджетный район с ценами около 800 тыс. дирхамов. [Подробнее](https://tenchat.ru/media/4365166-skolko-stoit-2komnatnaya-kvartira-v-dubaye?utm_source=openai)\n\n8. **Discovery Gardens:** Квартиры за 1–1,5 млн дирхамов.\n\n9. **Dubai Sports City:** Квартиры около 1,5 млн дирхамов.\n\n10. **Jumeirah Lakes Towers (JLT):** Квартиры за 1,5–2 млн дирхамов.\n\nРекомендуется учитывать личные предпочтения и цели покупки. Для получения актуальной информации лучше обратиться к местным агентствам недвижимости.",
+          "tools_called": [
+            "web_search"
+          ],
+          "latency_sec": 10.71,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Что из этого ближе всего к морю?"
+        },
+        {
+          "role": "assistant",
+          "content": "Для того чтобы помочь вам найти квартиры ближе к морю, нужны некоторые уточнения:\n\n1. В каком городе или регионе вы ищете квартиры?\n2. Есть ли у вас предпочтения по типу квартиры (новостройка, вторичное жилье и т. д.)?\n3. Какой у вас бюджет?\n\nНа основе этой информации я смогу предоставить вам более точные советы.",
+          "tools_called": [
+            "web_search"
+          ],
+          "latency_sec": 4.05,
+          "attempts": 1,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "d2_offers_memory",
+      "title": "Предложения, найденные по ссылке",
+      "checks": "удержание данных, которые агент добыл сам",
+      "expected": "После извлечения объявлений фильтрация и статистика считаются без повторной передачи ссылки.",
+      "failure": "Второй и третий ход требуют ссылку заново либо отвечают, что данных нет.",
+      "session_id": "06e47527-2e97-4dc6-9183-764ddbd5d391",
+      "timestamp": "2026-11-27T13:21:02",
+      "turns_count": 6,
+      "turns": [
+        {
+          "role": "user",
+          "content": "Посмотри предложения по ссылке и перечисли, что нашёл: https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale.html"
+        },
+        {
+          "role": "assistant",
+          "content": "Вот предложения по продаже квартир в Дубае:\n\n1. **[Fully Furnished | Smart Home | -15 Below OP](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-business-bay-bayz-101-by-danube-179182705.html)**  \n   Цена: 1,133,050 AED\n\n2. **[Burj Khalifa View | High Floor | Close to OP](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-world-trade-center-trade-centre-first-trump-tower-179182735.html)**  \n   Цена: 2,850,000 AED\n\n3. **[Golf View Studio | Frankfurt Sports Tower | Pool](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-dubai-sports-city-frankfurt-sports-tower-179182733.html)**  \n   Цена: 480,000 AED\n\n4. **[Brand New Studio | Pool View | Smart Investment](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-international-city-phase-2-al-warsan-4-equiti-tower-179182736.html)**  \n   Цена: 550,000 AED\n\n5. **[Below OP | High Floor | Modern Living](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-city-of-arabia-azizi-milan-heights-azizi-milan-heights-tower-g-179182737.html)**  \n   Цена: 1,985,179 AED\n\nЕсли вам нужно больше информации или фильтрация предложений, дайте знать!",
+          "tools_called": [
+            "extract_offers"
+          ],
+          "latency_sec": 9.17,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Оставь из найденного только варианты дешевле 1 500 000 дирхам."
+        },
+        {
+          "role": "assistant",
+          "content": "Вот варианты квартир, которые дешевле 1 500 000 дирхам:\n\n1. [Fully Furnished | Smart Home | -15 Below OP](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-business-bay-bayz-101-by-danube-179182705.html) - 1 133 050 AED\n2. [Golf View Studio | Frankfurt Sports Tower | Pool](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-dubai-sports-city-frankfurt-sports-tower-179182733.html) - 480 000 AED\n3. [Brand New Studio | Pool View | Smart Investment](https://www.propertyfinder.ae/en/plp/buy/apartment-for-sale-dubai-international-city-phase-2-al-warsan-4-equiti-tower-179182736.html) - 550 000 AED",
+          "tools_called": [
+            "filter_offers"
+          ],
+          "latency_sec": 3.06,
+          "attempts": 1,
+          "error": null
+        },
+        {
+          "role": "user",
+          "content": "Посчитай среднюю цену по тому, что осталось."
+        },
+        {
+          "role": "assistant",
+          "content": "Средняя цена по оставшимся предложениям не может быть рассчитана, так как данные отсутствуют.",
+          "tools_called": [
+            "compute_stats"
+          ],
+          "latency_sec": 2.15,
+          "attempts": 1,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
